@@ -1,2 +1,2 @@
 # Fireboy-and-Watergirl
-## [Play](tzkal-felipe.github.io)
+## [Play](https://tzkal-felipe.github.io)
