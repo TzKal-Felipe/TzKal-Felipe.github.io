@@ -684,19 +684,21 @@ function playGame() {
     window.addEventListener("keydown", (event) => {
         if (pauseGame) return;
         allPlayers.forEach((player) => {
-            switch (event.key) {
-                case player.keys.up:
-                    if (player.isOnBlock && !player.keys.pressed.up && !player.rampBlocked) {
-                        player.velocity.y = -4.35;
-                        player.keys.pressed.up = true;
-                    }
-                    break;
-                case player.keys.left:
-                    player.keys.pressed.left = true;
-                    break;
-                case player.keys.right:
-                    player.keys.pressed.right = true;
-                    break;
+            if (player === allPlayers[0]){
+                switch (event.key) {
+                    case player.keys.up:
+                        if (player.isOnBlock && !player.keys.pressed.up && !player.rampBlocked) {
+                            player.velocity.y = -4.35;
+                            player.keys.pressed.up = true;
+                        }
+                        break;
+                    case player.keys.left:
+                        player.keys.pressed.left = true;
+                        break;
+                    case player.keys.right:
+                        player.keys.pressed.right = true;
+                        break;
+                }
             }
         });
     });
