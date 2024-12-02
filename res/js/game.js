@@ -410,10 +410,10 @@ function playGame() {
 
             allPlayers.forEach((player) => {
                 if (player.keys.pressed.left) {
-                    player.velocity.x = -5;
+                    player.velocity.x = -0;
                     player.changeSprite("left");
                 } else if (player.keys.pressed.right) {
-                    player.velocity.x = 5;
+                    player.velocity.x = 0;
                     player.changeSprite("right");
                 } else {
                     player.velocity.x = 0;
