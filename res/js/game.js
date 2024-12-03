@@ -33,6 +33,28 @@ import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
 
+class ObservableVariable {
+    constructor(initialValue){
+        this._value = initialValue;
+        this.eventTarget = new EventTarget();
+    }
+
+    get value(){
+        return this._value;
+    }
+
+    set value(newValue){
+        if (this._value !== newValue){
+            this._value = newValue;
+            this.eventTarget.dispatchEvent(new Event("valueChanged"));
+        }
+    }
+
+    onChange(callback){
+        this.eventTarget.addEventListener("valueChanged", callback);
+    }
+}
+
 let bgBlocks, died, menuButtonPressed, pauseGame, collisionBlocks, ponds;
 
 let allAssets = [];
@@ -47,6 +69,9 @@ let allBalls = [];
 let startedTime;
 let pausedTime = 0;
 let pausedStartTime;
+
+let observableX;
+let observableY;
 
 const background = new Sprite({
     position: {
@@ -287,6 +312,9 @@ function startGame() {
             })
         );
     }
+
+    observableX = new ObservableVariable(allPlayers[1].position[0]);
+    observableY = new 
 }
 
 function playGame() {
