@@ -698,6 +698,8 @@ function playGame() {
                     case player.keys.right:
                         player.keys.pressed.right = true;
                         break;
+                    case " ":
+                        console.log(player.position);
                 }
             }
         });
