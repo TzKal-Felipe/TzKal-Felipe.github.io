@@ -1,5 +1,27 @@
 import { Sprite } from "./sprite.js";
 
+class ObservableVariable {
+    constructor(initialValue){
+        this._value = initialValue;
+        this.eventTarget = new EventTarget();
+    }
+
+    get value(){
+        return this._value;
+    }
+
+    set value(newValue){
+        if (this._value !== newValue){
+            this._value = newValue;
+            this.eventTarget.dispatchEvent(new Event("valueChanged"));
+        }
+    }
+
+    onChange(callback){
+        this.eventTarget.addEventListener("valueChanged", callback);
+    }
+}
+
 export class Player extends Sprite {
     constructor({
         position,
