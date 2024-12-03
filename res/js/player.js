@@ -199,16 +199,16 @@ export class Player extends Sprite {
     gravity() {
         // this.velocity.y += 0.5;
         if (this.velocity.y < 0) {
-            this.velocity.y += 0.1;
+            this.velocity.y += 0.07;
             if (this.velocity.y > -0.001) {
                 this.velocity.y = 0;
             }
         } else if (this.velocity.y > 0) {
             if (this.velocity.y >= 1.6) {
                 // this.velocity.y = 1.7
-                this.velocity.y += 0.04;
+                this.velocity.y += 0.02;
             } else {
-                this.velocity.y += 0.1;
+                this.velocity.y += 0.07;
                 // this.velocity.y += 1
             }
         }
