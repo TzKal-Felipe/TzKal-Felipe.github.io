@@ -41,6 +41,8 @@ export class Player extends Sprite {
     }) {
         super({ position, imgSrc, frameRate, frameDelay, currentRow, imgRows, animations });
         this.position = position;
+        this.observableX = ObservableVariable(position.x);
+        this.observableY = ObservableVariable(position.y);
         this.velocity = {
             x: 0,
             y: 0,
