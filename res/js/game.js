@@ -757,6 +757,7 @@ function playGame() {
     });
 
     allPlayers[0].observableX.onChange(() => {
+        console.log("X is changing");
         if (currentLevel === 1){
             if (nearLocation(allPlayers[0].position, coords.level1.start)){
                 allPlayers[1].keys.pressed.right = true;
