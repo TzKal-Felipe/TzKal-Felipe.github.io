@@ -738,6 +738,14 @@ function playGame() {
             }
         });
     });
+
+    allPlayers[0].observableX.onChange(() => {
+        // pending
+    });
+
+    allPlayers[0].observableY.onChange(() => {
+        // pending
+    });
 }
 
 export { playGame };
