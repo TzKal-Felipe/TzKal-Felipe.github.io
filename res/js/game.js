@@ -51,12 +51,12 @@ let pausedStartTime;
 let coords = {
     level1: {
         start: {x: 36, y: 911},
+        beforeFirePond: {x: 595, y: 911},
         betweenPonds: {x: 833, y: 911},
+        afterWaterPond: {x: 1128, y: 911},
         beforeAcid: {x: 1273, y: 803}
     }
 };
-
-const coordThreshold = 70;
 
 const background = new Sprite({
     position: {
@@ -66,7 +66,7 @@ const background = new Sprite({
     imgSrc: `./res/img/maps/bg.png`,
 });
 
-function nearCheckpoint(currentPos, targetPos, threshold){
+function nearLocation(currentPos, targetPos, threshold = 30){
     return (
         Math.abs(currentPos.x - targetPos.x) <= threshold &&
         Math.abs(currentPos.y - targetPos.y) <= threshold
@@ -757,7 +757,20 @@ function playGame() {
     });
 
     allPlayers[0].observableX.onChange(() => {
-        // pending
+        if (currentLevel === 1){
+            if (nearLocation(allPlayers[0].position, coords.level1.start){
+                allPlayers[1].keys.pressed.right = true;
+                
+                while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond){}
+
+                allPlayers[1].keys.pressed.up = true;
+                allPlayers[1].keys.pressed.up = false;
+
+                while (!nearLocation(allPlayers[1].position, coords.level1.afterWaterPond){}
+
+                allPlayers[1].keys.pressed.right = false; 
+            }
+        }
     });
 
     allPlayers[0].observableY.onChange(() => {
