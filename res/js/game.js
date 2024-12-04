@@ -48,6 +48,16 @@ let startedTime;
 let pausedTime = 0;
 let pausedStartTime;
 
+let coords = {
+    level1: {
+        start: {x: 36, y: 911},
+        betweenPonds: {x: 833, y: 911},
+        beforeAcid: {x: 1273, y: 803}
+    }
+};
+
+const coordThreshold = 70;
+
 const background = new Sprite({
     position: {
         x: 0,
@@ -55,6 +65,13 @@ const background = new Sprite({
     },
     imgSrc: `./res/img/maps/bg.png`,
 });
+
+function nearCheckpoint(currentPos, targetPos, threshold){
+    return (
+        Math.abs(currentPos.x - targetPos.x) <= threshold &&
+        Math.abs(currentPos.y - targetPos.y) <= threshold
+    );
+}
 
 function startGame() {
     died = false;
