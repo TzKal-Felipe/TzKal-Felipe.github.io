@@ -761,12 +761,12 @@ function playGame() {
             if (nearLocation(allPlayers[0].position, coords.level1.start)){
                 allPlayers[1].keys.pressed.right = true;
                 
-                while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond){}
+                while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond)){}
 
                 allPlayers[1].keys.pressed.up = true;
                 allPlayers[1].keys.pressed.up = false;
 
-                while (!nearLocation(allPlayers[1].position, coords.level1.afterWaterPond){}
+                while (!nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)){}
 
                 allPlayers[1].keys.pressed.right = false; 
             }
