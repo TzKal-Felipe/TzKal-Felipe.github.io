@@ -758,7 +758,7 @@ function playGame() {
 
     allPlayers[0].observableX.onChange(() => {
         if (currentLevel === 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.start){
+            if (nearLocation(allPlayers[0].position, coords.level1.start)){
                 allPlayers[1].keys.pressed.right = true;
                 
                 while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond){}
