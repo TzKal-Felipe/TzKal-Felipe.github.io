@@ -48,6 +48,9 @@ let startedTime;
 let pausedTime = 0;
 let pausedStartTime;
 
+let fireX;
+let fireY;
+
 let coords = {
     level1: {
         start: {x: 36, y: 911},
@@ -304,6 +307,9 @@ function startGame() {
             })
         );
     }
+
+    fireX = allPlayers[0].observableX;
+    fireY = allPlayers[0].observableY;
 }
 
 function playGame() {
@@ -756,7 +762,7 @@ function playGame() {
         });
     });
 
-    allPlayers[0].observableX.onChange(() => {
+    fireX.onChange(() => {
         console.log("X is changing");
         if (currentLevel === 1){
             if (nearLocation(allPlayers[0].position, coords.level1.start)){
@@ -774,7 +780,7 @@ function playGame() {
         }
     });
 
-    allPlayers[0].observableY.onChange(() => {
+    fireY.onChange(() => {
         // pending
     });
 }
