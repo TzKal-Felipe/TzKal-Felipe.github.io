@@ -310,6 +310,28 @@ function startGame() {
 
     fireX = allPlayers[0].observableX;
     fireY = allPlayers[0].observableY;
+
+    fireX.onChange(() => {
+        console.log("X is changing");
+        if (currentLevel === 1){
+            if (nearLocation(allPlayers[0].position, coords.level1.start)){
+                allPlayers[1].keys.pressed.right = true;
+                
+                while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond)){}
+
+                allPlayers[1].keys.pressed.up = true;
+                allPlayers[1].keys.pressed.up = false;
+
+                while (!nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)){}
+
+                allPlayers[1].keys.pressed.right = false; 
+            }
+        }
+    });
+
+    fireY.onChange(() => {
+        // pending
+    });
 }
 
 function playGame() {
@@ -760,28 +782,6 @@ function playGame() {
                 player.keys.pressed[key] = false;
             }
         });
-    });
-
-    fireX.onChange(() => {
-        console.log("X is changing");
-        if (currentLevel === 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.start)){
-                allPlayers[1].keys.pressed.right = true;
-                
-                while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond)){}
-
-                allPlayers[1].keys.pressed.up = true;
-                allPlayers[1].keys.pressed.up = false;
-
-                while (!nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)){}
-
-                allPlayers[1].keys.pressed.right = false; 
-            }
-        }
-    });
-
-    fireY.onChange(() => {
-        // pending
     });
 }
 
