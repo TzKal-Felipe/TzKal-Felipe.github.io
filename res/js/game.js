@@ -315,6 +315,7 @@ function startGame() {
         console.log("X is changing");
         if (currentLevel === 1){
             if (nearLocation(allPlayers[0].position, coords.level1.start)){
+                console.log("near start");
                 allPlayers[1].keys.pressed.right = true;
                 
                 while (!nearLocation(allPlayers[1].position, coords.level1.beforeFirePond)){}
