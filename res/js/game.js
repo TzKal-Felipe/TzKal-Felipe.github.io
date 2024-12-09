@@ -313,6 +313,7 @@ function startGame() {
 
     fireX.onChange(() => {
         console.log("X is changing");
+        console.log(currentLevel);
         console.log(currentLevel == 1);
         console.log(nearLocation(allPlayers[0].position, coords.level1.start));
         if (currentLevel == 1){
