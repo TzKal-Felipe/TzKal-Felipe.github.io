@@ -53,11 +53,13 @@ let waterX;
 
 let coords = {
     level1: {
-        start: {x: 36, y: 911},
-        beforeFirePond: {x: 595, y: 911},
+        nextToStart: {x: 140, y: 911},
+        beforeFirePond: {x: 615, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
-        beforeAcid: {x: 1273, y: 803}
+        firstHigherPlatform: {x: 1270, y: 803},
+        beforeAcid: {x: 994, y: 695},
+        beforeLever: {x: 484, y: 623}
     }
 };
 
@@ -313,14 +315,45 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.start)){
-                
+            if (nearLocation(allPlayers[0].position, coords.level1.nextToStart) ||
+                nearLocation(allPlayers[0].position, coords.level1.betweenPonds)
+                ){
+                allPlayers[1].keys.pressed.right = true;
+            }
+            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) ||
+                nearLocation(allPlayers[0].position, coords.level1.beforeAcid)
+                ){
+                allPlayers[1].keys.pressed.left = true;
+                allPlayers[1].keys.pressed.up = true;
+
+                setTimeout(() => {
+                    allPlayers[1].keys.pressed.up = false;
+                }, 500);
             }
         }
     });
 
     waterX.onChange(() => {
-        // pending
+        if (currentLevel == 1){
+            if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) ||
+                nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatform)
+                ){
+                allPlayers[1].keys.pressed.right = false;
+            }
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid)
+                ){
+                allPlayers[1].keys.pressed.left = false;
+            }
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
+                nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)
+                ){
+                allPlayers[1].keys.pressed.up = true;
+
+                setTimeout(() => {
+                    allPlayers[1].keys.pressed.up = false;
+                }, 500);
+            }
+        }
     });
 }
 
