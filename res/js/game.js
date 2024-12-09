@@ -53,8 +53,9 @@ let waterX;
 
 let coords = {
     level1: {
-        nextToStart: {x: 140, y: 911},
-        beforeFirePond: {x: 625, y: 911},
+        beforeWaterDrop: {x: 449, y: 780},
+        afterWaterDrop: {x: 449, y: 911},
+        beforeFirePond: {x: 550, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
         firstHigherPlatform: {x: 1270, y: 803},
@@ -315,7 +316,7 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.nextToStart) ||
+            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) ||
                 nearLocation(allPlayers[0].position, coords.level1.betweenPonds)
                 ){
                 allPlayers[1].keys.pressed.right = true;
@@ -339,7 +340,8 @@ function startGame() {
 
     waterX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) ||
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeWaterDrop) ||
+                nearLocation(allPlayers[1].position, coords.level1.betweenPonds) ||
                 nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatform)
                 ){
                 allPlayers[1].keys.pressed.right = false;
@@ -362,6 +364,12 @@ function startGame() {
             }
         }
     });
+
+    if (currentLevel == 1){
+        setTimeout(() => {
+            allPlayers[1].keys.pressed.right = true;
+        }, 500);
+    }
 }
 
 function playGame() {
