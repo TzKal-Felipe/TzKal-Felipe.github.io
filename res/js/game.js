@@ -72,7 +72,7 @@ const background = new Sprite({
     imgSrc: `./res/img/maps/bg.png`,
 });
 
-function nearLocation(currentPos, targetPos, threshold = 10){
+function nearLocation(currentPos, targetPos, threshold = 30){
     return (
         Math.abs(currentPos.x - targetPos.x) <= threshold &&
         Math.abs(currentPos.y - targetPos.y) <= threshold
