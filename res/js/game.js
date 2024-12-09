@@ -324,11 +324,15 @@ function startGame() {
                 nearLocation(allPlayers[0].position, coords.level1.beforeAcid)
                 ){
                 allPlayers[1].keys.pressed.left = true;
-                allPlayers[1].keys.pressed.up = true;
 
-                setTimeout(() => {
-                    allPlayers[1].keys.pressed.up = false;
-                }, 500);
+                if (allPlayers[1].isOnBlock && !allPlayers[1].keys.pressed.up && !allPlayers[1].rampBlocked) {
+                    allPlayers[1].velocity.y = -4.35;
+                    allPlayers[1].keys.pressed.up = true;
+                    
+                    setTimeout(() => {
+                        allPlayers[1].keys.pressed.up = false;
+                    }, 500);
+                }
             }
         }
     });
@@ -347,7 +351,14 @@ function startGame() {
             if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
                 nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)
                 ){
-                allPlayers[1].keys.pressed.up = true;
+                if (allPlayers[1].isOnBlock && !allPlayers[1].keys.pressed.up && !allPlayers[1].rampBlocked) {
+                    allPlayers[1].velocity.y = -4.35;
+                    allPlayers[1].keys.pressed.up = true;
+
+                    setTimeout(() => {
+                        allPlayers[1].keys.pressed.up = false;
+                    }, 500);
+                }
             }
         }
     });
