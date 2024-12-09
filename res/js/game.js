@@ -54,7 +54,7 @@ let waterX;
 let coords = {
     level1: {
         nextToStart: {x: 140, y: 911},
-        beforeFirePond: {x: 615, y: 911},
+        beforeFirePond: {x: 620, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
         firstHigherPlatform: {x: 1270, y: 803},
