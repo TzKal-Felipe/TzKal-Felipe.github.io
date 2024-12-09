@@ -53,9 +53,9 @@ let waterX;
 
 let coords = {
     level1: {
-        beforeWaterDrop: {x: 449, y: 780},
-        afterWaterDrop: {x: 449, y: 911},
-        beforeFirePond: {x: 550, y: 911},
+        beforeWaterDrop: {x: 459, y: 780},
+        afterWaterDrop: {x: 459, y: 911},
+        beforeFirePond: {x: 560, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
         firstHigherPlatform: {x: 1270, y: 803},
@@ -72,7 +72,7 @@ const background = new Sprite({
     imgSrc: `./res/img/maps/bg.png`,
 });
 
-function nearLocation(currentPos, targetPos, threshold = 30){
+function nearLocation(currentPos, targetPos, threshold = 20){
     return (
         Math.abs(currentPos.x - targetPos.x) <= threshold &&
         Math.abs(currentPos.y - targetPos.y) <= threshold
