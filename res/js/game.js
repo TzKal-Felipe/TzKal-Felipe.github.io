@@ -49,7 +49,7 @@ let pausedTime = 0;
 let pausedStartTime;
 
 let fireX;
-let fireY;
+let waterX;
 
 let coords = {
     level1: {
@@ -309,22 +309,17 @@ function startGame() {
     }
 
     fireX = allPlayers[0].observableX;
-    fireY = allPlayers[0].observableY;
+    waterX = allPlayers[1].observableX;
 
     fireX.onChange(() => {
-        console.log("X is changing");
-        console.log(currentLevel);
-        console.log(currentLevel == 1);
-        console.log(nearLocation(allPlayers[0].position, coords.level1.start));
         if (currentLevel == 1){
             if (nearLocation(allPlayers[0].position, coords.level1.start)){
-                console.log("near start");
-                allPlayers[1].keys.pressed.right = true;
+                
             }
         }
     });
 
-    fireY.onChange(() => {
+    waterX.onChange(() => {
         // pending
     });
 }
