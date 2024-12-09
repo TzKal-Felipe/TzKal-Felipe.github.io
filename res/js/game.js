@@ -368,7 +368,7 @@ function startGame() {
     if (currentLevel == 1){
         setTimeout(() => {
             allPlayers[1].keys.pressed.right = true;
-        }, 500);
+        }, 250);
     }
 }
 
