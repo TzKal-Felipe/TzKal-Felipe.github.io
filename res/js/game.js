@@ -348,10 +348,6 @@ function startGame() {
                 nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)
                 ){
                 allPlayers[1].keys.pressed.up = true;
-
-                setTimeout(() => {
-                    allPlayers[1].keys.pressed.up = false;
-                }, 500);
             }
         }
     });
