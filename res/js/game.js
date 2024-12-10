@@ -72,7 +72,7 @@ let checkpoints = {
         3: false,
         4: false
     }
-}
+};
 
 const background = new Sprite({
     position: {
@@ -385,6 +385,12 @@ function startGame() {
             }
         }
     });
+
+    for (let level in checkpoints){
+        for (let point in level){
+            checkpoints[level][point] = false;
+        }
+    }
 
     if (currentLevel == 1){
         setTimeout(() => {
