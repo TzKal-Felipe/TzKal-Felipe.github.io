@@ -419,7 +419,9 @@ function startGame() {
         }, 250);
     }
 
-    console.log(allButtons[0]);
+    console.log(allButtons[0][0]);
+    console.log(allButtons[0][0].position);
+    console.log(allButtons[0][1].position);
 }
 
 function playGame() {
