@@ -336,6 +336,7 @@ function startGame() {
     waterX = allPlayers[1].observableX;
 
     fireX.onChange(() => {
+        console.log(allButtons[0][0].pressed);
         if (currentLevel == 1){
             if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.fireboy.level1.one){
                 allPlayers[1].keys.pressed.right = true;
@@ -418,10 +419,6 @@ function startGame() {
             allPlayers[1].keys.pressed.right = true;
         }, 250);
     }
-
-    console.log(allButtons[0][0]);
-    console.log(allButtons[0][0].position);
-    console.log(allButtons[0][1].position);
 }
 
 function playGame() {
