@@ -53,16 +53,26 @@ let waterX;
 
 let coords = {
     level1: {
-        beforeWaterDrop: {x: 459, y: 780},
-        afterWaterDrop: {x: 459, y: 911},
+        beforeWaterDrop: {x: 469, y: 780},
+        afterWaterDrop: {x: 469, y: 911},
         beforeFirePond: {x: 560, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
         firstHigherPlatform: {x: 1270, y: 803},
         beforeAcid: {x: 994, y: 695},
-        beforeLever: {x: 484, y: 623}
+        beforeLever: {x: 450, y: 623},
+        beforeLeverPlatform: {x: 191, y: 623}
     }
 };
+
+let checkpoints = {
+    level1: {
+        1: false,
+        2: false,
+        3: false,
+        4: false
+    }
+}
 
 const background = new Sprite({
     position: {
@@ -316,24 +326,35 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) ||
-                nearLocation(allPlayers[0].position, coords.level1.betweenPonds)
-                ){
+            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.level1.1){
                 allPlayers[1].keys.pressed.right = true;
+                checkpoints.level1.1 = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) ||
-                nearLocation(allPlayers[0].position, coords.level1.beforeAcid)
-                ){
+            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.level1.2){
+                allPlayers[1].keys.pressed.right = true;
+                checkpoints.level1.2 = true;
+            }
+            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.level1.3){
                 allPlayers[1].keys.pressed.left = true;
-
-                if (allPlayers[1].isOnBlock && !allPlayers[1].keys.pressed.up && !allPlayers[1].rampBlocked) {
-                    allPlayers[1].velocity.y = -4.35;
-                    allPlayers[1].keys.pressed.up = true;
+                allPlayers[1].velocity.y = -4.35;
+                allPlayers[1].keys.pressed.up = true;
                     
-                    setTimeout(() => {
-                        allPlayers[1].keys.pressed.up = false;
-                    }, 500);
-                }
+                setTimeout(() => {
+                    allPlayers[1].keys.pressed.up = false;
+                }, 500);
+                
+                checkpoints.level1.3 = true;
+            }
+            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.level1.4){
+                allPlayers[1].keys.pressed.left = true;
+                allPlayers[1].velocity.y = -4.35;
+                allPlayers[1].keys.pressed.up = true;
+                    
+                setTimeout(() => {
+                    allPlayers[1].keys.pressed.up = false;
+                }, 500);
+                
+                checkpoints.level1.4 = true;
             }
         }
     });
@@ -346,21 +367,21 @@ function startGame() {
                 ){
                 allPlayers[1].keys.pressed.right = false;
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid)
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid) ||
+                nearLocation(allPlayers[1].position, coords.level1.beforeLeverPlatform)
                 ){
                 allPlayers[1].keys.pressed.left = false;
             }
             if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
-                nearLocation(allPlayers[1].position, coords.level1.afterWaterPond)
+                nearLocation(allPlayers[1].position, coords.level1.afterWaterPond) ||
+                nearLocation(allPlayers[1].position, coords.level1.beforeLever)
                 ){
-                if (allPlayers[1].isOnBlock && !allPlayers[1].keys.pressed.up && !allPlayers[1].rampBlocked) {
-                    allPlayers[1].velocity.y = -4.35;
-                    allPlayers[1].keys.pressed.up = true;
+                allPlayers[1].velocity.y = -4.35;
+                allPlayers[1].keys.pressed.up = true;
 
-                    setTimeout(() => {
-                        allPlayers[1].keys.pressed.up = false;
-                    }, 500);
-                }
+                setTimeout(() => {
+                    allPlayers[1].keys.pressed.up = false;
+                }, 500);
             }
         }
     });
