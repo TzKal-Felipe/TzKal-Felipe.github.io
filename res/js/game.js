@@ -66,11 +66,21 @@ let coords = {
 };
 
 let checkpoints = {
-    level1: {
-        one: false,
-        two: false,
-        three: false,
-        four: false
+    fireboy: {
+        level1: {
+            one: false,
+            two: false,
+            three: false,
+            four: false
+        }
+    },
+    watergirl: {
+        level1: {
+            one: false,
+            two: false,
+            three: false,
+            four: false
+        }
     }
 };
 
@@ -326,15 +336,15 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.level1.one){
+            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.fireboy.level1.one){
                 allPlayers[1].keys.pressed.right = true;
-                checkpoints.level1.one = true;
+                checkpoints.fireboy.level1.one = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.level1.two){
+            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.fireboy.level1.two){
                 allPlayers[1].keys.pressed.right = true;
-                checkpoints.level1.two = true;
+                checkpoints.fireboy.level1.two = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.level1.three){
+            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.fireboy.level1.three){
                 allPlayers[1].keys.pressed.left = true;
                 allPlayers[1].velocity.y = -4.35;
                 allPlayers[1].keys.pressed.up = true;
@@ -343,9 +353,9 @@ function startGame() {
                     allPlayers[1].keys.pressed.up = false;
                 }, 500);
                 
-                checkpoints.level1.three = true;
+                checkpoints.fireboy.level1.three = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.level1.four){
+            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.fireboy.level1.four){
                 allPlayers[1].keys.pressed.left = true;
                 allPlayers[1].velocity.y = -4.35;
                 allPlayers[1].keys.pressed.up = true;
@@ -354,23 +364,28 @@ function startGame() {
                     allPlayers[1].keys.pressed.up = false;
                 }, 500);
                 
-                checkpoints.level1.four = true;
+                checkpoints.fireboy.level1.four = true;
             }
         }
     });
 
     waterX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeWaterDrop) ||
-                nearLocation(allPlayers[1].position, coords.level1.betweenPonds) ||
-                nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatform)
-                ){
+            if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) && !checkpoints.watergirl.level1.one){
                 allPlayers[1].keys.pressed.right = false;
+                checkpoints.watergirl.level1.one = true;
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid) ||
-                nearLocation(allPlayers[1].position, coords.level1.beforeLeverPlatform)
-                ){
+            if (nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.two){
+                allPlayers[1].keys.pressed.right = false;
+                checkpoints.watergirl.level1.two = true;
+            }
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid) && !checkpoints.watergirl.level1.three){
                 allPlayers[1].keys.pressed.left = false;
+                checkpoints.watergirl.level1.three = true;
+            }
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.four){
+                allPlayers[1].keys.pressed.left = false;
+                checkpoints.watergirl.level1.four = true;
             }
             if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
                 nearLocation(allPlayers[1].position, coords.level1.afterWaterPond) ||
