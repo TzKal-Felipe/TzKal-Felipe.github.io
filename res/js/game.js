@@ -67,10 +67,10 @@ let coords = {
 
 let checkpoints = {
     level1: {
-        1: false,
-        2: false,
-        3: false,
-        4: false
+        one: false,
+        two: false,
+        three: false,
+        four: false
     }
 };
 
@@ -326,15 +326,15 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && (!checkpoints.level1.1)){
+            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.level1.one){
                 allPlayers[1].keys.pressed.right = true;
-                checkpoints.level1.1 = true;
+                checkpoints.level1.one = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.level1.2){
+            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.level1.two){
                 allPlayers[1].keys.pressed.right = true;
-                checkpoints.level1.2 = true;
+                checkpoints.level1.two = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.level1.3){
+            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.level1.three){
                 allPlayers[1].keys.pressed.left = true;
                 allPlayers[1].velocity.y = -4.35;
                 allPlayers[1].keys.pressed.up = true;
@@ -343,9 +343,9 @@ function startGame() {
                     allPlayers[1].keys.pressed.up = false;
                 }, 500);
                 
-                checkpoints.level1.3 = true;
+                checkpoints.level1.three = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.level1.4){
+            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.level1.four){
                 allPlayers[1].keys.pressed.left = true;
                 allPlayers[1].velocity.y = -4.35;
                 allPlayers[1].keys.pressed.up = true;
@@ -354,7 +354,7 @@ function startGame() {
                     allPlayers[1].keys.pressed.up = false;
                 }, 500);
                 
-                checkpoints.level1.4 = true;
+                checkpoints.level1.four = true;
             }
         }
     });
