@@ -58,7 +58,7 @@ let coords = {
         beforeFirePond: {x: 560, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
-        firstHigherPlatform: {x: 1270, y: 803},
+        firstHigherPlatform: {x: 1270, y: 750},
         beforeAcid: {x: 994, y: 695},
         beforeLever: {x: 450, y: 623},
         beforeLeverPlatform: {x: 191, y: 623}
@@ -404,9 +404,11 @@ function startGame() {
         }
     });
 
-    for (let level in checkpoints){
-        for (let point in level){
-            checkpoints[level][point] = false;
+    for (let player in checkpoints){
+        for (let level in player){
+            for (let point in level){
+                checkpoints[player][level][point] = false;
+            }
         }
     }
 
