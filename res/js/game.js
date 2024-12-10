@@ -326,7 +326,7 @@ function startGame() {
 
     fireX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.level1.1)){
+            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && (!checkpoints.level1.1)){
                 allPlayers[1].keys.pressed.right = true;
                 checkpoints.level1.1 = true;
             }
