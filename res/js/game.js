@@ -405,8 +405,8 @@ function startGame() {
     });
 
     for (let player in checkpoints){
-        for (let level in player){
-            for (let point in level){
+        for (let level in checkpoints[player]){
+            for (let point in checkpoints[player][level]){
                 checkpoints[player][level][point] = false;
             }
         }
