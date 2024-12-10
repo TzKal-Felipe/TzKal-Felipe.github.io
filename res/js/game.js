@@ -58,7 +58,8 @@ let coords = {
         beforeFirePond: {x: 560, y: 911},
         betweenPonds: {x: 833, y: 911},
         afterWaterPond: {x: 1128, y: 911},
-        firstHigherPlatform: {x: 1270, y: 750},
+        firstHigherPlatformFire: {x: 1270, y: 803},
+        firstHigherPlatformWater: {x: 1270, y: 750},
         beforeAcid: {x: 994, y: 695},
         beforeLever: {x: 450, y: 623},
         beforeLeverPlatform: {x: 191, y: 623}
@@ -344,7 +345,7 @@ function startGame() {
                 allPlayers[1].keys.pressed.right = true;
                 checkpoints.fireboy.level1.two = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatform) && !checkpoints.fireboy.level1.three){
+            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatformFire) && !checkpoints.fireboy.level1.three){
                 allPlayers[1].keys.pressed.left = true;
                 allPlayers[1].velocity.y = -4.35;
                 allPlayers[1].keys.pressed.up = true;
@@ -378,7 +379,7 @@ function startGame() {
                 allPlayers[1].keys.pressed.right = false;
                 checkpoints.watergirl.level1.one = true;
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.two){
+            if (nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatformWater) && !checkpoints.watergirl.level1.two){
                 allPlayers[1].keys.pressed.right = false;
                 checkpoints.watergirl.level1.two = true;
             }
