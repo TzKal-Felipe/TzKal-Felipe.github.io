@@ -371,6 +371,9 @@ function startGame() {
 
     waterX.onChange(() => {
         if (currentLevel == 1){
+            if (nearLocation(allPlayers[1].position, coords.level1.beforeWaterDrop)){
+                allPlayers[1].keys.pressed.right = false;
+            }
             if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) && !checkpoints.watergirl.level1.one){
                 allPlayers[1].keys.pressed.right = false;
                 checkpoints.watergirl.level1.one = true;
