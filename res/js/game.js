@@ -61,6 +61,14 @@ let fireX;
 let waterX;
 let audioManager = new AudioManager();
 
+let audioFilepaths = {
+    climb: "climb.wav",
+    follow: "follow_me.wav",
+    jumpWater: "jump_water.wav",
+    jumpAcid: "jump_acid.wav",
+    pushLever: "push_lever.wav"
+}
+
 let coords = {
     level1: {
         beforeWaterDrop: {x: 469, y: 780},
@@ -377,22 +385,32 @@ function startGame() {
         if (currentLevel == 1){
             if (nearLocation(allPlayers[1].position, coords.level1.beforeWaterDrop)){
                 allPlayers[1].keys.pressed.right = false;
+                audioManager.changeAudioFile(audioFilepaths.follow);
+                audioManager.playAudio();
             }
             if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) && !checkpoints.watergirl.level1.one){
                 allPlayers[1].keys.pressed.right = false;
                 checkpoints.watergirl.level1.one = true;
+                audioManager.changeAudioFile(audioFilepaths.jumpWater);
+                audioManager.playAudio();
             }
             if (nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatformWater) && !checkpoints.watergirl.level1.two){
                 allPlayers[1].keys.pressed.right = false;
                 checkpoints.watergirl.level1.two = true;
+                audioManager.changeAudioFile(audioFilepaths.climb);
+                audioManager.playAudio();
             }
             if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid) && !checkpoints.watergirl.level1.three){
                 allPlayers[1].keys.pressed.left = false;
                 checkpoints.watergirl.level1.three = true;
+                audioManager.changeAudioFile(audioFilepaths.jumpAcid);
+                audioManager.playAudio();
             }
             if (nearLocation(allPlayers[1].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.four){
                 allPlayers[1].keys.pressed.left = false;
                 checkpoints.watergirl.level1.four = true;
+                audioManager.changeAudioFile(audioFilepaths.pushLever);
+                audioManager.playAudio();
             }
             if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
                 nearLocation(allPlayers[1].position, coords.level1.afterWaterPond) ||
