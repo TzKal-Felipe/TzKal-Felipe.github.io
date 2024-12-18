@@ -32,6 +32,7 @@ import { quests } from "./menu/quests.js";
 import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
+import { AudioManager } from "./audio.js";
 
 let bgBlocks, died, menuButtonPressed, pauseGame, collisionBlocks, ponds;
 
@@ -48,8 +49,17 @@ let startedTime;
 let pausedTime = 0;
 let pausedStartTime;
 
+const background = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imgSrc: `./res/img/maps/bg.png`,
+});
+
 let fireX;
 let waterX;
+let audioManager = new AudioManager();
 
 let coords = {
     level1: {
@@ -84,14 +94,6 @@ let checkpoints = {
         }
     }
 };
-
-const background = new Sprite({
-    position: {
-        x: 0,
-        y: 0,
-    },
-    imgSrc: `./res/img/maps/bg.png`,
-});
 
 function nearLocation(currentPos, targetPos, threshold = 20){
     return (
