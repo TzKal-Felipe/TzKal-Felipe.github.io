@@ -62,11 +62,11 @@ let waterX;
 let audioManager = new AudioManager();
 
 let audioFilepaths = {
-    climb: "./audio/climb.wav",
-    follow: "./audio/follow_me.wav",
-    jumpWater: "./audio/jump_water.wav",
-    jumpAcid: "./audio/jump_acid.wav",
-    pushLever: "./audio/push_lever.wav"
+    climb: "res/js/audio/climb.wav",
+    follow: "res/js/audio/follow_me.wav",
+    jumpWater: "res/js/audio/jump_water.wav",
+    jumpAcid: "res/js/audio/jump_acid.wav",
+    pushLever: "res/js/audio/push_lever.wav"
 }
 
 let coords = {
