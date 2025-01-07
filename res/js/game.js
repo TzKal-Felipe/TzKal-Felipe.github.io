@@ -57,6 +57,8 @@ const background = new Sprite({
     imgSrc: `./res/img/maps/bg.png`,
 });
 
+const fireboy = 0;
+const watergirl = 1;
 let fireX;
 let waterX;
 let audioManager = new AudioManager();
@@ -103,10 +105,10 @@ let checkpoints = {
     }
 };
 
-function nearLocation(currentPos, targetPos, threshold = 20){
+function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 150){
     return (
-        Math.abs(currentPos.x - targetPos.x) <= threshold &&
-        Math.abs(currentPos.y - targetPos.y) <= threshold
+        Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
+        Math.abs(currentPos.y - targetPos.y) <= thresholdY
     );
 }
 
@@ -342,38 +344,38 @@ function startGame() {
         );
     }
 
-    fireX = allPlayers[0].observableX;
-    waterX = allPlayers[1].observableX;
+    fireX = allPlayers[fireboy].observableX;
+    waterX = allPlayers[watergirl].observableX;
 
     fireX.onChange(() => {
         console.log(allButtons[0][0].pressed);
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[0].position, coords.level1.afterWaterDrop) && !checkpoints.fireboy.level1.one){
-                allPlayers[1].keys.pressed.right = true;
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterWaterDrop) && !checkpoints.fireboy.level1.one){
+                allPlayers[watergirl].keys.pressed.right = true;
                 checkpoints.fireboy.level1.one = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.betweenPonds) && !checkpoints.fireboy.level1.two){
-                allPlayers[1].keys.pressed.right = true;
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.betweenPonds) && !checkpoints.fireboy.level1.two){
+                allPlayers[watergirl].keys.pressed.right = true;
                 checkpoints.fireboy.level1.two = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.firstHigherPlatformFire) && !checkpoints.fireboy.level1.three){
-                allPlayers[1].keys.pressed.left = true;
-                allPlayers[1].velocity.y = -4.35;
-                allPlayers[1].keys.pressed.up = true;
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.firstHigherPlatformFire) && !checkpoints.fireboy.level1.three){
+                allPlayers[watergirl].keys.pressed.left = true;
+                allPlayers[watergirl].velocity.y = -4.35;
+                allPlayers[watergirl].keys.pressed.up = true;
                     
                 setTimeout(() => {
-                    allPlayers[1].keys.pressed.up = false;
+                    allPlayers[watergirl].keys.pressed.up = false;
                 }, 500);
                 
                 checkpoints.fireboy.level1.three = true;
             }
-            if (nearLocation(allPlayers[0].position, coords.level1.beforeAcid) && !checkpoints.fireboy.level1.four){
-                allPlayers[1].keys.pressed.left = true;
-                allPlayers[1].velocity.y = -4.35;
-                allPlayers[1].keys.pressed.up = true;
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeAcid) && !checkpoints.fireboy.level1.four){
+                allPlayers[watergirl].keys.pressed.left = true;
+                allPlayers[watergirl].velocity.y = -4.35;
+                allPlayers[watergirl].keys.pressed.up = true;
                     
                 setTimeout(() => {
-                    allPlayers[1].keys.pressed.up = false;
+                    allPlayers[watergirl].keys.pressed.up = false;
                 }, 500);
                 
                 checkpoints.fireboy.level1.four = true;
@@ -383,44 +385,44 @@ function startGame() {
 
     waterX.onChange(() => {
         if (currentLevel == 1){
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeWaterDrop)){
-                allPlayers[1].keys.pressed.right = false;
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeWaterDrop)){
+                allPlayers[watergirl].keys.pressed.right = false;
                 audioManager.changeAudioFile(audioFilepaths.follow);
                 audioManager.playAudio();
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.betweenPonds) && !checkpoints.watergirl.level1.one){
-                allPlayers[1].keys.pressed.right = false;
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPonds) && !checkpoints.watergirl.level1.one){
+                allPlayers[watergirl].keys.pressed.right = false;
                 checkpoints.watergirl.level1.one = true;
                 audioManager.changeAudioFile(audioFilepaths.jumpWater);
                 audioManager.playAudio();
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.firstHigherPlatformWater) && !checkpoints.watergirl.level1.two){
-                allPlayers[1].keys.pressed.right = false;
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatformWater) && !checkpoints.watergirl.level1.two){
+                allPlayers[watergirl].keys.pressed.right = false;
                 checkpoints.watergirl.level1.two = true;
                 audioManager.changeAudioFile(audioFilepaths.climb);
                 audioManager.playAudio();
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeAcid) && !checkpoints.watergirl.level1.three){
-                allPlayers[1].keys.pressed.left = false;
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcid) && !checkpoints.watergirl.level1.three){
+                allPlayers[watergirl].keys.pressed.left = false;
                 checkpoints.watergirl.level1.three = true;
                 audioManager.changeAudioFile(audioFilepaths.jumpAcid);
                 audioManager.playAudio();
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.four){
-                allPlayers[1].keys.pressed.left = false;
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.four){
+                allPlayers[watergirl].keys.pressed.left = false;
                 checkpoints.watergirl.level1.four = true;
                 audioManager.changeAudioFile(audioFilepaths.pushLever);
                 audioManager.playAudio();
             }
-            if (nearLocation(allPlayers[1].position, coords.level1.beforeFirePond) ||
-                nearLocation(allPlayers[1].position, coords.level1.afterWaterPond) ||
-                nearLocation(allPlayers[1].position, coords.level1.beforeLever)
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePond) ||
+                nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPond) ||
+                nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever)
                 ){
-                allPlayers[1].velocity.y = -4.35;
-                allPlayers[1].keys.pressed.up = true;
+                allPlayers[watergirl].velocity.y = -4.35;
+                allPlayers[watergirl].keys.pressed.up = true;
 
                 setTimeout(() => {
-                    allPlayers[1].keys.pressed.up = false;
+                    allPlayers[watergirl].keys.pressed.up = false;
                 }, 500);
             }
         }
@@ -436,7 +438,7 @@ function startGame() {
 
     if (currentLevel == 1){
         setTimeout(() => {
-            allPlayers[1].keys.pressed.right = true;
+            allPlayers[watergirl].keys.pressed.right = true;
         }, 250);
     }
 }
@@ -836,7 +838,7 @@ function playGame() {
     window.addEventListener("keydown", (event) => {
         if (pauseGame) return;
         allPlayers.forEach((player) => {
-            if (player === allPlayers[0]){
+            if (player === allPlayers[fireboy]){
                 switch (event.key) {
                     case player.keys.up:
                         if (player.isOnBlock && !player.keys.pressed.up && !player.rampBlocked) {
