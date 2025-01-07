@@ -71,40 +71,6 @@ let audioFilepaths = {
     pushLever: "res/js/audio/push_lever.wav"
 }
 
-let coords = {
-    level1: {
-        beforeWaterDrop: {x: 469, y: 780},
-        afterWaterDrop: {x: 469, y: 911},
-        beforeFirePond: {x: 560, y: 911},
-        betweenPonds: {x: 833, y: 911},
-        afterWaterPond: {x: 1128, y: 911},
-        firstHigherPlatformFire: {x: 1270, y: 803},
-        firstHigherPlatformWater: {x: 1270, y: 750},
-        beforeAcid: {x: 994, y: 695},
-        beforeLever: {x: 450, y: 623},
-        beforeLeverPlatform: {x: 191, y: 623}
-    }
-};
-
-let checkpoints = {
-    fireboy: {
-        level1: {
-            one: false,
-            two: false,
-            three: false,
-            four: false
-        }
-    },
-    watergirl: {
-        level1: {
-            one: false,
-            two: false,
-            three: false,
-            four: false
-        }
-    }
-};
-
 function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 150){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
@@ -347,6 +313,40 @@ function startGame() {
     fireX = allPlayers[fireboy].observableX;
     waterX = allPlayers[watergirl].observableX;
 
+    let checkpoints = {
+        fireboy: {
+            level1: {
+                one: false,
+                two: false,
+                three: false,
+                four: false
+            }
+        },
+        watergirl: {
+            level1: {
+                one: false,
+                two: false,
+                three: false,
+                four: false
+            }
+        }
+    };
+
+    let coords = {
+        level1: {
+            beforeWaterDrop: {x: 469, y: 780},
+            afterWaterDrop: {x: 469, y: 911},
+            beforeFirePond: {x: 560, y: 911},
+            betweenPonds: {x: 833, y: 911},
+            afterWaterPond: {x: 1128, y: 911},
+            firstHigherPlatformFire: {x: 1270, y: 803},
+            firstHigherPlatformWater: {x: 1270, y: 750},
+            beforeAcid: {x: 994, y: 695},
+            beforeLever: {x: 450, y: 623},
+            beforeLeverPlatform: {x: 191, y: 623}
+        }
+    };
+
     fireX.onChange(() => {
         console.log(allButtons[0][0].pressed);
         if (currentLevel == 1){
@@ -434,12 +434,6 @@ function startGame() {
                 checkpoints[player][level][point] = false;
             }
         }
-    }
-
-    if (currentLevel == 1){
-        setTimeout(() => {
-            allPlayers[watergirl].keys.pressed.right = true;
-        }, 250);
     }
 }
 
