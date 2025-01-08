@@ -367,6 +367,7 @@ function startGame() {
 
     fireX.onChange(() => {
         console.log(allButtons[0][0].pressed);
+        console.log(allLevers[0].pressed);
         if (currentLevel == 1){
             // Fireboy checkpoints
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeEncloseExitFire)){
