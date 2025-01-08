@@ -351,6 +351,12 @@ function startGame() {
                 afterLeverPlatform: false,
                 onFirstButton: false,
                 onButtonPlatform: false,
+                afterCubeDrop: false,
+                halfwayCubeSliding: false,
+                beforeCubeJump: false,
+                onCube: false,
+                afterCubeFire: false,
+                beforeDoors: false
             }
         },
         watergirl: {
@@ -369,7 +375,12 @@ function startGame() {
                 onFirstButton: false,
                 beforeButtonPlatform: false,
                 onButtonPlatform: false,
-                beforeCube: false
+                beforeCube: false,
+                afterCubeDrop: false,
+                halfwayCubeSliding: false,
+                beforeCubeJump: false,
+                onCube: false,
+                afterCubeWater: false
             }
         } 
     };
@@ -394,7 +405,15 @@ function startGame() {
             onButtonPlatformLowered: {x: 1250, y: 448},
             onButtonPlatformLifted: {x: 1250, y: 400},
             onSecondButton: {x: 1031, y: 299},
-            beforeCube: {x: 815, y: 227}
+            beforeCube: {x: 815, y: 227},
+            afterCubeDrop: {x: 579, y: 299},
+            halfwayCubeSliding: {x: 411, y: 299},
+            beforeCubeJump: {x: 249, y: 299},
+            onCube: {x: 185, y: 232},
+            afterCubeFire: {x: 133, y: 155},
+            afterCubeWater: {x: 46, y: 155},
+            beforeDoors: {x: 357, y: 47},
+            doorWater: {x: 1238, y: 119}
         }
     };
 
@@ -439,6 +458,24 @@ function startGame() {
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.onButtonPlatformLowered)){
                 checkpoints.fireboy.level1.onButtonPlatform = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterCubeDrop)){
+                checkpoints.fireboy.level1.afterCubeDrop = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.halfwayCubeSliding)){
+                checkpoints.fireboy.level1.halfwayCubeSliding = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeCubeJump)){
+                checkpoints.fireboy.level1.beforeCubeJump = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.onCube)){
+                checkpoints.fireboy.level1.onCube = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterCubeFire)){
+                checkpoints.fireboy.level1.afterCubeFire = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeDoors)){
+                checkpoints.fireboy.level1.beforeDoors = true;
             }
 
             // Watergirl movement
@@ -495,6 +532,27 @@ function startGame() {
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLifted)){
                 moveLeft(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCube) && checkpoints.fireboy.level1.afterCubeDrop){
+                moveLeft(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeDrop) && checkpoints.fireboy.level1.halfwayCubeSliding){
+                moveLeft(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.halfwayCubeSliding) && checkpoints.fireboy.level1.beforeCubeJump){
+                moveLeft(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCubeJump) && checkpoints.fireboy.level1.onCube){
+                moveLeft(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onCube) && checkpoints.fireboy.level1.afterCubeFire && allPlayers[watergirl].isOnBlock){
+                moveLeft(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeWater) && checkpoints.fireboy.level1.beforeDoors && allPlayers[watergirl].isOnBlock){
+                moveRight(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
         }
@@ -562,6 +620,29 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCube) && !checkpoints.watergirl.level1.beforeCube){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeCube = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeDrop) && !checkpoints.watergirl.level1.afterCubeDrop){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.afterCubeDrop = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.halfwayCubeSliding) && !checkpoints.watergirl.level1.halfwayCubeSliding){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.halfwayCubeSliding = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCubeJump) && !checkpoints.watergirl.level1.beforeCubeJump){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.beforeCubeJump = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onCube) && !checkpoints.watergirl.level1.onCube){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.onCube = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeWater) && !checkpoints.watergirl.level1.afterCubeWater){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.afterCubeWater = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.doorWater){
+                stopMoving(allPlayers[watergirl]);
             }
         }
     });
