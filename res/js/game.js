@@ -383,9 +383,9 @@ function startGame() {
             betweenPools: {x: 833, y: 851},
             afterWaterPool: {x: 1128, y: 851},
             firstHigherPlatform: {x: 1270, y: 743},
-            beforeAcidPool: {x: 994, y: 635},
+            beforeAcidPool: {x: 1020, y: 635},
             afterAcidPool: {x: 708, y: 635},
-            beforeLever: {x: 450, y: 573},
+            beforeLever: {x: 430, y: 573},
             beforeLeverPlatform: {x: 191, y: 573},
             onLeverPlatform: {x: 80, y: 555},
             afterLeverPlatform: {x: 212, y: 413},
@@ -700,10 +700,10 @@ function playGame() {
 
             allPlayers.forEach((player) => {
                 if (player.keys.pressed.left) {
-                    player.velocity.x = -3;
+                    player.velocity.x = -2.8;
                     player.changeSprite("left");
                 } else if (player.keys.pressed.right) {
-                    player.velocity.x = 3;
+                    player.velocity.x = 2.8;
                     player.changeSprite("right");
                 } else {
                     player.velocity.x = 0;
