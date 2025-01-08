@@ -393,7 +393,7 @@ function startGame() {
             beforeFirePool: {x: 560, y: 851},
             betweenPools: {x: 833, y: 851},
             afterWaterPool: {x: 1128, y: 851},
-            firstHigherPlatform: {x: 1260, y: 743},
+            firstHigherPlatform: {x: 1265, y: 743},
             beforeAcidPool: {x: 1020, y: 635},
             afterAcidPool: {x: 708, y: 635},
             beforeLever: {x: 430, y: 573},
