@@ -398,7 +398,7 @@ function startGame() {
             afterAcidPool: {x: 708, y: 635},
             beforeLever: {x: 430, y: 573},
             beforeLeverPlatform: {x: 191, y: 573},
-            onLeverPlatform: {x: 80, y: 555},
+            onLeverPlatform: {x: 90, y: 555},
             afterLeverPlatform: {x: 212, y: 413},
             onFirstButton: {x: 359, y: 413},
             beforeButtonPlatform: {x: 1140, y: 479},
