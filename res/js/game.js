@@ -641,7 +641,7 @@ function startGame() {
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.afterCubeWater = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.doorWater){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.doorWater)){
                 stopMoving(allPlayers[watergirl]);
             }
         }
