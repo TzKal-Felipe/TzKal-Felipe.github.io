@@ -403,7 +403,7 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && checkpoints.level1.beforeFirePool){
                 moveRight(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && checkpoints.level1.betweenPools){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && checkpoints.level1.betweenPools && allPlayers[watergirl].isOnBlock){
                 moveRight(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
@@ -435,10 +435,11 @@ function startGame() {
 
     waterX.onChange(() => { 
         if (currentLevel == 1){
+            // Stop watergirl movement
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && !checkpoints.level1.beforeFirePool){
                 stopMoving(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.level1.betweenPools){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool)){
                 stopMoving(allPlayers[watergirl]);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.level1.afterWaterPool){
