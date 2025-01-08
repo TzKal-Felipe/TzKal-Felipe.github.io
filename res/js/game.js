@@ -349,7 +349,8 @@ function startGame() {
                 beforeLeverPlatform: false,
                 onLeverPlatform: false,
                 afterLeverPlatform: false,
-                onFirstButton: false
+                onFirstButton: false,
+                onButtonPlatform: false
             }
         },
         watergirl: {
@@ -365,7 +366,8 @@ function startGame() {
                 beforeLeverPlatform: false,
                 onLeverPlatform: false,
                 afterLeverPlatform: false,
-                onFirstButton: false
+                onFirstButton: false,
+                beforeButtonPlatform: false
             }
         } 
     };
@@ -385,7 +387,9 @@ function startGame() {
             beforeLeverPlatform: {x: 191, y: 573},
             onLeverPlatform: {x: 60, y: 555},
             afterLeverPlatform: {x: 212, y: 413},
-            onFirstButton: {x: 359, y: 413}
+            onFirstButton: {x: 359, y: 413},
+            beforeButtonPlatform: {x: 1130, y: 479},
+            onButtonPlatform: {x: 1250, y: 448}
         }
     };
 
@@ -427,6 +431,9 @@ function startGame() {
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
                 checkpoints.fireboy.level1.onFirstButton = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
+                checkpoints.fireboy.level1.onButtonPlatform = true;
             }
 
             // Watergirl movement
@@ -472,6 +479,9 @@ function startGame() {
                 makeJump(allPlayers[watergirl]);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && checkpoints.fireboy.level1.onFirstButton){
+                moveRight(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && checkpoints.fireboy.level1.onButtonPlatform){
                 moveRight(allPlayers[watergirl]);
             }
         }
@@ -527,6 +537,10 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && !checkpoints.watergirl.level1.onFirstButton){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.onFirstButton = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !checkpoints.watergirl.level1.beforeButtonPlatform){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.beforeButtonPlatform = true;
             }
         }
     });
