@@ -403,7 +403,7 @@ function startGame() {
             onFirstButton: {x: 359, y: 413},
             beforeButtonPlatform: {x: 1140, y: 479},
             onButtonPlatformLowered: {x: 1220, y: 448},
-            onButtonPlatformLifted: {x: 1220, y: 400},
+            onButtonPlatformLifted: {x: 1220, y: 370},
             onSecondButton: {x: 1031, y: 299},
             beforeCube: {x: 815, y: 227},
             afterCubeDrop: {x: 579, y: 299},
