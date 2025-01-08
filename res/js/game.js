@@ -425,23 +425,23 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && checkpoints.fireboy.level1.afterWaterPool){
                 moveRight(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && checkpoints.fireboy.level1.firstHigherPlatform){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && checkpoints.fireboy.level1.firstHigherPlatform && allPlayers[watergirl].isOnBlock){
                 moveRight(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && checkpoints.fireboy.level1.beforeAcidPool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && checkpoints.fireboy.level1.beforeAcidPool && allPlayers[watergirl].isOnBlock){
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && checkpoints.fireboy.level1.afterAcidPool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && checkpoints.fireboy.level1.afterAcidPool && allPlayers[watergirl].isOnBlock){
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && checkpoints.fireboy.level1.beforeLever){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && checkpoints.fireboy.level1.beforeLever && allPlayers[watergirl].isOnBlock){
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && checkpoints.fireboy.level1.beforeLeverPlatform){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && checkpoints.fireboy.level1.beforeLeverPlatform && allPlayers[watergirl].isOnBlock){
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
