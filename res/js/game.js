@@ -489,13 +489,9 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && checkpoints.fireboy.level1.onButtonPlatform){
                 moveRight(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && allButtons[0][1].pressed){
-                setTimeout(() => {
-                    if (allButtons[0][1].pressed){
-                        moveRight(allPlayers[watergirl]);
-                        makeJump(allPlayers[watergirl]);
-                    }
-                }, 2000);
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && nearLocation(allButtons[0][1].ramp.position, allButtons[0][1].ramp.finalPosition)){
+                moveRight(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLifted)){
                 moveLeft(allPlayers[watergirl]);
