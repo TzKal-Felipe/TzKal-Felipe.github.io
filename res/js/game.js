@@ -495,7 +495,7 @@ function startGame() {
                         moveRight(allPlayers[watergirl]);
                         makeJump(allPlayers[watergirl]);
                     }
-                }, 5000);
+                }, 2000);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLifted)){
                 moveLeft(allPlayers[watergirl]);
