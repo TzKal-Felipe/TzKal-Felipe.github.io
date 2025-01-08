@@ -463,7 +463,7 @@ function startGame() {
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && checkpoints.fireboy.level1.onLeverPlatform && allPlayers[watergirl].isOnBlock && allLevers[0[.pressed){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && checkpoints.fireboy.level1.onLeverPlatform && allPlayers[watergirl].isOnBlock && allLevers[0].pressed){
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
