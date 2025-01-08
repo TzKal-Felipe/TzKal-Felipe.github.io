@@ -71,7 +71,7 @@ let audioFilepaths = {
     pushLever: "res/js/audio/push_lever.wav"
 }
 
-function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 200){
+function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 120){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
         Math.abs(currentPos.y - targetPos.y) <= thresholdY
