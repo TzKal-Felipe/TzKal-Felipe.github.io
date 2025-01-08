@@ -379,7 +379,7 @@ function startGame() {
             startWater: {x: 47, y: 780},
             beforeEncloseExitFire: {x: 273, y: 911},
             beforeEncloseExitWater: {x: 273, y: 780},
-            beforeFirePool: {x: 540, y: 851},
+            beforeFirePool: {x: 560, y: 851},
             betweenPools: {x: 833, y: 851},
             afterWaterPool: {x: 1128, y: 851},
             firstHigherPlatform: {x: 1270, y: 743},
