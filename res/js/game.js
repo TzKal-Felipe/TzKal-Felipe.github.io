@@ -370,31 +370,31 @@ function startGame() {
         if (currentLevel == 1){
             // Fireboy checkpoints
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeEncloseExitFire)){
-                checkpoints.fireboy.level1.beforeEncloseExitFire = true;
+                checkpoints.level1.beforeEncloseExitFire = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeFirePool)){
-                checkpoints.fireboy.level1.beforeFirePool = true;
+                checkpoints.level1.beforeFirePool = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.betweenPools)){
-                checkpoints.fireboy.level1.betweenPools = true;
+                checkpoints.level1.betweenPools = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.afterWaterPool)){
-                checkpoints.fireboy.level1.afterWaterPool = true;
+                checkpoints.level1.afterWaterPool = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.firstHigherPlatform)){
-                checkpoints.fireboy.level1.firstHigherPlatform = true;
+                checkpoints.level1.firstHigherPlatform = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeAcidPool)){
-                checkpoints.fireboy.level1.beforeAcidPool = true;
+                checkpoints.level1.beforeAcidPool = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.afterAcidPool)){
-                checkpoints.fireboy.level1.afterAcidPool = true;
+                checkpoints.level1.afterAcidPool = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeLever)){
-                checkpoints.fireboy.level1.beforeLever = true;
+                checkpoints.level1.beforeLever = true;
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeLeverPlatform)){
-                checkpoints.fireboy.level1.beforeLeverPlatform = true;
+                checkpoints.level1.beforeLeverPlatform = true;
             }
 
             // Watergirl movement
