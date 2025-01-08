@@ -71,7 +71,7 @@ let audioFilepaths = {
     pushLever: "res/js/audio/push_lever.wav"
 }
 
-function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 120){
+function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 70){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
         Math.abs(currentPos.y - targetPos.y) <= thresholdY
@@ -354,20 +354,18 @@ function startGame() {
             startWater: {x: 47, y: 780},
             beforeEncloseExitFire: {x: 273, y: 911},
             beforeEncloseExitWater: {x: 273, y: 780},
-            beforeFirePool: {x: 560, y: 911},
-            betweenPools: {x: 833, y: 911},
-            afterWaterPool: {x: 1128, y: 911},
-            firstHigherPlatform: {x: 1270, y: 803},
-            beforeAcidPool: {x: 994, y: 695},
-            afterAcidPool: {x: 708, y: 695},
-            beforeLever: {x: 450, y: 623},
-            beforeLeverPlatform: {x: 191, y: 623}
+            beforeFirePool: {x: 560, y: 851},
+            betweenPools: {x: 833, y: 851},
+            afterWaterPool: {x: 1128, y: 851},
+            firstHigherPlatform: {x: 1270, y: 743},
+            beforeAcidPool: {x: 994, y: 635},
+            afterAcidPool: {x: 708, y: 635},
+            beforeLever: {x: 450, y: 573},
+            beforeLeverPlatform: {x: 191, y: 573}
         }
     };
 
     fireX.onChange(() => {
-        console.log(allButtons[0][0].pressed);
-        console.log(allLevers[0].pressed);
         if (currentLevel == 1){
             // Fireboy checkpoints
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeEncloseExitFire)){
