@@ -346,7 +346,10 @@ function startGame() {
                 beforeAcidPool: false,
                 afterAcidPool: false,
                 beforeLever: false,
-                beforeLeverPlatform: false
+                beforeLeverPlatform: false,
+                onLeverPlatform: false,
+                afterLeverPlatform: false,
+                onFirstButton: false
             }
         },
         watergirl: {
@@ -359,7 +362,10 @@ function startGame() {
                 beforeAcidPool: false,
                 afterAcidPool: false,
                 beforeLever: false,
-                beforeLeverPlatform: false
+                beforeLeverPlatform: false,
+                onLeverPlatform: false,
+                afterLeverPlatform: false,
+                onFirstButton: false
             }
         } 
     };
@@ -376,7 +382,10 @@ function startGame() {
             beforeAcidPool: {x: 994, y: 635},
             afterAcidPool: {x: 708, y: 635},
             beforeLever: {x: 450, y: 573},
-            beforeLeverPlatform: {x: 191, y: 573}
+            beforeLeverPlatform: {x: 191, y: 573},
+            onLeverPlatform: {x: 60, y: 555},
+            afterLeverPlatform: {x: 212, y: 413},
+            onFirstButton: {x: 359, y: 413}
         }
     };
 
@@ -409,6 +418,15 @@ function startGame() {
             }
             if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeLeverPlatform)){
                 checkpoints.fireboy.level1.beforeLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.onLeverPlatform)){
+                checkpoints.fireboy.level1.onLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterLeverPlatform)){
+                checkpoints.fireboy.level1.afterLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
+                checkpoints.fireboy.level1.onFirstButton = true;
             }
 
             // Watergirl movement
@@ -445,43 +463,70 @@ function startGame() {
                 moveLeft(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && checkpoints.fireboy.level1.onLeverPlatform && allPlayers[watergirl].isOnBlock && allLevers[0[.pressed){
+                moveLeft(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && checkpoints.fireboy.level1.afterLeverPlatform && allPlayers[watergirl].isOnBlock){
+                moveRight(allPlayers[watergirl]);
+                makeJump(allPlayers[watergirl]);
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && checkpoints.fireboy.level1.onFirstButton){
+                moveRight(allPlayers[watergirl]);
+            }
         }
     });
 
     waterX.onChange(() => { 
         if (currentLevel == 1){
             // Stop watergirl movement
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && !checkpoints.watergirl.level1.beforeFirePool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && !checkpoints.watergirl.level1.beforeEncloseExitWater){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.beforeEncloseExitWater = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.watergirl.level1.beforeFirePool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeFirePool = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.watergirl.level1.betweenPools){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.watergirl.level1.betweenPools){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.betweenPools = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.watergirl.level1.afterWaterPool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && !checkpoints.watergirl.level1.afterWaterPool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.afterWaterPool = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && !checkpoints.watergirl.level1.firstHigherPlatform){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.firstHigherPlatform){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.firstHigherPlatform = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.beforeAcidPool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && !checkpoints.watergirl.level1.beforeAcidPool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeAcidPool = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && !checkpoints.watergirl.level1.afterAcidPool){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && !checkpoints.watergirl.level1.afterAcidPool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.afterAcidPool = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && !checkpoints.watergirl.level1.beforeLever){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && !checkpoints.watergirl.level1.beforeLever){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeLever = true;
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && !checkpoints.watergirl.level1.beforeLeverPlatform){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.beforeLeverPlatform){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && !checkpoints.watergirl.level1.onLeverPlatform){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.onLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && !checkpoints.watergirl.level1.afterLeverPlatform){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.afterLeverPlatform = true;
+            }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && !checkpoints.watergirl.level1.onFirstButton){
+                stopMoving(allPlayers[watergirl]);
+                checkpoints.watergirl.level1.onFirstButton = true;
             }
         }
     });
