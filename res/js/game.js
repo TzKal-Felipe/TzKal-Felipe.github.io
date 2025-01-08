@@ -439,7 +439,7 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && !checkpoints.level1.beforeFirePool){
                 stopMoving(allPlayers[watergirl]);
             }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool)){
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.level1.betweenPools){
                 stopMoving(allPlayers[watergirl]);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.level1.afterWaterPool){
