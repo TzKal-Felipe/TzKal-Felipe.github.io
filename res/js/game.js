@@ -432,7 +432,7 @@ function startGame() {
             if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
                 checkpoints.fireboy.level1.onFirstButton = true;
             }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
+            if (nearLocation(allPlayers[fireboy].position, coords.level1.onButtonPlatform)){
                 checkpoints.fireboy.level1.onButtonPlatform = true;
             }
 
