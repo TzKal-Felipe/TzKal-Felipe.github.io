@@ -393,7 +393,7 @@ function startGame() {
             beforeFirePool: {x: 560, y: 851},
             betweenPools: {x: 833, y: 851},
             afterWaterPool: {x: 1128, y: 851},
-            firstHigherPlatform: {x: 1270, y: 743},
+            firstHigherPlatform: {x: 1260, y: 743},
             beforeAcidPool: {x: 1020, y: 635},
             afterAcidPool: {x: 708, y: 635},
             beforeLever: {x: 430, y: 573},
@@ -410,7 +410,7 @@ function startGame() {
             halfwayCubeSliding: {x: 411, y: 299},
             beforeCubeJump: {x: 249, y: 299},
             onCube: {x: 185, y: 232},
-            afterCubeFire: {x: 133, y: 155},
+            afterCubeFire: {x: 143, y: 155},
             afterCubeWater: {x: 46, y: 155},
             beforeDoors: {x: 357, y: 47},
             doorWater: {x: 1238, y: 119}
