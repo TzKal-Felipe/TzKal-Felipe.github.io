@@ -59,9 +59,21 @@ const background = new Sprite({
 
 const fireboy = 0;
 const watergirl = 1;
+const timedAudioDelay = 5;
+const oneSecond = 1000;
 let fireX;
 let waterX;
 let audioManager = new AudioManager();
+let timer = 0;
+
+const interval = setInterval(() => {
+    timer++;
+
+    if (timer === timedAudioDelay){
+        audioManager.playAudio();
+        timer = 0;
+    }
+}, oneSecond);
 
 let audioFilepaths = {
     climb: "res/js/audio/climb.wav",
@@ -69,13 +81,17 @@ let audioFilepaths = {
     jumpWater: "res/js/audio/jump_water.wav",
     jumpAcid: "res/js/audio/jump_acid.wav",
     pushLever: "res/js/audio/push_lever.wav"
-}
+};
 
 function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 70){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
         Math.abs(currentPos.y - targetPos.y) <= thresholdY
     );
+}
+
+function restartTimer(){
+    timer = 0;
 }
 
 function moveRight(player){
