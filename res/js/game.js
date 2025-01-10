@@ -75,14 +75,6 @@ const interval = setInterval(() => {
     }
 }, oneSecond);
 
-let audioFilepaths = {
-    climb: "res/js/audio/climb.wav",
-    follow: "res/js/audio/follow_me.wav",
-    jumpWater: "res/js/audio/jump_water.wav",
-    jumpAcid: "res/js/audio/jump_acid.wav",
-    pushLever: "res/js/audio/push_lever.wav"
-};
-
 function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 70){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
@@ -433,6 +425,33 @@ function startGame() {
         }
     };
 
+    let audioFilepaths = {
+        you_got_it: "res/js/audio/you_got_it.wav",
+        lava_ahead: "res/js/audio/lava_ahead.wav",
+        made_jump: "res/js/audio/made_jump.wav",
+        nice_jump: "res/js/audio/nice_jump.wav",
+        up_we_go: "res/js/audio/up_we_go.wav",
+        acid_ahead: "res/js/audio/acid_ahead.wav",
+        acid_not_scary: "res/js/audio/acid_not_scary.wav",
+        lever_does: "res/js/audio/lever_does.wav",
+        doing_great: "res/js/audio/doing_great.wav",
+        onwards: "res/js/audio/onwards.wav",
+        button_push: "res/js/audio/button_push.wav",
+        wait: "res/js/audio/wait.wav",
+        keep_button_pressed: "res/js/audio/keep_button_pressed.wav",
+        block_strong: "res/js/audio/block_strong.wav",
+        finish_line: "res/js/audio/finish_line.wav",
+        diamonds: "res/js/audio/diamonds.wav",
+        spot_exit: "res/js/audio/spot_exit.wav",
+        teamwork: "res/js/audio/teamwork.wav",
+        keep_going: "res/js/audio/keep_going.wav",
+        arrow_keys: "res/js/audio/arrow_keys.wav"
+    };
+
+    if (currentLevel == 1){
+        audioManager.changeAudioFile(audioFilePaths.arrow_keys);
+    }
+
     fireX.onChange(() => {
         if (currentLevel == 1){
             // Fireboy checkpoints
@@ -497,6 +516,9 @@ function startGame() {
             // Watergirl movement
             if (nearLocation(allPlayers[watergirl].position, coords.level1.startWater) && checkpoints.fireboy.level1.beforeEncloseExitFire){
                 moveRight(allPlayers[watergirl]);
+                audioManager.changeAudioFile(audioFilePaths.you_got_it);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && checkpoints.fireboy.level1.beforeFirePool){
                 moveRight(allPlayers[watergirl]);
@@ -507,6 +529,9 @@ function startGame() {
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && checkpoints.fireboy.level1.afterWaterPool){
                 moveRight(allPlayers[watergirl]);
+                audioManager.changeAudioFile(audioFilePaths.nice_jump);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && checkpoints.fireboy.level1.firstHigherPlatform && allPlayers[watergirl].isOnBlock){
                 moveRight(allPlayers[watergirl]);
@@ -535,12 +560,18 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && checkpoints.fireboy.level1.afterLeverPlatform && allPlayers[watergirl].isOnBlock){
                 moveRight(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
+                audioManager.changeAudioFile(audioFilePaths.onwards);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && checkpoints.fireboy.level1.onFirstButton){
                 moveRight(allPlayers[watergirl]);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && checkpoints.fireboy.level1.onButtonPlatform){
                 moveRight(allPlayers[watergirl]);
+                audioManager.changeAudioFile(audioFilePaths.wait);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && nearLocation(allButtons[0][1].ramp.position, allButtons[0][1].ramp.finalPosition)){
                 moveRight(allPlayers[watergirl]);
@@ -571,6 +602,11 @@ function startGame() {
                 moveRight(allPlayers[watergirl]);
                 makeJump(allPlayers[watergirl]);
             }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeDoors)){
+                audioManager.changeAudioFile(audioFilePaths.spot_exit);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
+            }
         }
     });
 
@@ -584,10 +620,16 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.watergirl.level1.beforeFirePool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeFirePool = true;
+                audioManager.changeAudioFile(audioFilePaths.lava_ahead);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.watergirl.level1.betweenPools){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.betweenPools = true;
+                audioManager.changeAudioFile(audioFilePaths.made_jump);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && !checkpoints.watergirl.level1.afterWaterPool){
                 stopMoving(allPlayers[watergirl]);
@@ -596,18 +638,30 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.firstHigherPlatform){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.firstHigherPlatform = true;
+                audioManager.changeAudioFile(audioFilePaths.up_we_go);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && !checkpoints.watergirl.level1.beforeAcidPool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeAcidPool = true;
+                audioManager.changeAudioFile(audioFilePaths.acid_ahead);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && !checkpoints.watergirl.level1.afterAcidPool){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.afterAcidPool = true;
+                audioManager.changeAudioFile(audioFilePaths.acid_not_scary);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && !checkpoints.watergirl.level1.beforeLever){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeLever = true;
+                audioManager.changeAudioFile(audioFilePaths.lever_does);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.beforeLeverPlatform){
                 stopMoving(allPlayers[watergirl]);
@@ -624,10 +678,16 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && !checkpoints.watergirl.level1.onFirstButton){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.onFirstButton = true;
+                audioManager.changeAudioFile(audioFilePaths.button_push);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !checkpoints.watergirl.level1.beforeButtonPlatform){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeButtonPlatform = true;
+                audioManager.changeAudioFile(audioFilePaths.keep_button_pressed);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLowered) && !checkpoints.watergirl.level1.onButtonPlatform){
                 stopMoving(allPlayers[watergirl]);
@@ -636,6 +696,9 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCube) && !checkpoints.watergirl.level1.beforeCube){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeCube = true;
+                audioManager.changeAudioFile(audioFilePaths.block_strong);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeDrop) && !checkpoints.watergirl.level1.afterCubeDrop){
                 stopMoving(allPlayers[watergirl]);
@@ -644,6 +707,9 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.halfwayCubeSliding) && !checkpoints.watergirl.level1.halfwayCubeSliding){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.halfwayCubeSliding = true;
+                audioManager.changeAudioFile(audioFilePaths.finish_line);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCubeJump) && !checkpoints.watergirl.level1.beforeCubeJump){
                 stopMoving(allPlayers[watergirl]);
@@ -656,9 +722,14 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeWater) && !checkpoints.watergirl.level1.afterCubeWater){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.afterCubeWater = true;
+                audioManager.changeAudioFile(audioFilePaths.diamonds);
+                audioManager.playAudio();
+                audioManager.changeAudioFile(audioFilePaths.keep_going);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.doorWater)){
                 stopMoving(allPlayers[watergirl]);
+                audioManager.changeAudioFile(audioFilePaths.teamwork);
+                audioManager.playAudio();
             }
         }
     });
