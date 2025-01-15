@@ -1,14 +1,28 @@
 export class AudioManager {
     constructor(){
         this.audio = new Audio();
+        this.isPlaying = false;
+        this.queue = null;
     }
 
-    changeAudioFile(filePath){
-        this.audio.src = filePath;
-        this.audio.load();
-    }
+    playAudio(audioSrc){
+        if (this.isPlaying){
+            this.queue = audioSrc;
+        } else {
+            this.audio.src = audioSrc;
+            this.audio.load();
+            this.audio.play();
+            this.isPlaying = true;
 
-    playAudio(){
-        this.audio.play();
+            this.audio.onended = () => {
+                this.isPlaying = false;
+
+                if (queue){
+                    const nextAudio = this.queue;
+                    this.queue = null;
+                    playAudio(nextAudio);
+                }
+            };
+        }
     }
 }
