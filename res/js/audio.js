@@ -17,7 +17,7 @@ export class AudioManager {
             this.audio.onended = () => {
                 this.isPlaying = false;
 
-                if (queue){
+                if (this.queue){
                     const nextAudio = this.queue;
                     this.queue = null;
                     playAudio(nextAudio);
