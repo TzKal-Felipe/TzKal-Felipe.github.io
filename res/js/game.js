@@ -172,15 +172,6 @@ let audioManager = new AudioManager();
 let nextAudio = audioFilepaths.arrow_keys;
 let timer = 0;
 
-const interval = setInterval(() => {
-    timer++;
-
-    if (timer === timedAudioDelay){
-        audioManager.playAudio(nextAudio);
-        timer = 0;
-    }
-}, oneSecond);
-
 function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 70){
     return (
         Math.abs(currentPos.x - targetPos.x) <= thresholdX &&
@@ -455,6 +446,22 @@ function startGame() {
     fireX = allPlayers[fireboy].observableX;
     waterX = allPlayers[watergirl].observableX;
 
+    const audioTimerInterval = setInterval(() => {
+        timer++;
+    
+        if (timer === timedAudioDelay){
+            playAudio(nextAudio);
+        }
+    }, oneSecond);
+
+    const checkForGameEnded = setInterval(() => {
+        if (allDoors[0].opened && allDoors[1].opened){
+            clearInterval(audioTimerInterval);
+            restartTimer();
+            clearInterval(checkForGameEnded);
+        }
+    }, oneSecond);
+
     let checkpoints = {
         fireboy: {
             level1: {
@@ -533,6 +540,7 @@ function startGame() {
             afterCubeFire: {x: 143, y: 155},
             afterCubeWater: {x: 46, y: 155},
             beforeDoors: {x: 357, y: 47},
+            doorFire: {x: 1117, y: 119},
             doorWater: {x: 1238, y: 119}
         }
     };
