@@ -8,6 +8,7 @@ export class AudioManager {
     playAudio(audioSrc){
         if (this.isPlaying){
             this.queue = audioSrc;
+            console.log("audio queued");
         } else {
             this.audio.src = audioSrc;
             this.audio.load();
@@ -20,6 +21,7 @@ export class AudioManager {
                 if (this.queue){
                     const nextAudio = this.queue;
                     this.queue = null;
+                    console.log("dequeued and played audio");
                     this.playAudio(nextAudio);
                 }
             };
