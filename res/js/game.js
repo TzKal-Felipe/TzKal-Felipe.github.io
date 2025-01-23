@@ -164,7 +164,7 @@ let audioFilepaths = {
 
 const fireboy = 0;
 const watergirl = 1;
-const timedAudioDelay = 10;
+const timedAudioDelay = 6;
 const oneSecond = 1000;
 let fireX;
 let waterX;
