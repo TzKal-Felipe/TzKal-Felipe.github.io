@@ -164,7 +164,7 @@ let audioFilepaths = {
 
 const fireboy = 0;
 const watergirl = 1;
-const timedAudioDelay = 5;
+const timedAudioDelay = 10;
 const oneSecond = 1000;
 let fireX;
 let waterX;
@@ -448,6 +448,7 @@ function startGame() {
 
     const audioTimerInterval = setInterval(() => {
         timer++;
+        console.log(timer);
     
         if (timer === timedAudioDelay){
             playAudio(nextAudio);
