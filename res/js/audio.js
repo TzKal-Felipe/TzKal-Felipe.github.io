@@ -20,7 +20,7 @@ export class AudioManager {
                 if (this.queue){
                     const nextAudio = this.queue;
                     this.queue = null;
-                    playAudio(nextAudio);
+                    this.playAudio(nextAudio);
                 }
             };
         }
