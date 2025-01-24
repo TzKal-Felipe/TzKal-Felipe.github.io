@@ -211,6 +211,10 @@ function playAudio(audioSrc){
     restartTimer();
 }
 
+function queueAudioForTimer(audioSrc){
+    nextAudio = audioSrc;
+}
+
 function startGame() {
     died = false;
     menuButtonPressed = null;
