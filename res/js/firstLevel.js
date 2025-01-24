@@ -10,7 +10,11 @@ import {
 } from "./helperFunctions.js";
 
 export class FirstLevelManager {
-    constructor(audioFiles){
+    constructor(fireboy, watergirl, audioFilepaths){
+        this.fireboy = fireboy;
+        this.watergirl = watergirl;
+        this.audioFilepaths = audioFilepaths;
+        
         this.fireCheckpoints = {
             beforeEncloseExitFire: false,
             beforeFirePool: false,
@@ -88,7 +92,63 @@ export class FirstLevelManager {
     }
     
     markFireboyCheckpoints(){
-        
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeEncloseExitFire)){
+            this.fireCheckpoints.beforeEncloseExitFire = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeFirePool)){
+            this.fireCheckpoints.beforeFirePool = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.betweenPools)){
+            this.fireCheckpoints.betweenPools = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterWaterPool)){
+            this.fireCheckpoints.afterWaterPool = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.firstHigherPlatform)){
+            this.fireCheckpoints.firstHigherPlatform = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeAcidPool)){
+            this.fireCheckpoints.beforeAcidPool = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterAcidPool)){
+            this.fireCheckpoints.afterAcidPool = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeLever)){
+            this.fireCheckpoints.beforeLever = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeLeverPlatform)){
+            this.fireCheckpoints.beforeLeverPlatform = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.onLeverPlatform)){
+            this.fireCheckpoints.onLeverPlatform = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterLeverPlatform)){
+            this.fireCheckpoints.afterLeverPlatform = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.onFirstButton)){
+            this.fireCheckpoints.onFirstButton = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.onButtonPlatformLowered)){
+            this.fireCheckpoints.onButtonPlatform = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterCubeDrop)){
+            this.fireCheckpoints.afterCubeDrop = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.halfwayCubeSliding)){
+            this.fireCheckpoints.halfwayCubeSliding = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeCubeJump)){
+            this.fireCheckpoints.beforeCubeJump = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.onCube)){
+            this.fireCheckpoints.onCube = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterCubeFire)){
+            this.fireCheckpoints.afterCubeFire = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.beforeDoors)){
+            this.fireCheckpoints.beforeDoors = true;
+        }
     }
 
     markWatergirlCheckpoints(){
