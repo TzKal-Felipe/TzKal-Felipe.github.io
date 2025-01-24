@@ -149,6 +149,7 @@ let audioFilepaths = {
     acid_not_scary: "res/js/audio/acid_not_scary.wav",
     lever_does: "res/js/audio/lever_does.wav",
     lever_important: "res/js/audio/lever_important.wav",
+    stuck_restart: "res/js/audio/stuck_restart.wav",
     doing_great: "res/js/audio/doing_great.wav",
     onwards: "res/js/audio/onwards.wav",
     press_button: "res/js/audio/press_button.wav",
@@ -562,6 +563,7 @@ function startGame() {
         acid_not_scary: "res/js/audio/acid_not_scary.wav",
         lever_does: "res/js/audio/lever_does.wav",
         lever_important: "res/js/audio/lever_important.wav",
+        stuck_restart: "res/js/audio/stuck_restart.wav",
         doing_great: "res/js/audio/doing_great.wav",
         onwards: "res/js/audio/onwards.wav",
         press_button: "res/js/audio/press_button.wav",
@@ -781,6 +783,10 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && !checkpoints.watergirl.level1.onLeverPlatform){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.onLeverPlatform = true;
+
+                if (nextAudio === audioFilepaths.lever_important){
+                    queueAudioForTimer(audioFilepaths.stuck_restart);
+                }
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && !checkpoints.watergirl.level1.afterLeverPlatform){
                 stopMoving(allPlayers[watergirl]);
