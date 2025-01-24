@@ -166,7 +166,7 @@ let audioFilepaths = {
 
 const fireboy = 0;
 const watergirl = 1;
-const timedAudioDelay = 5;
+const timedAudioDelay = 6;
 const oneSecond = 1000;
 let fireX;
 let waterX;
@@ -722,6 +722,14 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeDoors)){
                 playAudio(audioFilepaths.spot_exit);
             }
+
+            // State related audios (for buttons and lever)
+            if (checkpoints.fireboy.level1.beforeLeverPlatform && !allLevers[0].pressed){
+                queueAudioForTimer(audioFilepaths.lever_important);
+            }
+            if (allButtons[0][1].pressed){
+                queueAudioForTimer(audioFilepaths.off_button);
+            }
         }
     });
 
@@ -765,7 +773,6 @@ function startGame() {
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.beforeLever = true;
                 playAudio(audioFilepaths.lever_does);
-                queueAudioForTimer(audioFilepaths.lever_important);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.beforeLeverPlatform){
                 stopMoving(allPlayers[watergirl]);
@@ -783,7 +790,6 @@ function startGame() {
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.onFirstButton = true;
                 playAudio(audioFilepaths.press_button);
-                queueAudioForTimer(audioFilepaths.off_button);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !checkpoints.watergirl.level1.beforeButtonPlatform){
                 stopMoving(allPlayers[watergirl]);
