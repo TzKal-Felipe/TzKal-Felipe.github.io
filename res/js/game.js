@@ -152,6 +152,7 @@ let audioFilepaths = {
     stuck_restart: "res/js/audio/stuck_restart.wav",
     doing_great: "res/js/audio/doing_great.wav",
     onwards: "res/js/audio/onwards.wav",
+    water_press_button: "res/js/audio/water_press_button.wav",
     press_button: "res/js/audio/press_button.wav",
     off_button: "res/js/audio/off_button.wav",
     wait: "res/js/audio/wait.wav",
@@ -566,6 +567,7 @@ function startGame() {
         stuck_restart: "res/js/audio/stuck_restart.wav",
         doing_great: "res/js/audio/doing_great.wav",
         onwards: "res/js/audio/onwards.wav",
+        water_press_button: "res/js/audio/water_press_button.wav",
         press_button: "res/js/audio/press_button.wav",
         off_button: "res/js/audio/off_button.wav",
         wait: "res/js/audio/wait.wav",
@@ -729,6 +731,9 @@ function startGame() {
             if (checkpoints.fireboy.level1.beforeLeverPlatform && !allLevers[0].pressed){
                 queueAudioForTimer(audioFilepaths.lever_important);
             }
+            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !allButtons[0][1].pressed){
+                queueAudioForTimer(audioFilepaths.press_button);
+            }
             if (allButtons[0][1].pressed){
                 queueAudioForTimer(audioFilepaths.off_button);
             }
@@ -795,7 +800,7 @@ function startGame() {
             if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && !checkpoints.watergirl.level1.onFirstButton){
                 stopMoving(allPlayers[watergirl]);
                 checkpoints.watergirl.level1.onFirstButton = true;
-                playAudio(audioFilepaths.press_button);
+                playAudio(audioFilepaths.water_press_button);
             }
             if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !checkpoints.watergirl.level1.beforeButtonPlatform){
                 stopMoving(allPlayers[watergirl]);
