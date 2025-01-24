@@ -1,3 +1,14 @@
+import { 
+    nearLocation,
+    restartTimer,
+    moveRight,
+    moveLeft,
+    stopMoving,
+    makeJump,
+    playAudio,
+    queueAudioForTimer
+} from "./helperFunctions.js";
+
 export class FirstLevelManager {
     constructor(audioFiles){
         this.fireCheckpoints = {
