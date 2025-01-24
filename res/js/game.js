@@ -456,7 +456,7 @@ function startGame() {
     }, oneSecond);
 
     const checkForGameEnded = setInterval(() => {
-        if (allDoors[0].opened && allDoors[1].opened){
+        if ((allDoors[0].opened && allDoors[1].opened) || menuActive == "mainMenu"){
             clearInterval(audioTimerInterval);
             restartTimer();
             clearInterval(checkForGameEnded);
