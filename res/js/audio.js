@@ -13,6 +13,10 @@ export class AudioManager {
         };
     }
 
+    resetAudioTimer(){
+        this.timer = 0;
+    }
+
     playAudio(audioSrc){
         if (audioSrc === this.currentSrc || audioSrc === this.queue){
             return;
@@ -40,10 +44,8 @@ export class AudioManager {
                 }
             };
         }
-    }
 
-    resetAudioTimer(){
-        this.timer = 0;
+        this.resetAudioTimer();
     }
 
     startAudioTimer(){
