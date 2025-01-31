@@ -10,7 +10,7 @@ import {
 } from "./helperFunctions.js";
 
 export class FirstLevelManager {
-    constructor(fireboy, watergirl, audioFilepaths, allLevers, allButtons){
+    constructor(fireboy, watergirl, allLevers, allButtons){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioFilepaths = audioFilepaths;
