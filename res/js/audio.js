@@ -4,6 +4,7 @@ export class AudioManager {
         this.isPlaying = false;
         this.queue = null;
         this.currentSrc = null;
+        this.nextAudio = null;
         this.audioInterval = null;
         this.timedAudioDelay = 6;
         this.timer = 0
@@ -53,7 +54,8 @@ export class AudioManager {
             this.timer++;
     
             if (this.timer === this.timedAudioDelay){
-                this.playAudio(nextAudio);
+                this.playAudio(this.nextAudio);
+                this.nextAudio = null;
             }
         }, 1000);
     }
@@ -61,5 +63,9 @@ export class AudioManager {
     stopAudioTimer(){
         clearInterval(this.audioInterval);
         this.resetAudioTimer();
+    }
+
+    nextAudioForTimer(audioSrc){
+        this.nextAudio = audioSrc;
     }
 }
