@@ -33,6 +33,7 @@ import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
 import { AudioManager } from "./audio.js";
+import { FirstLevelManager } from "./firstLevel.js";
 
 let bgBlocks, died, menuButtonPressed, pauseGame, collisionBlocks, ponds;
 
@@ -56,88 +57,6 @@ const background = new Sprite({
     },
     imgSrc: `./res/img/maps/bg.png`,
 });
-
-let checkpoints = {
-    fireboy: {
-        level1: {
-            beforeEncloseExitFire: false,
-            beforeFirePool: false,
-            betweenPools: false,
-            afterWaterPool: false,
-            firstHigherPlatform: false,
-            beforeAcidPool: false,
-            afterAcidPool: false,
-            beforeLever: false,
-            beforeLeverPlatform: false,
-            onLeverPlatform: false,
-            afterLeverPlatform: false,
-            onFirstButton: false,
-            onButtonPlatform: false,
-            afterCubeDrop: false,
-            halfwayCubeSliding: false,
-            beforeCubeJump: false,
-            onCube: false,
-            afterCubeFire: false,
-            beforeDoors: false
-        }
-    },
-    watergirl: {
-        level1: {
-            beforeEncloseExitFire: false,
-            beforeFirePool: false,
-            betweenPools: false,
-            afterWaterPool: false,
-            firstHigherPlatform: false,
-            beforeAcidPool: false,
-            afterAcidPool: false,
-            beforeLever: false,
-            beforeLeverPlatform: false,
-            onLeverPlatform: false,
-            afterLeverPlatform: false,
-            onFirstButton: false,
-            beforeButtonPlatform: false,
-            onButtonPlatform: false,
-            beforeCube: false,
-            afterCubeDrop: false,
-            halfwayCubeSliding: false,
-            beforeCubeJump: false,
-            onCube: false,
-            afterCubeWater: false
-        }
-    } 
-};
-
-let coords = {
-    level1: {
-        startWater: {x: 47, y: 780},
-        beforeEncloseExitFire: {x: 273, y: 911},
-        beforeEncloseExitWater: {x: 273, y: 780},
-        beforeFirePool: {x: 560, y: 851},
-        betweenPools: {x: 833, y: 851},
-        afterWaterPool: {x: 1128, y: 851},
-        firstHigherPlatform: {x: 1265, y: 743},
-        beforeAcidPool: {x: 1020, y: 635},
-        afterAcidPool: {x: 708, y: 635},
-        beforeLever: {x: 430, y: 573},
-        beforeLeverPlatform: {x: 191, y: 573},
-        onLeverPlatform: {x: 80, y: 555},
-        afterLeverPlatform: {x: 212, y: 413},
-        onFirstButton: {x: 359, y: 413},
-        beforeButtonPlatform: {x: 1140, y: 479},
-        onButtonPlatformLowered: {x: 1220, y: 448},
-        onButtonPlatformLifted: {x: 1220, y: 340},
-        onSecondButton: {x: 1031, y: 299},
-        beforeCube: {x: 815, y: 227},
-        afterCubeDrop: {x: 579, y: 299},
-        halfwayCubeSliding: {x: 411, y: 299},
-        beforeCubeJump: {x: 249, y: 299},
-        onCube: {x: 185, y: 232},
-        afterCubeFire: {x: 143, y: 155},
-        afterCubeWater: {x: 46, y: 155},
-        beforeDoors: {x: 357, y: 47},
-        doorWater: {x: 1238, y: 119}
-    }
-};
 
 let audioFilepaths = {
     you_got_it: "res/js/audio/you_got_it.wav",
@@ -207,16 +126,6 @@ function makeJump(player){
     setTimeout(() => {
         player.keys.pressed.up = false;
     }, 300);
-}
-
-function playAudio(audioSrc){
-    nextAudio = audioSrc;
-    audioManager.playAudio(nextAudio);
-    restartTimer();
-}
-
-function queueAudioForTimer(audioSrc){
-    nextAudio = audioSrc;
 }
 
 function startGame() {
@@ -451,407 +360,49 @@ function startGame() {
         );
     }
 
+    let levelManager;
+
+    switch (currentLevel){
+        case 1:
+            levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], allLevers, allButtons);
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+
+        case 6:
+            break;
+    }
+
     fireX = allPlayers[fireboy].observableX;
     waterX = allPlayers[watergirl].observableX;
-
-    const audioTimerInterval = setInterval(() => {
-        timer++;
-        console.log(timer);
-    
-        if (timer === timedAudioDelay){
-            playAudio(nextAudio);
-        }
-    }, oneSecond);
+    audioManager.startAudioTimer();
 
     const checkForGameEnded = setInterval(() => {
         if ((allDoors[0].opened && allDoors[1].opened) || menuActive == "mainMenu"){
-            clearInterval(audioTimerInterval);
-            restartTimer();
+            audioManager.stopAudioTimer();
             clearInterval(checkForGameEnded);
         }
     }, oneSecond);
 
-    let checkpoints = {
-        fireboy: {
-            level1: {
-                beforeEncloseExitFire: false,
-                beforeFirePool: false,
-                betweenPools: false,
-                afterWaterPool: false,
-                firstHigherPlatform: false,
-                beforeAcidPool: false,
-                afterAcidPool: false,
-                beforeLever: false,
-                beforeLeverPlatform: false,
-                onLeverPlatform: false,
-                afterLeverPlatform: false,
-                onFirstButton: false,
-                onButtonPlatform: false,
-                afterCubeDrop: false,
-                halfwayCubeSliding: false,
-                beforeCubeJump: false,
-                onCube: false,
-                afterCubeFire: false,
-                beforeDoors: false
-            }
-        },
-        watergirl: {
-            level1: {
-                beforeEncloseExitFire: false,
-                beforeFirePool: false,
-                betweenPools: false,
-                afterWaterPool: false,
-                firstHigherPlatform: false,
-                beforeAcidPool: false,
-                afterAcidPool: false,
-                beforeLever: false,
-                beforeLeverPlatform: false,
-                onLeverPlatform: false,
-                afterLeverPlatform: false,
-                onFirstButton: false,
-                beforeButtonPlatform: false,
-                onButtonPlatform: false,
-                beforeCube: false,
-                afterCubeDrop: false,
-                halfwayCubeSliding: false,
-                beforeCubeJump: false,
-                onCube: false,
-                afterCubeWater: false
-            }
-        } 
-    };
-
-    let coords = {
-        level1: {
-            startWater: {x: 47, y: 780},
-            beforeEncloseExitFire: {x: 273, y: 911},
-            beforeEncloseExitWater: {x: 273, y: 780},
-            beforeFirePool: {x: 560, y: 851},
-            betweenPools: {x: 833, y: 851},
-            afterWaterPool: {x: 1128, y: 851},
-            firstHigherPlatform: {x: 1265, y: 743},
-            beforeAcidPool: {x: 1020, y: 635},
-            afterAcidPool: {x: 708, y: 635},
-            beforeLever: {x: 430, y: 573},
-            beforeLeverPlatform: {x: 191, y: 573},
-            onLeverPlatform: {x: 80, y: 555},
-            afterLeverPlatform: {x: 212, y: 413},
-            onFirstButton: {x: 359, y: 413},
-            beforeButtonPlatform: {x: 1140, y: 479},
-            onButtonPlatformLowered: {x: 1220, y: 448},
-            onButtonPlatformLifted: {x: 1220, y: 340},
-            onSecondButton: {x: 1031, y: 299},
-            beforeCube: {x: 815, y: 227},
-            afterCubeDrop: {x: 579, y: 299},
-            halfwayCubeSliding: {x: 411, y: 299},
-            beforeCubeJump: {x: 249, y: 299},
-            onCube: {x: 185, y: 232},
-            afterCubeFire: {x: 143, y: 155},
-            afterCubeWater: {x: 46, y: 155},
-            beforeDoors: {x: 357, y: 47},
-            doorFire: {x: 1117, y: 119},
-            doorWater: {x: 1238, y: 119}
-        }
-    };
-
-    let audioFilepaths = {
-        you_got_it: "res/js/audio/you_got_it.wav",
-        lava_ahead: "res/js/audio/lava_ahead.wav",
-        made_jump: "res/js/audio/made_jump.wav",
-        nice_jump: "res/js/audio/nice_jump.wav",
-        up_we_go: "res/js/audio/up_we_go.wav",
-        acid_ahead: "res/js/audio/acid_ahead.wav",
-        acid_not_scary: "res/js/audio/acid_not_scary.wav",
-        lever_does: "res/js/audio/lever_does.wav",
-        lever_important: "res/js/audio/lever_important.wav",
-        stuck_restart: "res/js/audio/stuck_restart.wav",
-        doing_great: "res/js/audio/doing_great.wav",
-        onwards: "res/js/audio/onwards.wav",
-        water_press_button: "res/js/audio/water_press_button.wav",
-        press_button: "res/js/audio/press_button.wav",
-        off_button: "res/js/audio/off_button.wav",
-        wait: "res/js/audio/wait.wav",
-        keep_button_pressed: "res/js/audio/keep_button_pressed.wav",
-        block_strong: "res/js/audio/block_strong.wav",
-        finish_line: "res/js/audio/finish_line.wav",
-        diamonds: "res/js/audio/diamonds.wav",
-        spot_exit: "res/js/audio/spot_exit.wav",
-        teamwork: "res/js/audio/teamwork.wav",
-        keep_going: "res/js/audio/keep_going.wav",
-        arrow_keys: "res/js/audio/arrow_keys.wav"
-    };
-
     fireX.onChange(() => {
-        if (currentLevel == 1){
-            // Fireboy checkpoints
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeEncloseExitFire)){
-                checkpoints.fireboy.level1.beforeEncloseExitFire = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeFirePool)){
-                checkpoints.fireboy.level1.beforeFirePool = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.betweenPools)){
-                checkpoints.fireboy.level1.betweenPools = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterWaterPool)){
-                checkpoints.fireboy.level1.afterWaterPool = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.firstHigherPlatform)){
-                checkpoints.fireboy.level1.firstHigherPlatform = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeAcidPool)){
-                checkpoints.fireboy.level1.beforeAcidPool = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterAcidPool)){
-                checkpoints.fireboy.level1.afterAcidPool = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeLever)){
-                checkpoints.fireboy.level1.beforeLever = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeLeverPlatform)){
-                checkpoints.fireboy.level1.beforeLeverPlatform = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.onLeverPlatform)){
-                checkpoints.fireboy.level1.onLeverPlatform = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterLeverPlatform)){
-                checkpoints.fireboy.level1.afterLeverPlatform = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.onFirstButton)){
-                checkpoints.fireboy.level1.onFirstButton = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.onButtonPlatformLowered)){
-                checkpoints.fireboy.level1.onButtonPlatform = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterCubeDrop)){
-                checkpoints.fireboy.level1.afterCubeDrop = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.halfwayCubeSliding)){
-                checkpoints.fireboy.level1.halfwayCubeSliding = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeCubeJump)){
-                checkpoints.fireboy.level1.beforeCubeJump = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.onCube)){
-                checkpoints.fireboy.level1.onCube = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.afterCubeFire)){
-                checkpoints.fireboy.level1.afterCubeFire = true;
-            }
-            if (nearLocation(allPlayers[fireboy].position, coords.level1.beforeDoors)){
-                checkpoints.fireboy.level1.beforeDoors = true;
-            }
-
-            // Watergirl movement
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.startWater) && checkpoints.fireboy.level1.beforeEncloseExitFire){
-                moveRight(allPlayers[watergirl]);
-                playAudio(audioFilepaths.you_got_it);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && checkpoints.fireboy.level1.beforeFirePool){
-                moveRight(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && checkpoints.fireboy.level1.betweenPools && allPlayers[watergirl].isOnBlock){
-                moveRight(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && checkpoints.fireboy.level1.afterWaterPool){
-                moveRight(allPlayers[watergirl]);
-                playAudio(audioFilepaths.nice_jump);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && checkpoints.fireboy.level1.firstHigherPlatform && allPlayers[watergirl].isOnBlock){
-                moveRight(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && checkpoints.fireboy.level1.beforeAcidPool && allPlayers[watergirl].isOnBlock){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && checkpoints.fireboy.level1.afterAcidPool && allPlayers[watergirl].isOnBlock){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && checkpoints.fireboy.level1.beforeLever && allPlayers[watergirl].isOnBlock){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && checkpoints.fireboy.level1.beforeLeverPlatform && allPlayers[watergirl].isOnBlock){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && checkpoints.fireboy.level1.onLeverPlatform && allPlayers[watergirl].isOnBlock && allLevers[0].pressed){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && checkpoints.fireboy.level1.afterLeverPlatform && allPlayers[watergirl].isOnBlock){
-                moveRight(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-                playAudio(audioFilepaths.onwards);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && checkpoints.fireboy.level1.onFirstButton){
-                moveRight(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && checkpoints.fireboy.level1.onButtonPlatform){
-                moveRight(allPlayers[watergirl]);
-                playAudio(audioFilepaths.wait);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && nearLocation(allButtons[0][1].ramp.position, allButtons[0][1].ramp.finalPosition)){
-                moveRight(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLifted)){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCube) && checkpoints.fireboy.level1.afterCubeDrop){
-                moveLeft(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeDrop) && checkpoints.fireboy.level1.halfwayCubeSliding){
-                moveLeft(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.halfwayCubeSliding) && checkpoints.fireboy.level1.beforeCubeJump){
-                moveLeft(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCubeJump) && checkpoints.fireboy.level1.onCube){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onCube) && checkpoints.fireboy.level1.afterCubeFire && allPlayers[watergirl].isOnBlock){
-                moveLeft(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeWater) && checkpoints.fireboy.level1.beforeDoors && allPlayers[watergirl].isOnBlock){
-                moveRight(allPlayers[watergirl]);
-                makeJump(allPlayers[watergirl]);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeDoors)){
-                playAudio(audioFilepaths.spot_exit);
-            }
-
-            // State related audios (for buttons and lever)
-            if (checkpoints.fireboy.level1.beforeLeverPlatform && !allLevers[0].pressed){
-                queueAudioForTimer(audioFilepaths.lever_important);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !allButtons[0][1].pressed){
-                queueAudioForTimer(audioFilepaths.press_button);
-            }
-            if (allButtons[0][1].pressed){
-                queueAudioForTimer(audioFilepaths.off_button);
-            }
-        }
+        levelManager.markFireboyCheckpoints();
+        levelManager.checkForWatergirlMovement();
+        levelManager.checkForLevelStateActions();
     });
 
     waterX.onChange(() => { 
-        if (currentLevel == 1){
-            // Stop watergirl movement
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeEncloseExitWater) && !checkpoints.watergirl.level1.beforeEncloseExitWater){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeEncloseExitWater = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeFirePool) && !checkpoints.watergirl.level1.beforeFirePool){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeFirePool = true;
-                playAudio(audioFilepaths.lava_ahead);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.betweenPools) && !checkpoints.watergirl.level1.betweenPools){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.betweenPools = true;
-                playAudio(audioFilepaths.made_jump);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterWaterPool) && !checkpoints.watergirl.level1.afterWaterPool){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.afterWaterPool = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.firstHigherPlatform) && !checkpoints.watergirl.level1.firstHigherPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.firstHigherPlatform = true;
-                playAudio(audioFilepaths.up_we_go);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeAcidPool) && !checkpoints.watergirl.level1.beforeAcidPool){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeAcidPool = true;
-                playAudio(audioFilepaths.acid_ahead);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterAcidPool) && !checkpoints.watergirl.level1.afterAcidPool){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.afterAcidPool = true;
-                playAudio(audioFilepaths.acid_not_scary);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLever) && !checkpoints.watergirl.level1.beforeLever){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeLever = true;
-                playAudio(audioFilepaths.lever_does);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeLeverPlatform) && !checkpoints.watergirl.level1.beforeLeverPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeLeverPlatform = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onLeverPlatform) && !checkpoints.watergirl.level1.onLeverPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.onLeverPlatform = true;
-
-                if (nextAudio === audioFilepaths.lever_important){
-                    queueAudioForTimer(audioFilepaths.stuck_restart);
-                }
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterLeverPlatform) && !checkpoints.watergirl.level1.afterLeverPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.afterLeverPlatform = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onFirstButton) && !checkpoints.watergirl.level1.onFirstButton){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.onFirstButton = true;
-                playAudio(audioFilepaths.water_press_button);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeButtonPlatform) && !checkpoints.watergirl.level1.beforeButtonPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeButtonPlatform = true;
-                playAudio(audioFilepaths.keep_button_pressed);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onButtonPlatformLowered) && !checkpoints.watergirl.level1.onButtonPlatform){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.onButtonPlatform = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCube) && !checkpoints.watergirl.level1.beforeCube){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeCube = true;
-                playAudio(audioFilepaths.block_strong);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeDrop) && !checkpoints.watergirl.level1.afterCubeDrop){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.afterCubeDrop = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.halfwayCubeSliding) && !checkpoints.watergirl.level1.halfwayCubeSliding){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.halfwayCubeSliding = true;
-                playAudio(audioFilepaths.finish_line);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.beforeCubeJump) && !checkpoints.watergirl.level1.beforeCubeJump){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.beforeCubeJump = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.onCube) && !checkpoints.watergirl.level1.onCube){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.onCube = true;
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.afterCubeWater) && !checkpoints.watergirl.level1.afterCubeWater){
-                stopMoving(allPlayers[watergirl]);
-                checkpoints.watergirl.level1.afterCubeWater = true;
-                playAudio(audioFilepaths.diamonds);
-            }
-            if (nearLocation(allPlayers[watergirl].position, coords.level1.doorWater)){
-                stopMoving(allPlayers[watergirl]);
-                playAudio(audioFilepaths.teamwork);
-            }
-        }
+        levelManager.markWatergirlStopsAndCheckpoints();
     });
-
-    for (let player in checkpoints){
-        for (let level in checkpoints[player]){
-            for (let point in checkpoints[player][level]){
-                checkpoints[player][level][point] = false;
-            }
-        }
-    }
 }
 
 function playGame() {
