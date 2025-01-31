@@ -5,10 +5,6 @@ function nearLocation(currentPos, targetPos, thresholdX = 20, thresholdY = 70){
     );
 }
 
-function restartTimer(){
-    timer = 0;
-}
-
 function moveRight(player){
     player.keys.pressed.right = true;
 }
@@ -29,14 +25,4 @@ function makeJump(player){
     setTimeout(() => {
         player.keys.pressed.up = false;
     }, 300);
-}
-
-function playAudio(audioSrc){
-    nextAudio = audioSrc;
-    audioManager.playAudio(nextAudio);
-    restartTimer();
-}
-
-function queueAudioForTimer(audioSrc){
-    nextAudio = audioSrc;
 }
