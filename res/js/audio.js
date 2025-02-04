@@ -6,7 +6,7 @@ lever_important: "res/js/audio/lever_important.wav",
     arrow_keys: "res/js/audio/arrow_keys.wav"
 */
 
-levelOneAudio = [
+let levelOneAudio = [
     "res/js/audio/you_got_it.wav",
     "res/js/audio/lava_ahead.wav",
     "res/js/audio/made_jump.wav",
