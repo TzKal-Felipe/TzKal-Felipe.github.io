@@ -58,33 +58,6 @@ const background = new Sprite({
     imgSrc: `./res/img/maps/bg.png`,
 });
 
-let audioFilepaths = {
-    you_got_it: "res/js/audio/you_got_it.wav",
-    lava_ahead: "res/js/audio/lava_ahead.wav",
-    made_jump: "res/js/audio/made_jump.wav",
-    nice_jump: "res/js/audio/nice_jump.wav",
-    up_we_go: "res/js/audio/up_we_go.wav",
-    acid_ahead: "res/js/audio/acid_ahead.wav",
-    acid_not_scary: "res/js/audio/acid_not_scary.wav",
-    lever_does: "res/js/audio/lever_does.wav",
-    lever_important: "res/js/audio/lever_important.wav",
-    stuck_restart: "res/js/audio/stuck_restart.wav",
-    doing_great: "res/js/audio/doing_great.wav",
-    onwards: "res/js/audio/onwards.wav",
-    water_press_button: "res/js/audio/water_press_button.wav",
-    press_button: "res/js/audio/press_button.wav",
-    off_button: "res/js/audio/off_button.wav",
-    wait: "res/js/audio/wait.wav",
-    keep_button_pressed: "res/js/audio/keep_button_pressed.wav",
-    block_strong: "res/js/audio/block_strong.wav",
-    finish_line: "res/js/audio/finish_line.wav",
-    diamonds: "res/js/audio/diamonds.wav",
-    spot_exit: "res/js/audio/spot_exit.wav",
-    teamwork: "res/js/audio/teamwork.wav",
-    keep_going: "res/js/audio/keep_going.wav",
-    arrow_keys: "res/js/audio/arrow_keys.wav"
-};
-
 const fireboy = 0;
 const watergirl = 1;
 const timedAudioDelay = 6;
@@ -92,7 +65,6 @@ const oneSecond = 1000;
 let fireX;
 let waterX;
 let audioManager = new AudioManager();
-let nextAudio = audioFilepaths.arrow_keys;
 let timer = 0;
 
 function startGame() {
