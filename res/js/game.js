@@ -303,7 +303,7 @@ function startGame() {
 
     switch (currentLevel){
         case 1:
-            levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], allLevers, allButtons);
+            levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allLevers, allButtons);
             break;
 
         case 2:
