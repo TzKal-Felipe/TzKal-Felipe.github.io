@@ -300,25 +300,25 @@ function startGame() {
     }
 
     let levelManager;
-    console.log(typeof currentLevel);
+    
     switch (currentLevel){
         case "1":
             levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allLevers, allButtons);
             break;
 
-        case 2:
+        case "2":
             break;
 
-        case 3:
+        case "3":
             break;
 
-        case 4:
+        case "4":
             break;
 
-        case 5:
+        case "5":
             break;
 
-        case 6:
+        case "6":
             break;
     }
 
