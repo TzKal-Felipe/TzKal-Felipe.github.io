@@ -302,7 +302,7 @@ function startGame() {
     let levelManager;
     console.log(typeof currentLevel);
     switch (currentLevel){
-        case 1:
+        case "1":
             levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allLevers, allButtons);
             break;
 
