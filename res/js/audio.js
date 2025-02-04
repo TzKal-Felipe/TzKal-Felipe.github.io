@@ -1,11 +1,3 @@
-/*
-lever_important: "res/js/audio/lever_important.wav",
-    stuck_restart: "res/js/audio/stuck_restart.wav",
-    off_button: "res/js/audio/off_button.wav",
-    keep_going: "res/js/audio/keep_going.wav",
-    arrow_keys: "res/js/audio/arrow_keys.wav"
-*/
-
 let levelOneAudio = [
     "res/js/audio/you_got_it.wav",
     "res/js/audio/lava_ahead.wav",
