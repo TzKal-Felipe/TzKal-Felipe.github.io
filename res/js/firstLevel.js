@@ -6,11 +6,18 @@ import {
     makeJump,
 } from "./helperFunctions.js";
 
+let lever_important = "res/js/audio/lever_important.wav",
+let stuck_restart = "res/js/audio/stuck_restart.wav",
+let off_button = "res/js/audio/off_button.wav",
+let keep_going = "res/js/audio/keep_going.wav",
+let arrow_keys = "res/js/audio/arrow_keys.wav",
+
 export class FirstLevelManager {
     constructor(fireboy, watergirl, audioManager, allLevers, allButtons){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.audioManager.queueAudioForTimer(arrow_keys);
         this.yellowLever = allLevers[0];
         this.firstPurpleButton = allButtons[0][0];
         this.secondPurpleButton = allButtons[0][1];
@@ -159,12 +166,12 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.beforeFirePool) && !this.waterCheckpoints.beforeFirePool){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeFirePool = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.betweenPools) && !this.waterCheckpoints.betweenPools){
             stopMoving(this.watergirl);
             this.waterCheckpoints.betweenPools = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterWaterPool) && !this.waterCheckpoints.afterWaterPool){
             stopMoving(this.watergirl);
@@ -173,22 +180,22 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.firstHigherPlatform) && !this.waterCheckpoints.firstHigherPlatform){
             stopMoving(this.watergirl);
             this.waterCheckpoints.firstHigherPlatform = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeAcidPool) && !this.waterCheckpoints.beforeAcidPool){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeAcidPool = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterAcidPool) && !this.waterCheckpoints.afterAcidPool){
             stopMoving(this.watergirl);
             this.waterCheckpoints.afterAcidPool = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeLever) && !this.waterCheckpoints.beforeLever){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeLever = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeLeverPlatform) && !this.waterCheckpoints.beforeLeverPlatform){
             stopMoving(this.watergirl);
@@ -199,7 +206,7 @@ export class FirstLevelManager {
             this.waterCheckpoints.onLeverPlatform = true;
             
             if (this.nextAudio === this.audioFilepaths.lever_important){
-                queueAudioForTimer(this.audioFilepaths.stuck_restart);
+                this.audioManager.queueAudioForTimer(stuck_restart);
             }
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterLeverPlatform) && !this.waterCheckpoints.afterLeverPlatform){
@@ -209,12 +216,12 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.onFirstButton) && !this.waterCheckpoints.onFirstButton){
             stopMoving(this.watergirl);
             this.waterCheckpoints.onFirstButton = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeButtonPlatform) && !this.waterCheckpoints.beforeButtonPlatform){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeButtonPlatform = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.onButtonPlatformLowered) && !this.waterCheckpoints.onButtonPlatform){
             stopMoving(this.watergirl);
@@ -223,7 +230,7 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.beforeCube) && !this.waterCheckpoints.beforeCube){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeCube = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterCubeDrop) && !this.waterCheckpoints.afterCubeDrop){
             stopMoving(this.watergirl);
@@ -232,7 +239,7 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.halfwayCubeSliding) && !this.waterCheckpoints.halfwayCubeSliding){
             stopMoving(this.watergirl);
             this.waterCheckpoints.halfwayCubeSliding = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeCubeJump) && !this.waterCheckpoints.beforeCubeJump){
             stopMoving(this.watergirl);
@@ -245,18 +252,18 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.afterCubeWater) && !this.waterCheckpoints.afterCubeWater){
             stopMoving(this.watergirl);
             this.waterCheckpoints.afterCubeWater = true;
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.doorWater)){
             stopMoving(this.watergirl);
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
     }
 
     checkForWatergirlMovement(){
         if (nearLocation(this.watergirl.position, this.coordinates.startWater) && this.fireCheckpoints.beforeEncloseExitFire){
             moveRight(this.watergirl);
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeEncloseExitWater) && this.fireCheckpoints.beforeFirePool){
             moveRight(this.watergirl);
@@ -267,7 +274,7 @@ export class FirstLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.betweenPools) && this.fireCheckpoints.afterWaterPool){
             moveRight(this.watergirl);
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterWaterPool) && this.fireCheckpoints.firstHigherPlatform && this.watergirl.isOnBlock){
             moveRight(this.watergirl);
@@ -296,14 +303,14 @@ export class FirstLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.onLeverPlatform) && this.fireCheckpoints.afterLeverPlatform && this.watergirl.isOnBlock){
             moveRight(this.watergirl);
             makeJump(this.watergirl);
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterLeverPlatform) && this.fireCheckpoints.onFirstButton){
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.onFirstButton) && this.fireCheckpoints.onButtonPlatform){
             moveRight(this.watergirl);
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeButtonPlatform) && nearLocation(this.secondPurpleButton.ramp.position, this.secondPurpleButton.ramp.finalPosition)){
             moveRight(this.watergirl);
@@ -335,19 +342,19 @@ export class FirstLevelManager {
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeDoors)){
-            audioManager.playNext();
+            this.audioManager.playNext();
         }
     }
 
     checkForLevelStateActions(){
         if (this.fireCheckpoints.beforeLeverPlatform && !this.yellowLever.pressed){
-            queueAudioForTimer(this.audioFilepaths.lever_important);
+            this.audioManager.nextAudioForTimer(lever_important);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeButtonPlatform) && !this.secondPurpleButton.pressed){
-            queueAudioForTimer(this.audioFilepaths.press_button);
+            this.audioManager.nextAudioForTimer(press_button);
         }
         if (this.secondPurpleButton.pressed){
-            queueAudioForTimer(this.audioFilepaths.off_button);
+            this.audioManager.nextAudioForTimer(off_button);
         }
     }
 }
