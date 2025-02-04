@@ -6,11 +6,11 @@ import {
     makeJump,
 } from "./helperFunctions.js";
 
-let lever_important = "res/js/audio/lever_important.wav",
-let stuck_restart = "res/js/audio/stuck_restart.wav",
-let off_button = "res/js/audio/off_button.wav",
-let keep_going = "res/js/audio/keep_going.wav",
-let arrow_keys = "res/js/audio/arrow_keys.wav",
+let lever_important = "res/js/audio/lever_important.wav";
+let stuck_restart = "res/js/audio/stuck_restart.wav";
+let off_button = "res/js/audio/off_button.wav";
+let keep_going = "res/js/audio/keep_going.wav";
+let arrow_keys = "res/js/audio/arrow_keys.wav";
 
 export class FirstLevelManager {
     constructor(fireboy, watergirl, audioManager, allLevers, allButtons){
