@@ -205,7 +205,7 @@ export class FirstLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.onLeverPlatform = true;
             
-            if (this.nextAudio === this.audioFilepaths.lever_important){
+            if (this.audioManager.nextAudio === lever_important){
                 this.audioManager.nextAudioForTimer(stuck_restart);
             }
         }
