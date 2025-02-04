@@ -17,7 +17,7 @@ export class FirstLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
-        this.audioManager.queueAudioForTimer(arrow_keys);
+        this.audioManager.nextAudioForTimer(arrow_keys);
         this.yellowLever = allLevers[0];
         this.firstPurpleButton = allButtons[0][0];
         this.secondPurpleButton = allButtons[0][1];
@@ -206,7 +206,7 @@ export class FirstLevelManager {
             this.waterCheckpoints.onLeverPlatform = true;
             
             if (this.nextAudio === this.audioFilepaths.lever_important){
-                this.audioManager.queueAudioForTimer(stuck_restart);
+                this.audioManager.nextAudioForTimer(stuck_restart);
             }
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterLeverPlatform) && !this.waterCheckpoints.afterLeverPlatform){
