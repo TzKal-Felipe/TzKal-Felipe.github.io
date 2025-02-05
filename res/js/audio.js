@@ -69,6 +69,7 @@ export class AudioManager {
     }
 
     playNext(){
+        console.log("called function");
         if (this.audioFiles){
             console.log(this.audioIndex);
             this.playAudio(this.audioFiles[this.audioIndex]);
