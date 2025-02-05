@@ -70,6 +70,7 @@ export class AudioManager {
 
     playNext(){
         if (this.audioFiles){
+            console.log(this.audioIndex);
             this.playAudio(this.audioFiles[this.audioIndex]);
             this.audioIndex++;
         }
