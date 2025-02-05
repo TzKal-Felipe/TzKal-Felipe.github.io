@@ -1,24 +1,3 @@
-let levelOneAudio = [
-    "res/js/audio/you_got_it.wav",
-    "res/js/audio/lava_ahead.wav",
-    "res/js/audio/made_jump.wav",
-    "res/js/audio/nice_jump.wav",
-    "res/js/audio/up_we_go.wav",
-    "res/js/audio/acid_ahead.wav",
-    "res/js/audio/acid_not_scary.wav",
-    "res/js/audio/lever_does.wav",
-    "res/js/audio/doing_great.wav",
-    "res/js/audio/onwards.wav",
-    "res/js/audio/water_press_button.wav",
-    "res/js/audio/wait.wav",
-    "res/js/audio/keep_button_pressed.wav",
-    "res/js/audio/block_strong.wav",
-    "res/js/audio/finish_line.wav",
-    "res/js/audio/diamonds.wav",
-    "res/js/audio/spot_exit.wav",
-    "res/js/audio/teamwork.wav"
-    ];
-
 export class AudioManager {
     constructor(){
         this.audio = new Audio();
@@ -29,8 +8,6 @@ export class AudioManager {
         this.audioInterval = null;
         this.timedAudioDelay = 6;
         this.timer = 0
-        this.audioFiles = null;
-        this.audioIndex = null;
     }
 
     resetAudioTimer(){
@@ -66,45 +43,6 @@ export class AudioManager {
         }
 
         this.resetAudioTimer();
-    }
-
-    playNext(){
-        console.log("called function");
-        if (this.audioFiles){
-            console.log(this.audioIndex);
-            this.playAudio(this.audioFiles[this.audioIndex]);
-            this.audioIndex++;
-        }
-    }
-
-    loadLevelAudio(levelNumber){
-        this.audioIndex = 0;
-        
-        switch (levelNumber){
-            case 1:
-                this.audioFiles = levelOneAudio;
-                break;
-
-            case 2:
-                this.audioFiles = levelTwoAudio;
-                break;
-
-            case 3:
-                this.audioFiles = levelThreeAudio;
-                break;
-
-            case 4:
-                this.audioFiles = levelFourAudio;
-                break;
-
-            case 5:
-                this.audioFiles = levelFiveAudio;
-                break;
-
-            case 6:
-                this.audioFiles = levelSixAudio;
-                break;
-        }
     }
 
     startAudioTimer(){
