@@ -38,7 +38,6 @@ export class FirstLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
-        this.audioManager.loadLevelAudio(1);
         this.audioManager.nextAudioForTimer(arrow_keys);
         this.yellowLever = allLevers[0];
         this.firstPurpleButton = allButtons[0][0];
