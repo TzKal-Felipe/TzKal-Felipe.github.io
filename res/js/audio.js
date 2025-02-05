@@ -10,7 +10,6 @@ let levelOneAudio = [
     "res/js/audio/doing_great.wav",
     "res/js/audio/onwards.wav",
     "res/js/audio/water_press_button.wav",
-    "res/js/audio/press_button.wav",
     "res/js/audio/wait.wav",
     "res/js/audio/keep_button_pressed.wav",
     "res/js/audio/block_strong.wav",
