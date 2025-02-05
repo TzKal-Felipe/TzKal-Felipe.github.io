@@ -8,6 +8,7 @@ import {
 
 let lever_important = "res/js/audio/lever_important.wav";
 let stuck_restart = "res/js/audio/stuck_restart.wav";
+let press_button = "res/js/audio/press_button.wav";
 let off_button = "res/js/audio/off_button.wav";
 let keep_going = "res/js/audio/keep_going.wav";
 let arrow_keys = "res/js/audio/arrow_keys.wav";
