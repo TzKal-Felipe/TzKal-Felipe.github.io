@@ -24,15 +24,14 @@ let audioFiles = {
     finish_line: "res/js/audio/finish_line.wav",
     diamonds: "res/js/audio/diamonds.wav",
     spot_exit: "res/js/audio/spot_exit.wav",
-    teamwork: "res/js/audio/teamwork.wav"
+    teamwork: "res/js/audio/teamwork.wav",
+    lever_important: "res/js/audio/lever_important.wav",
+    stuck_restart: "res/js/audio/stuck_restart.wav",
+    press_button: "res/js/audio/press_button.wav",
+    off_button: "res/js/audio/off_button.wav",
+    keep_going: "res/js/audio/keep_going.wav",
+    arrow_keys: "res/js/audio/arrow_keys.wav"
 };
-
-let lever_important = "res/js/audio/lever_important.wav";
-let stuck_restart = "res/js/audio/stuck_restart.wav";
-let press_button = "res/js/audio/press_button.wav";
-let off_button = "res/js/audio/off_button.wav";
-let keep_going = "res/js/audio/keep_going.wav";
-let arrow_keys = "res/js/audio/arrow_keys.wav";
 
 export class FirstLevelManager {
     constructor(fireboy, watergirl, audioManager, allLevers, allButtons){
