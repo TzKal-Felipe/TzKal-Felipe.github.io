@@ -71,7 +71,7 @@ let fireX;
 let waterX;
 let audioManager = new AudioManager();
 let timer = 0;
-let voice_type = "default_tts";
+let voice_type = "audio";
 
 function startGame() {
     died = false;
