@@ -4,6 +4,7 @@ import {
     moveLeft,
     stopMoving,
     makeJump,
+    buildAudioPath
 } from "./helperFunctions.js";
 
 let audioFiles = {
@@ -11,10 +12,11 @@ let audioFiles = {
 };
 
 export class SixthLevelManager {
-    constructor(fireboy, watergirl, audioManager){
+    constructor(fireboy, watergirl, audioManager, voice_type){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.voice = voice_type;
         
         this.fireCheckpoints = {
         
