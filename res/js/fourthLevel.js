@@ -16,7 +16,7 @@ export class FourthLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
-        this.voice = voice_type
+        this.voice = voice_type;
         
         this.fireCheckpoints = {
         
