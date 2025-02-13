@@ -27,4 +27,8 @@ function makeJump(player){
     }, 300);
 }
 
-export { nearLocation, moveRight, moveLeft, stopMoving, makeJump };
+function buildAudioPath(audiofile, voice_type){
+    return `res/js/audio/${voice_type}/${audiofile}`
+}
+
+export { nearLocation, moveRight, moveLeft, stopMoving, makeJump, buildAudioPath };
