@@ -33,7 +33,6 @@ import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
 import { AudioManager } from "./audio.js";
-import { drawAudioDropdown } from "./helperFunctions.js";
 import { FirstLevelManager } from "./firstLevel.js";
 import { SecondLevelManager } from "./secondLevel.js";
 import { ThirdLevelManager } from "./thirdLevel.js";
