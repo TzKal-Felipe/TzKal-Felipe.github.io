@@ -1,4 +1,10 @@
-export class AudioManager {
+let voice_type = "default_tts";
+
+function changeVoice(voice){
+    voice_type = voice;
+}
+
+class AudioManager {
     constructor(){
         this.audio = new Audio();
         this.isPlaying = false;
@@ -65,3 +71,5 @@ export class AudioManager {
         this.nextAudio = audioSrc;
     }
 }
+
+export{ voice_type, changeVoice, AudioManager };
