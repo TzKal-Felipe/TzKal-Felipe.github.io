@@ -243,6 +243,40 @@ let menuButtons = {
                 resetProgress();
             },
         }),
+        defaultTTS: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.60,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "Default TTS",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("default_tts");
+            },
+        }),
+        human: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.50,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "Human Voice",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("human");
+            },
+        }),
         author: new MenuButton({
             position: {
                 x: canvas.width * 0.06,
