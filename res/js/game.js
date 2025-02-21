@@ -345,7 +345,7 @@ function startGame() {
 
     fireX.onChange(() => {
         levelManager.markFireboyCheckpoints();
-        levelManager.checkForWatergirlMovement();
+        levelManager.controlWatergirlMovement();
         levelManager.checkForLevelStateActions();
     });
 
