@@ -279,7 +279,7 @@ export class FirstLevelManager {
         }
     }
 
-    checkForWatergirlMovement(){
+    controlWatergirlMovement(){
         if (nearLocation(this.watergirl.position, this.coordinates.startWater) && this.fireCheckpoints.beforeEncloseExitFire){
             moveRight(this.watergirl);
             this.audioManager.playAudio(buildAudioPath(audioFiles.you_got_it, this.voice));
