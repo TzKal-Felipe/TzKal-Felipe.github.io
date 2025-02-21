@@ -35,11 +35,11 @@ export class ThirdLevelManager {
         
     }
 
-    markWatergirlStopsAndCheckpoints(){
+    markWatergirlCheckpointsAndStops(){
         
     }
 
-    checkForWatergirlMovement(){
+    controlWatergirlMovement(){
         
     }
 
