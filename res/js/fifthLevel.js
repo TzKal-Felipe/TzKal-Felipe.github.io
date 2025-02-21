@@ -35,11 +35,11 @@ export class FifthLevelManager {
         
     }
 
-    markWatergirlStopsAndCheckpoints(){
+    markWatergirlCheckpointsAndStops(){
         
     }
 
-    checkForWatergirlMovement(){
+    controlWatergirlMovement(){
         
     }
 
