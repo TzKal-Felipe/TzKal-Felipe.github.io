@@ -350,7 +350,7 @@ function startGame() {
     });
 
     waterX.onChange(() => { 
-        levelManager.markWatergirlStopsAndCheckpoints();
+        levelManager.markWatergirlCheckpointsAndStops();
     });
 }
 
