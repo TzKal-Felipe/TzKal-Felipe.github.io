@@ -181,7 +181,7 @@ export class FirstLevelManager {
         }
     }
 
-    markWatergirlStopsAndCheckpoints(){
+    markWatergirlCheckpointsAndStops(){
         if (nearLocation(this.watergirl.position, this.coordinates.beforeEncloseExitWater) && !this.waterCheckpoints.beforeEncloseExitWater){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeEncloseExitWater = true;
