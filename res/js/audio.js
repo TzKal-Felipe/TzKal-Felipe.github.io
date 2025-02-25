@@ -1,3 +1,5 @@
+import { buildAudioPath } from "./helperFunctions.js";
+
 let voice_type = "default_tts";
 
 function changeVoice(voice){
@@ -21,6 +23,8 @@ class AudioManager {
     }
 
     playAudio(audioSrc){
+        audioSrc = buildAudioPath(audioSrc, voice_type);
+        
         if (audioSrc === this.currentSrc || audioSrc === this.queue){
             return;
         }
