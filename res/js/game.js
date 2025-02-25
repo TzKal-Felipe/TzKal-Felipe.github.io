@@ -32,7 +32,7 @@ import { quests } from "./menu/quests.js";
 import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
-import { AudioManager, voice_type } from "./audio.js";
+import { AudioManager } from "./audio.js";
 import { FirstLevelManager } from "./firstLevel.js";
 import { SecondLevelManager } from "./secondLevel.js";
 import { ThirdLevelManager } from "./thirdLevel.js";
@@ -65,12 +65,10 @@ const background = new Sprite({
 
 const fireboy = 0;
 const watergirl = 1;
-const timedAudioDelay = 6;
 const oneSecond = 1000;
 let fireX;
 let waterX;
 let audioManager = new AudioManager();
-let timer = 0;
 
 function startGame() {
     died = false;
@@ -308,27 +306,27 @@ function startGame() {
     
     switch (currentLevel){
         case "1":
-            levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type, allLevers, allButtons);
+            levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allLevers, allButtons);
             break;
 
         case "2":
-            levelManager = new SecondLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type);
+            levelManager = new SecondLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
             break;
 
         case "3":
-            levelManager = new ThirdLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type);
+            levelManager = new ThirdLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
             break;
 
         case "4":
-            levelManager = new FourthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type);
+            levelManager = new FourthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
             break;
 
         case "5":
-            levelManager = new FifthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type);
+            levelManager = new FifthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
             break;
 
         case "6":
-            levelManager = new SixthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, voice_type);
+            levelManager = new SixthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
             break;
     }
 
