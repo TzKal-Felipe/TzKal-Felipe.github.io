@@ -3,8 +3,7 @@ import {
     moveRight,
     moveLeft,
     stopMoving,
-    makeJump,
-    buildAudioPath
+    makeJump
 } from "./helperFunctions.js";
 
 let audioFiles = {
