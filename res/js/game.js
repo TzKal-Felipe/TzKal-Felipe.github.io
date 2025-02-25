@@ -747,7 +747,7 @@ function playGame() {
     window.addEventListener("keydown", (event) => {
         if (pauseGame) return;
         allPlayers.forEach((player) => {
-            if (player === allPlayers[fireboy]){
+            //if (player === allPlayers[fireboy]){
                 switch (event.key) {
                     case player.keys.up:
                         if (player.isOnBlock && !player.keys.pressed.up && !player.rampBlocked) {
@@ -762,9 +762,9 @@ function playGame() {
                         player.keys.pressed.right = true;
                         break;
                     case " ":
-                        console.log(player.position);
+                        console.log(`$(player.element): $(player.position)`);
                 }
-            }
+            //}
         });
     });
 
