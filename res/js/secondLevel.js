@@ -12,11 +12,10 @@ let audioFiles = {
 };
 
 export class SecondLevelManager {
-    constructor(fireboy, watergirl, audioManager, voice_type){
+    constructor(fireboy, watergirl, audioManager){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
-        this.voice = voice_type;
         
         this.fireCheckpoints = {
         
