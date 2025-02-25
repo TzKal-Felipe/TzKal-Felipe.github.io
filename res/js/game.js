@@ -762,7 +762,7 @@ function playGame() {
                         player.keys.pressed.right = true;
                         break;
                     case " ":
-                        console.log(`$(player.element): $(player.position)`);
+                        console.log(`${player.element}: ${player.position}`);
                 }
             //}
         });
