@@ -327,6 +327,14 @@ function startGame() {
 
         case "6":
             levelManager = new SixthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
+            console.log(allButtons[0][0].color);
+            console.log(allButtons[1][0].color);
+            console.log(allButtons[2][0].color);
+            console.log(allButtons[3][0].color);
+            console.log(allLevers[0].color);
+            console.log(`${allBalls[0].position.x}, ${allBalls[0].position.y}`);
+            console.log(`${allBalls[1].position.x}, ${allBalls[1].position.y}`);
+            console.log(`${allBalls[2].position.x}, ${allBalls[2].position.y}`);
             break;
     }
 
