@@ -93,7 +93,7 @@ export class SixthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atLeftBallPush) &&
-            !nearLocation(this.leftBall.position, this.coordinates.leftBallStart)){
+            this.waterCheckpoints.leftBallPush){
 
             moveLeft(this.watergirl);
         }
