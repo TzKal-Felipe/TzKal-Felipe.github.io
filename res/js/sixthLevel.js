@@ -29,7 +29,7 @@ export class SixthLevelManager {
         };
         
         this.waterCheckpoints = {
-            
+            dropBeforeLeftBall: false,
         };
         
         this.coordinates = {
@@ -48,11 +48,21 @@ export class SixthLevelManager {
     }
 
     markWatergirlCheckpointsAndStops(){
-        
+        if (nearLocation(this.watergirl.position, this.coordinates.duringDropBeforeLeftBall) &&
+            !this.waterCheckpoints.dropBeforeLeftBall){
+
+            stopMoving();
+            this.waterCheckpoints.dropBeforeLeftBall = true;
+        }
     }
 
     controlWatergirlMovement(){
-        
+        if (nearLocation(this.watergirl.position, this.coordinates.watergirlStart) &&
+            nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
+            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush)){
+            
+            moveRight(this.watergirl);
+        }
     }
 
     checkForLevelStateActions(){
