@@ -87,7 +87,7 @@ export class SixthLevelManager {
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
-            this.fireCheckpoints.secondBallPushed){
+            this.fireCheckpoints.secondBallPushed && this.waterCheckpoints.dropBeforeLeftBall){
 
             makeJump(this.watergirl);
             moveRight(this.watergirl);
