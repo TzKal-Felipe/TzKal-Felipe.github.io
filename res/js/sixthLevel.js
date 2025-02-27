@@ -42,8 +42,8 @@ export class SixthLevelManager {
             middleBallAfterPush: {x: 570, y: 245},
             rightBallAfterPush: {x: 1290, y: 10},
             watergirlStart: {x: 530, y: 47},
-            duringDropBeforeLeftBall: {x: 123, y: 130},
-            afterDropBeforeLeftBall: {x: 123, y: 263},
+            duringDropBeforeLeftBall: {x: 90, y: 130},
+            afterDropBeforeLeftBall: {x: 90, y: 263},
             atLeftBallPush: {x: 310, y: 155}
         };
     }
