@@ -48,7 +48,7 @@ export class SixthLevelManager {
             beforeDrop2: {x: 30, y: 410},
             afterDrop2: {x: 30, y: 550},
             beforeDrop3: {x: 120, y: 520},
-            afterDrop3: {x: 120, y: 660},
+            afterDrop3: {x: 120, y: 700},
             beforeDrop4: {x: 25, y: 740},
             afterDrop4: {x: 25, y: 840}
         };
