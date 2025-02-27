@@ -53,19 +53,19 @@ export class SixthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.duringDropBeforeLeftBall) &&
             !this.waterCheckpoints.dropBeforeLeftBall){
 
-            stopMoving();
+            stopMoving(this.watergirl);
             this.waterCheckpoints.dropBeforeLeftBall = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atLeftBallPush) &&
             !this.waterCheckpoints.leftBallPush){
 
-            stopMoving();
+            stopMoving(this.watergirl);
             this.waterCheckpoints.leftBallPush = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
             !this.waterCheckpoints.dropAfterLeftBall){
 
-            stopMoving();
+            stopMoving(this.watergirl);
             this.waterCheckpoints.dropAfterLeftBall = true;
         }
     }
