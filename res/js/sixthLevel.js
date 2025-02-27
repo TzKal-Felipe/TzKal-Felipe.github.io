@@ -23,9 +23,6 @@ export class SixthLevelManager {
         this.leftBall = allBalls[0];
         this.middleBall = allBalls[1];
         this.rightBall = allBalls[2];
-        console.log(this.leftBall.position);
-        console.log(this.middleBall.position);
-        console.log(this.rightBall.position);
         
         this.fireCheckpoints = {
         
@@ -38,9 +35,9 @@ export class SixthLevelManager {
         };
         
         this.coordinates = {
-            leftBallAfterPush: {x: 400, y: 230},
-            middleBallAfterPush: {x: 570, y: 245},
-            rightBallAfterPush: {x: 1290, y: 10},
+            leftBallStart: {x: 355, y: 200},
+            middleBallStart: {x: 630, y: 200},
+            rightBallStart: {x: 1200, y: 30},
             watergirlStart: {x: 530, y: 47},
             duringDropBeforeLeftBall: {x: 90, y: 130},
             afterDropBeforeLeftBall: {x: 90, y: 263},
@@ -75,14 +72,14 @@ export class SixthLevelManager {
 
     controlWatergirlMovement(){
         if (nearLocation(this.watergirl.position, this.coordinates.watergirlStart) &&
-            nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
-            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush)){
+            !nearLocation(this.middleBall.position, this.coordinates.middleBallStart) ||
+            !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
             
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
-            nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
-            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush)){
+            (nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
+            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush))){
 
             makeJump(this.watergirl);
             moveRight(this.watergirl);
