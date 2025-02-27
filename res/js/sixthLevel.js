@@ -30,6 +30,7 @@ export class SixthLevelManager {
         
         this.waterCheckpoints = {
             dropBeforeLeftBall: false,
+            leftBallPush: false,
         };
         
         this.coordinates = {
@@ -54,6 +55,12 @@ export class SixthLevelManager {
             stopMoving();
             this.waterCheckpoints.dropBeforeLeftBall = true;
         }
+        if (nearLocation(this.watergirl.position, this.coordinates.atLeftBallPush) &&
+            !this.waterCheckpoints.leftBallPush){
+
+            stopMoving();
+            this.waterCheckpoints.leftBallPush = true;
+        }
     }
 
     controlWatergirlMovement(){
@@ -69,6 +76,12 @@ export class SixthLevelManager {
 
             makeJump(this.watergirl);
             moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.atLeftBallPush) &&
+            nearLocation(this.leftBall.position, this.coordinates.leftBallAfterPush)){
+
+            this.checkpoints.dropBeforeLeftBall = false;
+            moveLeft(this.watergirl);
         }
     }
 
