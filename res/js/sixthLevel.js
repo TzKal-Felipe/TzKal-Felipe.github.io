@@ -37,7 +37,7 @@ export class SixthLevelManager {
         this.coordinates = {
             leftBallAfterPush: {x: 400, y: 230},
             middleBallAfterPush: {x: 570, y: 245},
-            rightBallAfterPush: {x: 1250, y: 30},
+            rightBallAfterPush: {x: 1290, y: 10},
             watergirlStart: {x: 530, y: 47},
             duringDropBeforeLeftBall: {x: 123, y: 130},
             afterDropBeforeLeftBall: {x: 123, y: 263},
