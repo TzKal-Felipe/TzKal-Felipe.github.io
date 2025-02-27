@@ -23,6 +23,9 @@ export class SixthLevelManager {
         this.leftBall = allBalls[0];
         this.middleBall = allBalls[1];
         this.rightBall = allBalls[2];
+        console.log(this.leftBall.position);
+        console.log(this.middleBall.position);
+        console.log(this.rightBall.position);
         
         this.fireCheckpoints = {
         
