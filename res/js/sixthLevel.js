@@ -42,7 +42,7 @@ export class SixthLevelManager {
             watergirlStart: {x: 530, y: 47},
             duringDropBeforeLeftBall: {x: 100, y: 130},
             afterDropBeforeLeftBall: {x: 100, y: 263},
-            atLeftBallPush: {x: 340, y: 155}
+            atLeftBallPush: {x: 320, y: 155}
         };
     }
 
