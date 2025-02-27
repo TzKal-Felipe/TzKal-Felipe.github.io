@@ -25,7 +25,8 @@ export class SixthLevelManager {
         this.rightBall = allBalls[2];
         
         this.fireCheckpoints = {
-        
+            firstBallPushed: false,
+            secondBallPushed: false
         };
         
         this.waterCheckpoints = {
@@ -46,7 +47,16 @@ export class SixthLevelManager {
     }
 
     markFireboyCheckpoints(){
-        
+        if (!nearLocation(this.middleBall.position, this.coordinates.middleBallStart) ||
+            !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
+            
+            this.fireCheckpoints.firstBallPushed = true;
+        }
+        if (!nearLocation(this.middleBall.position, this.coordinates.middleBallStart) &&
+            !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
+            
+            this.fireCheckpoints.secondBallPushed = true;
+        }
     }
 
     markWatergirlCheckpointsAndStops(){
@@ -72,20 +82,18 @@ export class SixthLevelManager {
 
     controlWatergirlMovement(){
         if (nearLocation(this.watergirl.position, this.coordinates.watergirlStart) &&
-            !nearLocation(this.middleBall.position, this.coordinates.middleBallStart) ||
-            !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
+            this.fireCheckpoints.firstBallPushed){
             
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
-            (nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
-            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush))){
+            this.fireCheckpoints.secondBallPushed){
 
             makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atLeftBallPush) &&
-            nearLocation(this.leftBall.position, this.coordinates.leftBallAfterPush)){
+            !nearLocation(this.leftBall.position, this.coordinates.leftBallStart)){
 
             moveLeft(this.watergirl);
         }
