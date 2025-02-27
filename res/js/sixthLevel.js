@@ -61,6 +61,13 @@ export class SixthLevelManager {
             nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
             nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush)){
             
+            moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
+            nearLocation(this.middleBall.position, this.coordinates.middleBallAfterPush) ||
+            nearLocation(this.rightBall.position, this.coordinates.rightBallAfterPush)){
+
+            makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
     }
