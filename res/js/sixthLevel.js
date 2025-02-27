@@ -42,7 +42,15 @@ export class SixthLevelManager {
             watergirlStart: {x: 530, y: 47},
             duringDropBeforeLeftBall: {x: 100, y: 130},
             afterDropBeforeLeftBall: {x: 100, y: 263},
-            atLeftBallPush: {x: 320, y: 155}
+            atLeftBallPush: {x: 320, y: 155},
+            beforeDrop1: {x: 237, y: 300},
+            afterDrop1: {x: 237, y: 400},
+            beforeDrop2: {x: 30, y: 410},
+            afterDrop2: {x: 30, y: 550},
+            beforeDrop3: {x: 120, y: 520},
+            afterDrop3: {x: 120, y: 660},
+            beforeDrop4: {x: 25, y: 740},
+            afterDrop4: {x: 25, y: 840}
         };
     }
 
@@ -78,6 +86,18 @@ export class SixthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.dropAfterLeftBall = true;
         }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop1)){
+            stopMoving(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop2)){
+            stopMoving(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop3)){
+            stopMoving(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop4)){
+            stopMoving(this.watergirl);
+        }
     }
 
     controlWatergirlMovement(){
@@ -96,6 +116,23 @@ export class SixthLevelManager {
             this.waterCheckpoints.leftBallPush){
 
             moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
+            this.waterCheckpoints.leftBallPush){
+
+            moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDrop1)){
+            moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDrop2)){
+            moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDrop3)){
+            moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDrop4)){
+            moveRight(this.watergirl);
         }
     }
 
