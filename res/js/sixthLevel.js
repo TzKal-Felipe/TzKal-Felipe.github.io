@@ -32,7 +32,14 @@ export class SixthLevelManager {
         this.waterCheckpoints = {
             dropBeforeLeftBall: false,
             leftBallPush: false,
-            dropAfterLeftBall: false
+            dropAfterLeftBall: false,
+            belowLeverPlatform: false,
+            leverPush: false,
+            bottomRightStop: false,
+            bottomRightJump: false,
+            afterBlueBarrier: false,
+            diamondStop: false,
+            bottomRightSecondStop: false
         };
         
         this.coordinates = {
@@ -50,7 +57,14 @@ export class SixthLevelManager {
             beforeDrop3: {x: 120, y: 520},
             afterDrop3: {x: 120, y: 700},
             beforeDrop4: {x: 25, y: 740},
-            afterDrop4: {x: 25, y: 840}
+            afterDrop4: {x: 25, y: 840},
+            belowLeverPlatform: {x: 660, y: 910},
+            atLever: {x: 482, y: 750},
+            bottomRight: {x: 1320, y: 887},
+            afterBlueBarrier: {x: 1045, y: 730},
+            diamond: {x: 860, y: 730},
+            afterDiamondRetrieved: {x: 985, y: 730},
+            waterDoor: {x: 970, y: 910}
         };
     }
 
@@ -98,6 +112,41 @@ export class SixthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop4)){
             stopMoving(this.watergirl);
         }
+        if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
+            !this.waterCheckpoints.belowLeverPlatform){
+            
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.belowLeverPlatform = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.atLever) &&
+            !this.waterCheckpoints.leverPush){
+            
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.leverPush = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.bottomRightStop) &&
+            !this.waterCheckpoints.bottomRightStop){
+            
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.bottomRightStop = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.diamond) &&
+            !this.waterCheckpoints.diamondStop){
+            
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.diamondStop = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.bottomRight) &&
+            this.waterCheckpoints.diamondStop && !this.waterCheckpoints.bottomRightSecondStop){
+            
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.bottomRightSecondStop = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.waterDoor) &&
+            this.waterCheckpoints.diamondStop){
+            
+            stopMoving(this.watergirl);
+        }
     }
 
     controlWatergirlMovement(){
@@ -133,6 +182,42 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop4)){
             moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
+            !this.greyLever.pressed){
+
+            makeJump(this.watergirl);
+            moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.atLever) &&
+            this.greyLever.pressed){
+            
+            moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.bottomRight) &&
+            !this.waterCheckpoints.bottomRightJump){
+            
+            makeJump(this.watergirl);
+            moveLeft(this.watergirl);
+            this.waterCheckpoints.bottomRightJump = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterBlueBarrier) &&
+            !this.waterCheckpoints.afterBlueBarrier){
+            
+            makeJump(this.watergirl);
+            this.waterCheckpoints.afterBlueBarrier = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.diamond)){
+            moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.afterDiamondRetrieved) &&
+            this.checkpoints.diamondStop){
+            makeJump(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.bottomRight) &&
+            this.checkpoints.diamondStop){
+            
+            moveLeft(this.watergirl);
         }
     }
 
