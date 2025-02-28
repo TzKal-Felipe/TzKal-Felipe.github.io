@@ -124,7 +124,7 @@ export class SixthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.leverPush = true;
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.bottomRightStop) &&
+        if (nearLocation(this.watergirl.position, this.coordinates.bottomRight) &&
             !this.waterCheckpoints.bottomRightStop){
             
             stopMoving(this.watergirl);
@@ -184,10 +184,12 @@ export class SixthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
-            !this.greyLever.pressed){
+            !this.greyLever.pressed && this.purpleButton.pressed){
 
-            makeJump(this.watergirl);
-            moveLeft(this.watergirl);
+            setTimeout(() => {
+                makeJump(this.watergirl);
+                moveLeft(this.watergirl);
+            }, 2000);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atLever) &&
             this.greyLever.pressed){
