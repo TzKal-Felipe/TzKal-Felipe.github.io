@@ -184,7 +184,7 @@ export class SixthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
-            !this.greyLever.pressed){
+            !this.greyLever.pressed && this.blueButton.pressed){
 
             makeJump(this.watergirl);
             moveLeft(this.watergirl);
