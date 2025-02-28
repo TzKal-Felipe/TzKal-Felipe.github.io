@@ -59,7 +59,7 @@ export class SixthLevelManager {
             beforeDrop4: {x: 25, y: 740},
             afterDrop4: {x: 25, y: 840},
             belowLeverPlatform: {x: 660, y: 910},
-            atLever: {x: 482, y: 750},
+            atLever: {x: 484, y: 750},
             bottomRight: {x: 1320, y: 887},
             afterBlueBarrier: {x: 1045, y: 730},
             diamond: {x: 860, y: 730},
