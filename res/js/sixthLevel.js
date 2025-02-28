@@ -59,7 +59,8 @@ export class SixthLevelManager {
             beforeDrop4: {x: 25, y: 740},
             afterDrop4: {x: 25, y: 840},
             belowLeverPlatform: {x: 660, y: 910},
-            atLever: {x: 490, y: 750},
+            atLeverStop: {x: 485, y: 750},
+            atLeverMove: {x: 500, y: 750},
             bottomRight: {x: 1320, y: 887},
             afterBlueBarrier: {x: 1045, y: 730},
             diamond: {x: 860, y: 730},
@@ -118,7 +119,7 @@ export class SixthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.belowLeverPlatform = true;
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.atLever) &&
+        if (nearLocation(this.watergirl.position, this.coordinates.atLeverStop) &&
             !this.waterCheckpoints.leverPush){
             
             stopMoving(this.watergirl);
@@ -184,14 +185,13 @@ export class SixthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
-            !this.greyLever.pressed && this.purpleButton.pressed){
+            nearLocation(this.purpleButton.ramp.position, this.purpleButton.ramp.finalPosition) && 
+            !this.greyLever.pressed){
 
-            setTimeout(() => {
-                makeJump(this.watergirl);
-                moveLeft(this.watergirl);
-            }, 2000);
+            makeJump(this.watergirl);
+            moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.atLever) &&
+        if (nearLocation(this.watergirl.position, this.coordinates.atLeverMove) &&
             this.greyLever.pressed){
             
             moveRight(this.watergirl);
