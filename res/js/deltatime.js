@@ -3,7 +3,7 @@ export class Deltatime {
         this._value = 0;
         this.eventTarget = new EventTarget();
         this.update = null;
-        this.intervalRate = 10;
+        this.intervalRate = 2;
     }
 
     get value(){
