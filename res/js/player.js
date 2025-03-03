@@ -86,7 +86,6 @@ export class Player extends Sprite {
         // );
 
         this.position.x += this.velocity.x;
-        this.observableX.value = this.position.x;
 
         this.hitboxPositionCalc();
         this.horizontalCollision(this.allAssets);
@@ -217,7 +216,6 @@ export class Player extends Sprite {
         else this.velocity.y = 2.02;
         // this.velocity.y += 0.08;
         this.position.y += this.velocity.y;
-        this.observableY.value = this.position.y;
     }
     horizontalCollision(blocks) {
         for (let i = 0; i < blocks.length; i++) {
