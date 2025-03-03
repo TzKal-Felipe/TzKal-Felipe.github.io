@@ -213,11 +213,11 @@ export class SixthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDiamondRetrieved) &&
-            this.checkpoints.diamondStop){
+            this.waterCheckpoints.diamondStop){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.bottomRight) &&
-            this.checkpoints.diamondStop){
+            this.waterCheckpoints.diamondStop){
             
             moveLeft(this.watergirl);
         }
