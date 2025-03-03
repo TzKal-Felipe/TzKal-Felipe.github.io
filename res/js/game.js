@@ -33,6 +33,7 @@ import { drawTime, formatTime, levelTime } from "./time.js";
 import { Bridge } from "./ingameAssets/bridge.js";
 import { Ball } from "./ingameAssets/ball.js";
 import { AudioManager } from "./audio.js";
+import { Deltatime } from "./deltatime.js";
 import { FirstLevelManager } from "./firstLevel.js";
 import { SecondLevelManager } from "./secondLevel.js";
 import { ThirdLevelManager } from "./thirdLevel.js";
@@ -66,9 +67,8 @@ const background = new Sprite({
 const fireboy = 0;
 const watergirl = 1;
 const oneSecond = 1000;
-let fireX;
-let waterX;
 let audioManager = new AudioManager();
+let deltatime = new Deltatime();
 
 function startGame() {
     died = false;
@@ -330,24 +330,21 @@ function startGame() {
             break;
     }
 
-    fireX = allPlayers[fireboy].observableX;
-    waterX = allPlayers[watergirl].observableX;
     audioManager.startAudioTimer();
+    deltatime.start();
 
     const checkForGameEnded = setInterval(() => {
         if ((allDoors[0].opened && allDoors[1].opened) || menuActive == "mainMenu"){
             audioManager.stopAudioTimer();
+            deltatime.stop();
             clearInterval(checkForGameEnded);
         }
     }, oneSecond);
 
-    fireX.onChange(() => {
+    deltatime.onChange(() => {
         levelManager.markFireboyCheckpoints();
         levelManager.controlWatergirlMovement();
         levelManager.checkForLevelStateActions();
-    });
-
-    waterX.onChange(() => { 
         levelManager.markWatergirlCheckpointsAndStops();
     });
 }
