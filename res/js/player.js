@@ -1,27 +1,5 @@
 import { Sprite } from "./sprite.js";
 
-class ObservableVariable {
-    constructor(initialValue){
-        this._value = initialValue;
-        this.eventTarget = new EventTarget();
-    }
-
-    get value(){
-        return this._value;
-    }
-
-    set value(newValue){
-        if (this._value !== newValue){
-            this._value = newValue;
-            this.eventTarget.dispatchEvent(new Event("valueChanged"));
-        }
-    }
-
-    onChange(callback){
-        this.eventTarget.addEventListener("valueChanged", callback);
-    }
-}
-
 export class Player extends Sprite {
     constructor({
         position,
@@ -41,8 +19,6 @@ export class Player extends Sprite {
     }) {
         super({ position, imgSrc, frameRate, frameDelay, currentRow, imgRows, animations });
         this.position = position;
-        this.observableX = new ObservableVariable(position.x);
-        this.observableY = new ObservableVariable(position.y);
         this.velocity = {
             x: 0,
             y: 0,
