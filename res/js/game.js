@@ -69,6 +69,7 @@ const watergirl = 1;
 const oneSecond = 1000;
 let audioManager = new AudioManager();
 let deltatime = new Deltatime();
+let levelManager;
 
 function startGame() {
     died = false;
@@ -301,8 +302,6 @@ function startGame() {
             })
         );
     }
-
-    let levelManager;
     
     switch (currentLevel){
         case "1":
@@ -760,6 +759,8 @@ function playGame() {
                         break;
                     case " ":
                         console.log(`${player.element}: (${player.position.x}, ${player.position.y})`);
+                        console.log(levelManager.fireCheckpoints);
+                        console.log(levelManager.waterCheckpoints);
                 }
             //}
         });
