@@ -342,9 +342,9 @@ function startGame() {
 
     deltatime.onChange(() => {
         levelManager.markFireboyCheckpoints();
+        levelManager.markWatergirlCheckpointsAndStops();
         levelManager.controlWatergirlMovement();
         levelManager.checkForLevelStateActions();
-        levelManager.markWatergirlCheckpointsAndStops();
     });
 }
 
