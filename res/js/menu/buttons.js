@@ -277,6 +277,23 @@ let menuButtons = {
                 changeVoice("human");
             },
         }),
+        danny: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.40,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "Danny Voice",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("danny");
+            },
+        }),
         author: new MenuButton({
             position: {
                 x: canvas.width * 0.06,
