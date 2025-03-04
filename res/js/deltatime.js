@@ -2,7 +2,7 @@ export class Deltatime {
     constructor(){
         this.eventTarget = new EventTarget();
         this.interval = null;
-        this.intervalRate = 0.01;
+        this.intervalRate = 0.0001;
     }
 
     onChange(callback){
