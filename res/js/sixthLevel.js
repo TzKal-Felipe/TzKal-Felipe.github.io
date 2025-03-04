@@ -99,6 +99,7 @@ export class SixthLevelManager {
             !this.waterCheckpoints.dropAfterLeftBall){
 
             stopMoving(this.watergirl);
+            console.log("stopped moving");
             this.waterCheckpoints.dropAfterLeftBall = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop1)){
