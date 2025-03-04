@@ -1,20 +1,8 @@
 export class Deltatime {
     constructor(){
-        this._value = 0;
         this.eventTarget = new EventTarget();
-        this.update = null;
+        this.interval = null;
         this.intervalRate = 10;
-    }
-
-    get value(){
-        return this._value;
-    }
-
-    set value(newValue){
-        if (this._value !== newValue){
-            this._value = newValue;
-            this.eventTarget.dispatchEvent(new Event("valueChanged"));
-        }
     }
 
     onChange(callback){
@@ -22,17 +10,12 @@ export class Deltatime {
     }
 
     start(){
-        this.update = setInterval(() => {
-            this.value = this.value + 1;
-
-            if (this.value >= 60){
-                this.value = 0;
-            }
+        this.interval = setInterval(() => {
+            this.eventTarget.dispatchEvent(new Event("valueChanged"));
         }, this.intervalRate);
     }
 
     stop(){
-        clearInterval(this.update);
-        this.value = 0;
+        clearInterval(this.interval);
     }
 }
