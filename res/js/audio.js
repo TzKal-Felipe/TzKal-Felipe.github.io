@@ -23,7 +23,7 @@ class AudioManager {
     }
 
     playAudio(audioSrc){
-        if (!audioSrc.startsWith("res/js"){
+        if (!audioSrc.startsWith("res/js")){
             audioSrc = buildAudioPath(audioSrc, voice_type);
         }
         
