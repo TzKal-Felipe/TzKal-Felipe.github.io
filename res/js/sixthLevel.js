@@ -96,10 +96,9 @@ export class SixthLevelManager {
             this.waterCheckpoints.leftBallPush = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
-            !this.waterCheckpoints.dropAfterLeftBall){
+            !this.waterCheckpoints.dropAfterLeftBall && this.waterCheckpoints.leftBallPush){
 
             stopMoving(this.watergirl);
-            console.log("stopped moving");
             this.waterCheckpoints.dropAfterLeftBall = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeDrop1)){
@@ -175,7 +174,6 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop1)){
             moveLeft(this.watergirl);
-            console.log("aqui peto");
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop2)){
             moveRight(this.watergirl);
