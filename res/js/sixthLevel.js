@@ -175,6 +175,7 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop1)){
             moveLeft(this.watergirl);
+            console.log("aqui peto");
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop2)){
             moveRight(this.watergirl);
