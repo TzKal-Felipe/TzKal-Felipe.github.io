@@ -23,9 +23,9 @@ class AudioManager {
     }
 
     playAudio(audioSrc){
-        console.log(audioSrc);
-        audioSrc = buildAudioPath(audioSrc, voice_type);
-        console.log(audioSrc);
+        if (!audioSrc.startsWith("res/js"){
+            audioSrc = buildAudioPath(audioSrc, voice_type);
+        }
         
         if (audioSrc === this.currentSrc || audioSrc === this.queue){
             return;
