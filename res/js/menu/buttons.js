@@ -296,7 +296,7 @@ let menuButtons = {
         }),
         vanessa: new MenuButton({
             position: {
-                x: canvas.width - 430,
+                x: canvas.width - 630,
                 y: canvas.height * 0.30,
             },
             width: 430,
