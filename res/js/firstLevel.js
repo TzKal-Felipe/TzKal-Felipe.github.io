@@ -85,7 +85,8 @@ export class FirstLevelManager {
             halfwayCubeSliding: false,
             beforeCubeJump: false,
             onCube: false,
-            afterCubeWater: false
+            afterCubeWater: false,
+            atExit: false
         };
         
         this.coordinates = {
@@ -271,8 +272,9 @@ export class FirstLevelManager {
             this.waterCheckpoints.afterCubeWater = true;
             this.audioManager.playAudio(audioFiles.diamonds);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.doorWater)){
+        if (nearLocation(this.watergirl.position, this.coordinates.doorWater) && !this.waterCheckpoints.atExit){
             stopMoving(this.watergirl);
+            this.waterCheckpoints.atExit = true;
             this.audioManager.playAudio(audioFiles.teamwork);
         }
     }
@@ -369,9 +371,6 @@ export class FirstLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeButtonPlatform) && !this.secondPurpleButton.pressed){
             this.audioManager.nextAudioForTimer(audioFiles.press_button);
-        }
-        if (this.secondPurpleButton.pressed){
-            this.audioManager.nextAudioForTimer(audioFiles.off_button);
         }
     }
 }
