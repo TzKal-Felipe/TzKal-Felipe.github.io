@@ -65,7 +65,7 @@ export class SixthLevelManager {
             afterBlueBarrier: {x: 1045, y: 730},
             diamond: {x: 860, y: 730},
             afterDiamondRetrieved: {x: 985, y: 730},
-            waterDoor: {x: 970, y: 910}
+            waterDoor: {x: 940, y: 910}
         };
     }
 
