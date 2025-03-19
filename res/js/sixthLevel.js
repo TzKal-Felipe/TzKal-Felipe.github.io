@@ -28,6 +28,7 @@ export class SixthLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.audioManager.nextAudioForTimer(audioFiles.push_ball);
         this.blueButton = allButtons[0][0];
         this.redButton = allButtons[1][0];
         this.greenButton = allButtons[2][0];
@@ -166,7 +167,7 @@ export class SixthLevelManager {
     controlWatergirlMovement(){
         if (nearLocation(this.watergirl.position, this.coordinates.watergirlStart) &&
             this.fireCheckpoints.firstBallPushed){
-            
+            this.audioManager.playAudio(audioFiles.push_second);
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropBeforeLeftBall) &&
