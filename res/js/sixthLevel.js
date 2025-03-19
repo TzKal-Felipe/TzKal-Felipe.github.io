@@ -7,7 +7,20 @@ import {
 } from "./helperFunctions.js";
 
 let audioFiles = {
-    
+    push_ball: "push_ball.wav",
+    push_second: "push_second.wav",
+    push_third: "push_third.wav",
+    down_go: "down_go.wav",
+    push_blue_button: "push_blue_button.wav",
+    need_lever: "need_lever.wav",
+    fun_up_there: "fun_up_there.wav",
+    keep_pressed: "keep_pressed.wav",
+    got_diamond: "got_diamond.wav",
+    thanks_come: "thanks_come.wav",
+    faster: "faster.wav",
+    lift: "lift.wav",
+    ball_stuck: "ball_stuck.wav",
+    let_me_out: "let_me_out.wav",
 };
 
 export class SixthLevelManager {
