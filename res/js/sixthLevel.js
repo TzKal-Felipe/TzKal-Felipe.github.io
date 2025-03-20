@@ -21,6 +21,9 @@ let audioFiles = {
     lift: "lift.wav",
     ball_stuck: "ball_stuck.wav",
     let_me_out: "let_me_out.wav",
+    no_fall_damage: "no_fall_damage.wav",
+    almost_done: "almost_done.wav",
+    what_took_long: "what_took_long.wav"
 };
 
 export class SixthLevelManager {
@@ -40,7 +43,10 @@ export class SixthLevelManager {
         
         this.fireCheckpoints = {
             firstBallPushed: false,
-            secondBallPushed: false
+            secondBallPushed: false,
+            noFallDamage: false,
+            almostDone: false,
+            whatTookLong: false
         };
         
         this.waterCheckpoints = {
@@ -84,6 +90,7 @@ export class SixthLevelManager {
             afterBlueBarrier: {x: 1045, y: 730},
             diamond: {x: 860, y: 730},
             afterDiamondRetrieved: {x: 985, y: 730},
+            fireDoor: {x: 866, y: 910},
             waterDoor: {x: 955, y: 910}
         };
     }
@@ -98,6 +105,24 @@ export class SixthLevelManager {
             !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
             
             this.fireCheckpoints.secondBallPushed = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterDropBeforeLeftBall) &&
+           !this.fireCheckpoints.noFallDamage){
+
+            this.fireCheckpoints.noFallDamage = true;
+            this.audioManager.playAudio(audioFiles.no_fall_damage);
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.afterDrop4) &&
+           !this.fireCheckpoints.almostDone){
+
+            this.fireCheckpoints.almostDone = true;
+            this.audioManager.playAudio(audioFiles.almost_done);
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.fireDoor) &&
+           !this.fireCheckpoints.whatTookLong){
+
+            this.fireCheckpoints.whatTookLong = true;
+            this.audioManager.playAudio(audioFiles.what_took_long);
         }
     }
 
