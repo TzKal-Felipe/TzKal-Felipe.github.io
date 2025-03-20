@@ -55,7 +55,8 @@ export class SixthLevelManager {
             diamondStop: false,
             bottomRightSecondStop: false,
             liftPlatform: false,
-            letMeOut: false
+            letMeOut: false,
+            waterDoor: false
         };
         
         this.coordinates = {
@@ -162,7 +163,8 @@ export class SixthLevelManager {
             this.waterCheckpoints.bottomRightSecondStop = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.waterDoor) &&
-            this.waterCheckpoints.diamondStop){
+            this.waterCheckpoints.diamondStop && !this.waterCheckpoints.waterDoor){
+            this.waterCheckpoints.waterDoor = true;
             this.audioManager.playAudio(audioFiles.faster);
             stopMoving(this.watergirl);
         }
