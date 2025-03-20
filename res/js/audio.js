@@ -30,6 +30,8 @@ class AudioManager {
         if (audioSrc === this.currentSrc || audioSrc === this.queue){
             return;
         }
+
+        this.nextAudio = null;
         
         if (this.isPlaying){
             this.queue = audioSrc;
@@ -61,7 +63,7 @@ class AudioManager {
         this.audioInterval = setInterval(() => {
             this.timer++;
     
-            if (this.timer === this.timedAudioDelay){
+            if (this.timer === this.timedAudioDelay && this.nextAudio){
                 this.playAudio(this.nextAudio);
                 this.nextAudio = null;
             }
