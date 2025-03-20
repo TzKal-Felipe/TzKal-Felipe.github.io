@@ -53,7 +53,9 @@ export class SixthLevelManager {
             bottomRightJump: false,
             afterBlueBarrier: false,
             diamondStop: false,
-            bottomRightSecondStop: false
+            bottomRightSecondStop: false,
+            liftPlatform: false,
+            letMeOut: false
         };
         
         this.coordinates = {
@@ -247,13 +249,15 @@ export class SixthLevelManager {
             this.audioManager.playAudio(audioFiles.fun_up_there);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeBlueBarrier) &&
+            this.blueButton.pressed &&
             !this.waterCheckpoints.diamondStop){
             this.audioManager.playAudio(audioFiles.keep_pressed);
             console.log("tried to play keep_pressed.wav");
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeBlueBarrier) &&
             !nearLocation(this.blueButton.ramp.position, this.blueButton.ramp.finalPosition) &&
-            !this.waterCheckpoints.diamondStop){
+            !this.waterCheckpoints.diamondStop && !this.waterCheckpoints.liftPlatform){
+            this.waterCheckpoints.liftPlatform = true;
             this.audioManager.playAudio(audioFiles.lift);
             console.log("tried to play lift.wav");
         }
@@ -264,7 +268,8 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.exitingBlueBarrier) &&
             nearLocation(this.blueButton.ramp.position, this.blueButton.ramp.startPosition) &&
-            this.waterCheckpoints.diamondStop){
+            this.waterCheckpoints.diamondStop && !this.waterCheckpoints.letMeOut){
+            this.waterCheckpoints.letMeOut = true;
             this.audioManager.playAudio(audioFiles.let_me_out);
             console.log("tried to play let_me_out.wav");
         }
