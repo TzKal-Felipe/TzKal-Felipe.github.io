@@ -302,6 +302,7 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.middleBall.position, this.redButton.position) &&
             nearLocation(this.rightBall.position, this.redButton.position)){
+            stopMoving(this.watergirl);
             this.audioManager.playAudio(audioFiles.ball_stuck);
             console.log("tried to play ball_stuck.wav");
         }
