@@ -50,6 +50,7 @@ export class SixthLevelManager {
         };
         
         this.waterCheckpoints = {
+            bothBallsStuck: false,
             dropBeforeLeftBall: false,
             leftBallPush: false,
             dropAfterLeftBall: false,
@@ -301,9 +302,11 @@ export class SixthLevelManager {
             console.log("tried to play let_me_out.wav");
         }
         if (nearLocation(this.middleBall.position, this.redButton.position) &&
-            nearLocation(this.rightBall.position, this.redButton.position)){
+            nearLocation(this.rightBall.position, this.redButton.position) &&
+            !this.waterCheckpoints.bothBallsStuck){
             stopMoving(this.watergirl);
             this.audioManager.playAudio(audioFiles.ball_stuck);
+            this.waterCheckpoints.bothBallsStuck = true;
             console.log("tried to play ball_stuck.wav");
         }
     }
