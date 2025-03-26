@@ -73,6 +73,7 @@ export class SixthLevelManager {
             watergirlStart: {x: 530, y: 47},
             duringDropBeforeLeftBall: {x: 100, y: 130},
             afterDropBeforeLeftBall: {x: 100, y: 263},
+            noFallDamage: {x: 171, y: 297},
             atLeftBallPush: {x: 320, y: 155},
             beforeDrop1: {x: 237, y: 300},
             afterDrop1: {x: 237, y: 400},
@@ -107,7 +108,7 @@ export class SixthLevelManager {
             
             this.fireCheckpoints.secondBallPushed = true;
         }
-        if (nearLocation(this.fireboy.position, this.coordinates.afterDropBeforeLeftBall) &&
+        if (nearLocation(this.fireboy.position, this.coordinates.noFallDamage) &&
            !this.fireCheckpoints.noFallDamage){
 
             this.fireCheckpoints.noFallDamage = true;
