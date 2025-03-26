@@ -7,7 +7,11 @@ import {
 } from "./helperFunctions.js";
 
 let audioFiles = {
+    confusing: "confusing.wav",
+    think_this: "think_this.wav",
     push_ball: "push_ball.wav",
+    push_right: "push_right.wav",
+    right_correct: "right_correct.wav",
     push_second: "push_second.wav",
     push_third: "push_third.wav",
     down_go: "down_go.wav",
@@ -23,7 +27,10 @@ let audioFiles = {
     let_me_out: "let_me_out.wav",
     no_fall_damage: "no_fall_damage.wav",
     almost_done: "almost_done.wav",
-    what_took_long: "what_took_long.wav"
+    what_took_long: "what_took_long.wav",
+    sorry_you_stay: "sorry_you_stay.wav",
+    dont_fit: "dont_fit.wav",
+    dont_come_down_yet: "dont_come_down_yet.wav"
 };
 
 export class SixthLevelManager {
@@ -31,7 +38,7 @@ export class SixthLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
-        this.audioManager.nextAudioForTimer(audioFiles.push_ball);
+        this.audioManager.nextAudioForTimer([audioFiles.confusing, audioFiles.think_this, audioFiles.push_ball, audioFiles.push_right, audioFiles.right_correct]);
         this.blueButton = allButtons[0][0];
         this.redButton = allButtons[1][0];
         this.greenButton = allButtons[2][0];
