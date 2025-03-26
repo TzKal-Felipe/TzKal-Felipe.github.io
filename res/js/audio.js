@@ -14,7 +14,7 @@ class AudioManager {
         this.currentSrc = null;
         this.nextAudio = null;
         this.audioInterval = null;
-        this.timedAudioDelay = 6;
+        this.timedAudioDelay = 5;
         this.timer = 0
     }
 
@@ -64,8 +64,20 @@ class AudioManager {
             this.timer++;
     
             if (this.timer === this.timedAudioDelay && this.nextAudio){
-                this.playAudio(this.nextAudio);
-                this.nextAudio = null;
+                if (typeof this.nextAudio === "string"){
+                    this.playAudio(this.nextAudio);
+                    this.nextAudio = null;
+                }
+                else{
+                    let nextAudio = this.nextAudio.next();
+
+                    if (nextAudio.done){
+                        this.nextAudio = null;
+                    }
+                    else{
+                        this.playAudio(nextAudio.value);
+                    }
+                }
             }
         }, 1000);
     }
@@ -76,7 +88,12 @@ class AudioManager {
     }
 
     nextAudioForTimer(audioSrc){
-        this.nextAudio = audioSrc;
+        if (typeof audioSrc === "string"){
+            this.nextAudio = audioSrc;
+        }
+        else if (Array.isArray(audioSrc) && audioSrc.every(item => typeof item === "string")){
+            this.nextAudio = audioSrc[Symbol.iterator]();
+        }
     }
 }
 
