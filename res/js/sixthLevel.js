@@ -51,6 +51,8 @@ export class SixthLevelManager {
         this.fireCheckpoints = {
             firstBallPushed: false,
             secondBallPushed: false,
+            dontComeDown: false,
+            stayUpThere: false,
             noFallDamage: false,
             almostDone: false,
             whatTookLong: false
@@ -114,6 +116,18 @@ export class SixthLevelManager {
             !nearLocation(this.rightBall.position, this.coordinates.rightBallStart)){
             
             this.fireCheckpoints.secondBallPushed = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.waterStart) &&
+           !this.fireCheckpoints.dontComeDownYet){
+
+            this.fireCheckpoints.dontComeDownYet = true;
+            this.audioManager.playAudio(audioFiles.dont_come_down_yet);
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.waterStart) &&
+           !this.fireCheckpoints.stayUpThere){
+
+            this.fireCheckpoints.stayUpThere = true;
+            this.audioManager.playAudio(audioFiles.sorry_you_stay);
         }
         if (nearLocation(this.fireboy.position, this.coordinates.noFallDamage) &&
            !this.fireCheckpoints.noFallDamage){
