@@ -117,7 +117,7 @@ export class SixthLevelManager {
             
             this.fireCheckpoints.secondBallPushed = true;
         }
-        if (nearLocation(this.fireboy.position, this.coordinates.waterStart) &&
+        if (nearLocation(this.fireboy.position, this.coordinates.watergirlStart) &&
            !this.fireCheckpoints.dontComeDownYet){
 
             this.fireCheckpoints.dontComeDownYet = true;
