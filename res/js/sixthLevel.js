@@ -233,7 +233,7 @@ export class SixthLevelManager {
             this.audioManager.playAudio(audioFiles.push_blue_button);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.belowLeverPlatform) &&
-            nearLocation(this.purpleButton.ramp.position, this.purpleButton.ramp.finalPosition) && 
+            nearLocation(this.purpleButton.ramp.position, this.purpleButton.ramp.finalPosition, thresholdY=10) && 
             !this.greyLever.pressed){
             this.audioManager.playAudio(audioFiles.need_lever);
             makeJump(this.watergirl);
