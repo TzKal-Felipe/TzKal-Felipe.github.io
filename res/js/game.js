@@ -759,8 +759,6 @@ function playGame() {
                         break;
                     case " ":
                         console.log(`${player.element}: (${player.position.x}, ${player.position.y})`);
-                        console.log(levelManager.fireCheckpoints);
-                        console.log(levelManager.waterCheckpoints);
                 }
             //}
         });
