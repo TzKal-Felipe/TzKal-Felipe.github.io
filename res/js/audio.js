@@ -28,7 +28,7 @@ class AudioManager {
         this.timer = 0;
     }
 
-    playAudio(audioSrc){
+    playAudio(audioSrc, forgetNext=true){
         if (!audioSrc.startsWith("res/js")){
             audioSrc = buildAudioPath(audioSrc, voice_type);
         }
@@ -37,7 +37,9 @@ class AudioManager {
             return;
         }
 
-        this.nextAudio = null;
+        if (forgetNext){
+            this.nextAudio = null;
+        }
         
         if (this.isPlaying){
             this.queue = audioSrc;
@@ -75,7 +77,6 @@ class AudioManager {
                 if (typeof this.nextAudio === "string"){
                     console.log("played the single string audio");
                     this.playAudio(this.nextAudio);
-                    this.nextAudio = null;
                 }
                 else{
                     let nextAudio = this.nextAudio.next();
@@ -86,7 +87,7 @@ class AudioManager {
                     }
                     else{
                         console.log("played the next iterator string");
-                        this.playAudio(nextAudio.value);
+                        this.playAudio(nextAudio.value, false);
                     }
                 }
             }
