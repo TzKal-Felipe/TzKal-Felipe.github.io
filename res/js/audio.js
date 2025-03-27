@@ -65,6 +65,7 @@ class AudioManager {
     
             if (this.timer === this.timedAudioDelay && this.nextAudio){
                 if (typeof this.nextAudio === "string"){
+                    console.log("played the single string audio");
                     this.playAudio(this.nextAudio);
                     this.nextAudio = null;
                 }
@@ -72,9 +73,11 @@ class AudioManager {
                     let nextAudio = this.nextAudio.next();
 
                     if (nextAudio.done){
+                        console.log("iterator is done, nulling nextAudio");
                         this.nextAudio = null;
                     }
                     else{
+                        console.log("played the next iterator string");
                         this.playAudio(nextAudio.value);
                     }
                 }
