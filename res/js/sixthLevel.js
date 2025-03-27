@@ -119,7 +119,8 @@ export class SixthLevelManager {
             this.fireCheckpoints.secondBallPushed = true;
         }
         if (nearLocation(this.fireboy.position, this.coordinates.watergirlStart) &&
-           !this.fireCheckpoints.dontComeDownYet && !this.waterCheckpoints.diamondStop){
+           !this.fireCheckpoints.dontComeDownYet && !this.waterCheckpoints.diamondStop &&
+           !this.waterCheckpoints.afterDrop1){
 
             this.fireCheckpoints.dontComeDownYet = true;
             this.audioManager.playAudio(audioFiles.dont_come_down_yet);
