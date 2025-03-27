@@ -68,6 +68,8 @@ class AudioManager {
     startAudioTimer(){
         this.audioInterval = setInterval(() => {
             this.timer++;
+            console.log(this.timer);
+            console.log(this.nextAudio);
     
             if (this.timer === this.timedAudioDelay && this.nextAudio){
                 if (typeof this.nextAudio === "string"){
