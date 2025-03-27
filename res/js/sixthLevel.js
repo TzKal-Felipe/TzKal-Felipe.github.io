@@ -64,6 +64,7 @@ export class SixthLevelManager {
             leftBallPush: false,
             dropAfterLeftBall: false,
             belowLeverPlatform: false,
+            afterDrop1: false,
             leverPush: false,
             bottomRightStop: false,
             bottomRightJump: false,
@@ -118,13 +119,14 @@ export class SixthLevelManager {
             this.fireCheckpoints.secondBallPushed = true;
         }
         if (nearLocation(this.fireboy.position, this.coordinates.watergirlStart) &&
-           !this.fireCheckpoints.dontComeDownYet){
+           !this.fireCheckpoints.dontComeDownYet && !this.waterCheckpoints.diamondStop){
 
             this.fireCheckpoints.dontComeDownYet = true;
             this.audioManager.playAudio(audioFiles.dont_come_down_yet);
         }
-        if (nearLocation(this.fireboy.position, this.coordinates.waterStart) &&
-           !this.fireCheckpoints.stayUpThere){
+        if (nearLocation(this.fireboy.position, this.coordinates.watergirlStart) &&
+           !this.fireCheckpoints.stayUpThere && this.waterCheckpoints.afterDrop1 &&
+           !this.waterCheckpoints.diamondStop){
 
             this.fireCheckpoints.stayUpThere = true;
             this.audioManager.playAudio(audioFiles.sorry_you_stay);
@@ -242,6 +244,7 @@ export class SixthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop1)){
             this.audioManager.playAudio(audioFiles.down_go);
+            this.waterCheckpoints.afterDrop1 = true;
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDrop2)){
