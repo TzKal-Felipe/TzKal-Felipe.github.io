@@ -6,6 +6,12 @@ function changeVoice(voice){
     voice_type = voice;
 }
 
+function* audioIterator(audioFiles) {
+    for (const file of audioFiles) {
+        yield file;
+    }
+}
+
 class AudioManager {
     constructor(){
         this.audio = new Audio();
@@ -95,7 +101,7 @@ class AudioManager {
             this.nextAudio = audioSrc;
         }
         else if (Array.isArray(audioSrc) && audioSrc.every(item => typeof item === "string")){
-            this.nextAudio = audioSrc[Symbol.iterator]();
+            this.nextAudio = audioIterator(audioSrc);
             console.log("used string array for nextAudioForTimer call, created iterator for nextAudio");
         }
     }
