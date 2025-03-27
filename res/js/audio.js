@@ -93,6 +93,7 @@ class AudioManager {
         }
         else if (Array.isArray(audioSrc) && audioSrc.every(item => typeof item === "string")){
             this.nextAudio = audioSrc[Symbol.iterator]();
+            console.log("used string array for nextAudioForTimer call, created iterator for nextAudio");
         }
     }
 }
