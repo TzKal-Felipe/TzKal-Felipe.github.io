@@ -335,5 +335,12 @@ export class SixthLevelManager {
             this.waterCheckpoints.bothBallsStuck = true;
             console.log("tried to play ball_stuck.wav");
         }
+        if ((nearLocation(this.fireboy.position, this.coordinates.leftBallStart) ||
+             nearLocation(this.fireboy.position, this.coordinates.middleBallStart) ||
+             nearLocation(this.fireboy.position, this.coordinates.rightBallStart)) &&
+             this.waterCheckpoints.dropAfterLeftBall){
+            
+            this.audioManager.playAudio(audioFiles.dont_fit);
+        }
     }
 }
