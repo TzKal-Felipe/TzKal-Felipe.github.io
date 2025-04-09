@@ -243,58 +243,79 @@ let menuButtons = {
                 resetProgress();
             },
         }),
-        defaultTTS: new MenuButton({
+        noAudio: new MenuButton({
             position: {
-                x: canvas.width - 430,
-                y: canvas.height * 0.60,
+                x: canvas.width - 1400,
+                y: canvas.height * 0.30,
             },
             width: 430,
             height: canvas.height * 0.065,
             yOffset: canvas.height * 0.43,
-            text: "Default TTS",
+            text: "0",
             mainColor: "#5c4614",
             borderColor: "#5c4614",
             outerColor: "#5c4614",
             fontSize: 50,
             runCode: () => {
-                changeVoice("default_tts");
+                changeVoice("original");
+                setAudioEnabled(false);
             },
         }),
-        human: new MenuButton({
+        hummed: new MenuButton({
             position: {
-                x: canvas.width - 430,
-                y: canvas.height * 0.50,
-            },
-            width: 430,
-            height: canvas.height * 0.065,
-            yOffset: canvas.height * 0.43,
-            text: "Human Voice",
-            mainColor: "#5c4614",
-            borderColor: "#5c4614",
-            outerColor: "#5c4614",
-            fontSize: 50,
-            runCode: () => {
-                changeVoice("human");
-            },
-        }),
-        danny: new MenuButton({
-            position: {
-                x: canvas.width - 430,
+                x: canvas.width - 1400,
                 y: canvas.height * 0.40,
             },
             width: 430,
             height: canvas.height * 0.065,
             yOffset: canvas.height * 0.43,
-            text: "Danny Voice",
+            text: "1",
             mainColor: "#5c4614",
             borderColor: "#5c4614",
             outerColor: "#5c4614",
             fontSize: 50,
             runCode: () => {
-                changeVoice("danny");
+                changeVoice("hummed");
+                setAudioEnabled(true);
             },
         }),
-        vanessa: new MenuButton({
+        monotoneSynthesizer: new MenuButton({
+            position: {
+                x: canvas.width - 1400,
+                y: canvas.height * 0.50,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "2",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("monotoneSynthesizer");
+                setAudioEnabled(true);
+            },
+        }),
+        vocoded: new MenuButton({
+            position: {
+                x: canvas.width - 1400,
+                y: canvas.height * 0.60,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "3",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("vocoded");
+                setAudioEnabled(true);
+            },
+        }),
+        nonContingentHuman: new MenuButton({
             position: {
                 x: canvas.width - 430,
                 y: canvas.height * 0.30,
@@ -302,13 +323,68 @@ let menuButtons = {
             width: 430,
             height: canvas.height * 0.065,
             yOffset: canvas.height * 0.43,
-            text: "Vanessa",
+            text: "4",
             mainColor: "#5c4614",
             borderColor: "#5c4614",
             outerColor: "#5c4614",
             fontSize: 50,
             runCode: () => {
-                changeVoice("vanessa");
+                changeVoice("nonContingentHuman");
+                setAudioEnabled(true);
+            },
+        }),
+        lowPassFiltered: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.40,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "5",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("lowPassFiltered");
+                setAudioEnabled(true);
+            },
+        }),
+        humanReadSpeech: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.50,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "6",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("humanReadSpeech");
+                setAudioEnabled(true);
+            },
+        }),
+        original: new MenuButton({
+            position: {
+                x: canvas.width - 430,
+                y: canvas.height * 0.60,
+            },
+            width: 430,
+            height: canvas.height * 0.065,
+            yOffset: canvas.height * 0.43,
+            text: "7",
+            mainColor: "#5c4614",
+            borderColor: "#5c4614",
+            outerColor: "#5c4614",
+            fontSize: 50,
+            runCode: () => {
+                changeVoice("original");
+                setAudioEnabled(true);
             },
         }),
         author: new MenuButton({
