@@ -1,9 +1,14 @@
 import { buildAudioPath } from "./helperFunctions.js";
 
 let voice_type = "default_tts";
+let audioEnabled = true;
 
 function changeVoice(voice){
     voice_type = voice;
+}
+
+function setAudioEnabled(bool){
+    audioEnabled = bool;
 }
 
 function* audioIterator(audioFiles) {
@@ -110,4 +115,4 @@ class AudioManager {
     }
 }
 
-export{ voice_type, changeVoice, AudioManager };
+export{ changeVoice, setAudioEnabled, AudioManager };
