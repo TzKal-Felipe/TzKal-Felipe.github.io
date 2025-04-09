@@ -38,7 +38,7 @@ class AudioManager {
             audioSrc = buildAudioPath(audioSrc, voice_type);
         }
         
-        if (audioSrc === this.currentSrc || audioSrc === this.queue){
+        if (audioSrc === this.currentSrc || audioSrc === this.queue || !audioEnabled){
             return;
         }
 
