@@ -34,12 +34,12 @@ class AudioManager {
     }
 
     playAudio(audioSrc, forgetNext=true){
-        if (!audioSrc.startsWith("res/js")){
-            audioSrc = buildAudioPath(audioSrc, voice_type);
-        }
-        
         if (audioSrc === this.currentSrc || audioSrc === this.queue || !audioEnabled){
             return;
+        }
+        
+        if (!audioSrc.startsWith("res/js")){
+            audioSrc = buildAudioPath(audioSrc, voice_type);
         }
 
         if (forgetNext){
