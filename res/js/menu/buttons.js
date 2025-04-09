@@ -1,7 +1,7 @@
 import { Sprite } from "../sprite.js";
 import { canvas, ctx, setContinueAnimation, setEndGame, setMenuActive } from "../helpers.js";
 import { drawMenu, resetProgress, unlockAllDiamonds } from "./menus.js";
-import { voice_type, changeVoice } from "../audio.js";
+import { changeVoice, setAudioEnabled } from "../audio.js";
 
 //check collision for button in menu
 function checkButtonCollision(pos, button) {
