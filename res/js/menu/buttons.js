@@ -245,7 +245,7 @@ let menuButtons = {
         }),
         noAudio: new MenuButton({
             position: {
-                x: canvas.width - 1300,
+                x: canvas.width - 1100,
                 y: canvas.height * 0.30,
             },
             width: 430,
@@ -263,7 +263,7 @@ let menuButtons = {
         }),
         hummed: new MenuButton({
             position: {
-                x: canvas.width - 1300,
+                x: canvas.width - 1130,
                 y: canvas.height * 0.40,
             },
             width: 430,
@@ -281,7 +281,7 @@ let menuButtons = {
         }),
         monotoneSynthesizer: new MenuButton({
             position: {
-                x: canvas.width - 1300,
+                x: canvas.width - 1130,
                 y: canvas.height * 0.50,
             },
             width: 430,
@@ -299,7 +299,7 @@ let menuButtons = {
         }),
         vocoded: new MenuButton({
             position: {
-                x: canvas.width - 1300,
+                x: canvas.width - 1100,
                 y: canvas.height * 0.60,
             },
             width: 430,
