@@ -1,6 +1,6 @@
 import { buildAudioPath } from "./helperFunctions.js";
 
-let voice_type = "default_tts";
+let voice_type = "original";
 let audioEnabled = true;
 
 function changeVoice(voice){
