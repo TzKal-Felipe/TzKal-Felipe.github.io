@@ -34,16 +34,16 @@ class AudioManager {
     }
 
     playAudio(audioSrc, forgetNext=true){
+        if (forgetNext){
+            this.nextAudio = null;
+        }
+        
         if (audioSrc === this.currentSrc || audioSrc === this.queue || !audioEnabled){
             return;
         }
         
         if (!audioSrc.startsWith("res/js")){
             audioSrc = buildAudioPath(audioSrc, voice_type);
-        }
-
-        if (forgetNext){
-            this.nextAudio = null;
         }
         
         if (this.isPlaying){
