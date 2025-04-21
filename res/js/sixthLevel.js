@@ -327,8 +327,12 @@ export class SixthLevelManager {
             this.audioManager.playAudio(audioFiles.let_me_out);
             console.log("tried to play let_me_out.wav");
         }
-        if (nearLocation(this.middleBall.position, this.redButton.position) &&
-            nearLocation(this.rightBall.position, this.redButton.position) &&
+        if (((nearLocation(this.middleBall.position, this.redButton.position) &&
+            nearLocation(this.rightBall.position, this.redButton.position)) ||
+            (nearLocation(this.middleBall.position, this.greenButton.position) &&
+            nearLocation(this.leftBall.position, this.greenButton.position)) ||
+            (nearLocation(this.rightBall.position, this.greenButton.position) &&
+            nearLocation(this.leftBall.position, this.greenButton.position))) &&
             !this.waterCheckpoints.bothBallsStuck){
             stopMoving(this.watergirl);
             this.audioManager.playAudio(audioFiles.ball_stuck);
