@@ -39,6 +39,20 @@ export class FourthLevelManager {
             afterFifthWaterDrop: {x: 1265, y: 766},
             atRedLever: {x: 1095, y: 766},
             gapRightOfBluePlatform: {x: 797, y: 527},
+            beforeHugeDropJump: {x: 941, y: 227},
+            beforeBluePlatformDrop: {x: 652, y: 520},
+            afterBluePlatformDrop: {x: 652, y: 622},
+            beforeRedPlatformDrop: {x: 725, y: 665},
+            afterRedPlatformDrop: {x: 725, y: 802},
+            betweenFireAndWaterPools: {x: 374, y: 730},
+            beforeFinalDrop: {x: 51, y: 745},
+            afterFinalDrop: {x: 51, y: 896},
+            beforeFirstAcidPool: {x: 281, y: 874},
+            beforeSecondAcidPool: {x: 461, y: 874},
+            beforeWhiteBarrier: {x: 873, y: 910},
+            secondWhiteButton: {x: 1273, y: 910},
+            fireDoor: {x: 1043, y: 910},
+            waterDoor: {x: 1143, y: 910},
         };
     }
 
