@@ -48,7 +48,6 @@ class AudioManager {
         
         if (this.isPlaying){
             this.queue = audioSrc;
-            console.log("audio queued");
         } else {
             this.audio.src = audioSrc;
             this.audio.load();
@@ -63,7 +62,6 @@ class AudioManager {
                 if (this.queue){
                     const nextAudio = this.queue;
                     this.queue = null;
-                    console.log("dequeued and played audio");
                     this.playAudio(nextAudio);
                 }
             };
@@ -75,23 +73,18 @@ class AudioManager {
     startAudioTimer(){
         this.audioInterval = setInterval(() => {
             this.timer++;
-            console.log(this.timer);
-            console.log(this.nextAudio);
     
             if (this.timer === this.timedAudioDelay && this.nextAudio){
                 if (typeof this.nextAudio === "string"){
-                    console.log("played the single string audio");
                     this.playAudio(this.nextAudio);
                 }
                 else{
                     let nextAudio = this.nextAudio.next();
 
                     if (nextAudio.done){
-                        console.log("iterator is done, nulling nextAudio");
                         this.nextAudio = null;
                     }
                     else{
-                        console.log("played the next iterator string");
                         this.playAudio(nextAudio.value, false);
                     }
                 }
@@ -110,7 +103,6 @@ class AudioManager {
         }
         else if (Array.isArray(audioSrc) && audioSrc.every(item => typeof item === "string")){
             this.nextAudio = audioIterator(audioSrc);
-            console.log("used string array for nextAudioForTimer call, created iterator for nextAudio");
         }
     }
 }
