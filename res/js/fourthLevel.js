@@ -28,7 +28,7 @@ export class FourthLevelManager {
             waterStart: {x: 1100, y: 47},
             firstWaterDrop: {x: 1280, y: 96},
             afterFirstWaterDrop: {x: 1280, y: 227},
-            secondWaterDrop: {x: 1192, 243},
+            secondWaterDrop: {x: 1192, y: 243},
             afterSecondWaterDrop: {x: 1192, y: 352},
             thirdWaterDrop: {x: 832, y: 485},
             afterThirdWaterDrop: {x: 833, y: 622},
