@@ -11,17 +11,34 @@ let audioFiles = {
 };
 
 export class FourthLevelManager {
-    constructor(fireboy, watergirl, audioManager){
+    constructor(fireboy, watergirl, audioManager, allButtons, allLevers){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.whiteButtonLeft = allButtons[0][0];
+        this.whiteButtonRight = allButtons[0][1];
+        this.blueLever = allLevers[0];
+        this.redLever = allLevers[1];
         
         this.fireCheckpoints = {
         
         };
         
         this.waterCheckpoints = {
-        
+            firstWaterDrop: false,
+            secondWaterDrop: false,
+            thirdWaterDrop: false,
+            fourthWaterDrop: false,
+            fifthWaterDrop: false,
+            redLever: false,
+            platformAfterLever: false,
+            gapRightOfBluePlatform: false,
+            firstWaterPool: false,
+            beforeBluePlatformDrop: false,
+            beforeRedPlatformDrop: false,
+            beforeFinalDrop: false,
+            rightButton: false,
+            waterDoor: false
         };
         
         this.coordinates = {
