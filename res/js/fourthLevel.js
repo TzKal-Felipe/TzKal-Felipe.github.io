@@ -130,8 +130,6 @@ export class FourthLevelManager {
     }
     
     controlWatergirlMovement(){
-        console.log(nearLocation(this.watergirl, this.coordinates.waterStart));
-        console.log(this.blueLever.pressed);
         if (nearLocation(this.watergirl, this.coordinates.waterStart) && this.blueLever.pressed){
             moveRight(this.watergirl);
         }
