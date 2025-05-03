@@ -78,7 +78,38 @@ export class FourthLevelManager {
     }
 
     markWatergirlCheckpointsAndStops(){
-        
+        if (nearLocation(this.watergirl, this.coordinates.firstWaterDrop) && !this.waterCheckpoints.firstWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.firstWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.secondWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.thirdWaterDrop) && !this.waterCheckpoints.thirdWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.thirdWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.fourthWaterDrop) && !this.waterCheckpoints.fourthWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.fourthWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.fifthWaterDrop) && !this.waterCheckpoints.fifthWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.fifthWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.secondWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.secondWaterDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.secondWaterDrop = true;
+        }
     }
 
     controlWatergirlMovement(){
