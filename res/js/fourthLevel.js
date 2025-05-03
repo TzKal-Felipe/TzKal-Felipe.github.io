@@ -53,7 +53,7 @@ export class FourthLevelManager {
             fifthWaterDrop: {x: 1270, y: 692},
             afterFifthWaterDrop: {x: 1265, y: 800},
             atRedLever: {x: 1065, y: 766},
-            gapRightOfBluePlatform: {x: 777, y: 527},
+            gapRightOfBluePlatform: {x: 780, y: 527},
             beforeHugeDropJump: {x: 941, y: 227},
             beforeBluePlatformDrop: {x: 652, y: 520},
             afterBluePlatformDrop: {x: 652, y: 622},
