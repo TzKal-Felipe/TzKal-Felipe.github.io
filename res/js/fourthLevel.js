@@ -88,7 +88,7 @@ export class FourthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.fifthWaterDrop = true;
         }
-        if (this.redLever.pressed && !this.waterCheckpoints.redLever){
+        if (nearLocation(this.redLever.ramp.position, this.redLever.ramp.finalPosition) && !this.waterCheckpoints.redLever){
             stopMoving(this.watergirl);
             this.waterCheckpoints.redLever = true;
         }
