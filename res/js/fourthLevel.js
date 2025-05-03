@@ -18,7 +18,6 @@ export class FourthLevelManager {
         this.whiteButtonLeft = allButtons[0][0];
         this.whiteButtonRight = allButtons[0][1];
         this.blueLever = allLevers[0];
-        console.log(this.blueLever.position);
         this.redLever = allLevers[1];
         
         this.fireCheckpoints = {
@@ -131,6 +130,8 @@ export class FourthLevelManager {
     }
     
     controlWatergirlMovement(){
+        console.log(nearLocation(this.watergirl, this.coordinates.waterStart));
+        console.log(this.blueLever.pressed);
         if (nearLocation(this.watergirl, this.coordinates.waterStart) && this.blueLever.pressed){
             moveRight(this.watergirl);
         }
