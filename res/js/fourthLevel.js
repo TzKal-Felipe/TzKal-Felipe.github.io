@@ -137,8 +137,10 @@ export class FourthLevelManager {
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterThirdWaterDrop) && !this.redLever.pressed){
-            makeJump(this.watergirl);
             moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeFirstLavaPool) && !this.redLever.pressed){
+            makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterFifthWaterDrop)){
             moveLeft(this.watergirl);
