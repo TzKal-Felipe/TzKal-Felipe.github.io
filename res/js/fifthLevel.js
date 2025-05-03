@@ -11,7 +11,7 @@ let audioFiles = {
 };
 
 export class FifthLevelManager {
-    constructor(fireboy, watergirl, audioManager){
+    constructor(fireboy, watergirl, audioManager, allButtons, allLevers, allBalls){
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
