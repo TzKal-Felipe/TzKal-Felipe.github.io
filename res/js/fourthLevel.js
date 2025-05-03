@@ -21,7 +21,7 @@ export class FourthLevelManager {
         this.redLever = allLevers[1];
         
         this.fireCheckpoints = {
-        
+            fireDoor: false,
         };
         
         this.waterCheckpoints = {
@@ -98,17 +98,44 @@ export class FourthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.fifthWaterDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+        if (this.redLever.pressed && !this.waterCheckpoints.redLever){
             stopMoving(this.watergirl);
-            this.waterCheckpoints.secondWaterDrop = true;
+            this.waterCheckpoints.redLever = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+        if (nearLocation(this.watergirl, this.coordinates.afterFourthWaterDrop) && !this.waterCheckpoints.platformAfterLever &&
+           this.redLever.pressed){
             stopMoving(this.watergirl);
-            this.waterCheckpoints.secondWaterDrop = true;
+            this.waterCheckpoints.platformAfterLever = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.secondWaterDrop) && !this.waterCheckpoints.secondWaterDrop){
+        if (nearLocation(this.watergirl, this.coordinates.gapRightOfBluePlatform) && !this.waterCheckpoints.gapRightOfBluePlatform &&
+           this.redLever.pressed){
             stopMoving(this.watergirl);
-            this.waterCheckpoints.secondWaterDrop = true;
+            this.waterCheckpoints.gapRightOfBluePlatform = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.afterSecondWaterDrop) && !this.waterCheckpoints.firstWaterPool &&
+           this.redLever.pressed){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.firstWaterPool = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.beforeBluePlatformDrop) && !this.waterCheckpoints.beforeBluePlatformDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.beforeBluePlatformDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.beforeRedPlatformDrop) && !this.waterCheckpoints.beforeRedPlatformDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.beforeRedPlatformDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.beforeFinalDrop) && !this.waterCheckpoints.beforeFinalDrop){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.beforeFinalDrop = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.secondWhiteButton) && !this.waterCheckpoints.rightButton){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.rightButton = true;
+        }
+        if (nearLocation(this.watergirl, this.coordinates.waterDoor) && !this.waterCheckpoints.waterDoor && this.fireCheckpoints.fireDoor){
+            stopMoving(this.watergirl);
+            this.waterCheckpoints.waterDoor = true;
         }
     }
 
