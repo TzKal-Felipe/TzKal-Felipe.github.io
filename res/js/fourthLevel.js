@@ -44,7 +44,7 @@ export class FourthLevelManager {
             firstWaterDrop: {x: 1280, y: 96},
             afterFirstWaterDrop: {x: 1280, y: 227},
             secondWaterDrop: {x: 1192, y: 243},
-            afterSecondWaterDrop: {x: 1192, y: 352},
+            afterSecondWaterDrop: {x: 1210, y: 352},
             thirdWaterDrop: {x: 832, y: 485},
             afterThirdWaterDrop: {x: 833, y: 692},
             beforeFirstLavaPool: {x: 883, y: 622},
@@ -53,7 +53,7 @@ export class FourthLevelManager {
             fifthWaterDrop: {x: 1270, y: 692},
             afterFifthWaterDrop: {x: 1265, y: 800},
             atRedLever: {x: 1065, y: 766},
-            gapRightOfBluePlatform: {x: 797, y: 527},
+            gapRightOfBluePlatform: {x: 777, y: 527},
             beforeHugeDropJump: {x: 941, y: 227},
             beforeBluePlatformDrop: {x: 652, y: 520},
             afterBluePlatformDrop: {x: 652, y: 622},
@@ -88,7 +88,8 @@ export class FourthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.fifthWaterDrop = true;
         }
-        if (nearLocation(this.redLever.ramp.position, this.redLever.ramp.finalPosition) && !this.waterCheckpoints.redLever){
+        if (nearLocation(this.redLever.ramp.position, this.redLever.ramp.finalPosition) && 
+            nearLocation(this.watergirl.position, this.coordinates.atRedLever) && !this.waterCheckpoints.redLever){
             stopMoving(this.watergirl);
             this.waterCheckpoints.redLever = true;
         }
