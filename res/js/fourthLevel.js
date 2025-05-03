@@ -145,7 +145,8 @@ export class FourthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.afterFifthWaterDrop)){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.atRedLever) && this.redLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.atRedLever) && 
+           nearLocation(this.redLever.ramp.position, this.redLever.ramp.finalPosition)){
             makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
