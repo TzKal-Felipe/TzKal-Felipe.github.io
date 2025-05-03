@@ -69,8 +69,6 @@ export class FourthLevelManager {
             fireDoor: {x: 1043, y: 910},
             waterDoor: {x: 1143, y: 910},
         };
-        console.log(nearLocation(this.watergirl, this.coordinates.waterStart));
-        console.log(nearLocation(this.watergirl, {x: 1100, y: 47}));
     }
 
     markFireboyCheckpoints(){
