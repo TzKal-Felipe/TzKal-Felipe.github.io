@@ -317,11 +317,11 @@ function startGame() {
             break;
 
         case "4":
-            levelManager = new FourthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
+            levelManager = new FourthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allButtons, allLevers);
             break;
 
         case "5":
-            levelManager = new FifthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager);
+            levelManager = new FifthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allButtons, allLevers, allBalls);
             break;
 
         case "6":
