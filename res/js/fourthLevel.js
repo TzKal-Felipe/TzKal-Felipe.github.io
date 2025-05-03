@@ -18,6 +18,7 @@ export class FourthLevelManager {
         this.whiteButtonLeft = allButtons[0][0];
         this.whiteButtonRight = allButtons[0][1];
         this.blueLever = allLevers[0];
+        console.log(this.blueLever.position);
         this.redLever = allLevers[1];
         
         this.fireCheckpoints = {
