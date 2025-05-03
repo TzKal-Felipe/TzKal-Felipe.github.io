@@ -78,15 +78,15 @@ export class FourthLevelManager {
     }
 
     markWatergirlCheckpointsAndStops(){
-        if (nearLocation(this.watergirl, this.coordinates.firstWaterDrop) && !this.waterCheckpoints.firstWaterDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.firstWaterDrop) && !this.waterCheckpoints.firstWaterDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.firstWaterDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.thirdWaterDrop) && !this.waterCheckpoints.thirdWaterDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.thirdWaterDrop) && !this.waterCheckpoints.thirdWaterDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.thirdWaterDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.fifthWaterDrop) && !this.waterCheckpoints.fifthWaterDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.fifthWaterDrop) && !this.waterCheckpoints.fifthWaterDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.fifthWaterDrop = true;
         }
@@ -94,98 +94,98 @@ export class FourthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.redLever = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterFourthWaterDrop) && !this.waterCheckpoints.platformAfterLever &&
+        if (nearLocation(this.watergirl.position, this.coordinates.afterFourthWaterDrop) && !this.waterCheckpoints.platformAfterLever &&
            this.redLever.pressed){
             stopMoving(this.watergirl);
             this.waterCheckpoints.platformAfterLever = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.gapRightOfBluePlatform) && !this.waterCheckpoints.gapRightOfBluePlatform &&
+        if (nearLocation(this.watergirl.position, this.coordinates.gapRightOfBluePlatform) && !this.waterCheckpoints.gapRightOfBluePlatform &&
            this.redLever.pressed){
             stopMoving(this.watergirl);
             this.waterCheckpoints.gapRightOfBluePlatform = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterSecondWaterDrop) && !this.waterCheckpoints.firstWaterPool &&
+        if (nearLocation(this.watergirl.position, this.coordinates.afterSecondWaterDrop) && !this.waterCheckpoints.firstWaterPool &&
            this.redLever.pressed){
             stopMoving(this.watergirl);
             this.waterCheckpoints.firstWaterPool = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeBluePlatformDrop) && !this.waterCheckpoints.beforeBluePlatformDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeBluePlatformDrop) && !this.waterCheckpoints.beforeBluePlatformDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeBluePlatformDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeRedPlatformDrop) && !this.waterCheckpoints.beforeRedPlatformDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeRedPlatformDrop) && !this.waterCheckpoints.beforeRedPlatformDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeRedPlatformDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeFinalDrop) && !this.waterCheckpoints.beforeFinalDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeFinalDrop) && !this.waterCheckpoints.beforeFinalDrop){
             stopMoving(this.watergirl);
             this.waterCheckpoints.beforeFinalDrop = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.secondWhiteButton) && !this.waterCheckpoints.rightButton){
+        if (nearLocation(this.watergirl.position, this.coordinates.secondWhiteButton) && !this.waterCheckpoints.rightButton){
             stopMoving(this.watergirl);
             this.waterCheckpoints.rightButton = true;
         }
-        if (nearLocation(this.watergirl, this.coordinates.waterDoor) && !this.waterCheckpoints.waterDoor && this.fireCheckpoints.fireDoor){
+        if (nearLocation(this.watergirl.position, this.coordinates.waterDoor) && !this.waterCheckpoints.waterDoor && this.fireCheckpoints.fireDoor){
             stopMoving(this.watergirl);
             this.waterCheckpoints.waterDoor = true;
         }
     }
     
     controlWatergirlMovement(){
-        if (nearLocation(this.watergirl, this.coordinates.waterStart) && this.blueLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.waterStart) && this.blueLever.pressed){
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterFirstWaterDrop)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterFirstWaterDrop)){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterThirdWaterDrop) && !this.redLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterThirdWaterDrop) && !this.redLever.pressed){
             makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterFifthWaterDrop)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterFifthWaterDrop)){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.atRedLever) && this.redLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.atRedLever) && this.redLever.pressed){
             makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterFourthWaterDrop) && this.redLever.pressed){
-            makeJump(this.watergirl);
-            moveLeft(this.watergirl);
-        }
-        if (nearLocation(this.watergirl, this.coordinates.afterThirdWaterDrop) && this.redLever.pressed){
-            makeJump(this.watergirl);
-        }
-        if (nearLocation(this.watergirl, this.coordinates.gapRightOfBluePlatform) && this.redLever.pressed){
-            makeJump(this.watergirl);
-            moveRight(this.watergirl);
-        }
-        if (nearLocation(this.watergirl, this.coordinates.afterSecondWaterDrop) && this.redLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterFourthWaterDrop) && this.redLever.pressed){
             makeJump(this.watergirl);
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeHugeDropJump)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterThirdWaterDrop) && this.redLever.pressed){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterBluePlatformDrop)){
+        if (nearLocation(this.watergirl.position, this.coordinates.gapRightOfBluePlatform) && this.redLever.pressed){
+            makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterRedPlatformDrop)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterSecondWaterDrop) && this.redLever.pressed){
+            makeJump(this.watergirl);
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.betweenFireAndWaterPools)){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeHugeDropJump)){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.afterFinalDrop)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterBluePlatformDrop)){
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeFirstAcidPool)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterRedPlatformDrop)){
+            moveLeft(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.betweenFireAndWaterPools)){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.beforeSecondAcidPool)){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterFinalDrop)){
+            moveRight(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeFirstAcidPool)){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl, this.coordinates.secondWhiteButton) && this.fireCheckpoints.fireDoor){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeSecondAcidPool)){
+            makeJump(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.secondWhiteButton) && this.fireCheckpoints.fireDoor){
             moveLeft(this.watergirl);
         }
     }
