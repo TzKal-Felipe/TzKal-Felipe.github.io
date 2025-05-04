@@ -160,7 +160,7 @@ export class FifthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterLowerBallDrop) && !this.waterCheckpoints.lowerBall &&
            !this.waterCheckpoints.lowerBallWait){
-            setTimeout(() => moveRight(this.watergirl);, 2000);
+            setTimeout(() => moveRight(this.watergirl), 2000);
             this.waterCheckpoints.lowerBallWait = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.lowerBall)){
