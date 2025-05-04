@@ -54,7 +54,7 @@ export class FifthLevelManager {
             beforeSpike: {x: 1171, y: 118},
             lowerBallDrop: {x: 1000, y: 78},
             afterLowerBallDrop: {x: 979, y: 334},
-            lowerBall: {x: 1120, y: 334},
+            lowerBall: {x: 1104, y: 334},
             underWaterpool: {x: 905, y: 226},
             leftOfFireDoor: {x: 220, y: 360},
             dropToDoors: {x: 77, y: 396},
