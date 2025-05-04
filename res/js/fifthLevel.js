@@ -65,7 +65,7 @@ export class FifthLevelManager {
             afterLowerLevelsDrop: {x: 985, y: 622},
             avoidLowerLavaJumpToLeft: {x: 859, y: 658},
             avoidLowerLavaJumpToRight: {x: 718, y: 694},
-            greenLeverDrop: {x: 70, y: 729},
+            greenLeverDrop: {x: 60, y: 729},
             afterGreenLeverDrop: {x: 77, y: 965},
             rightOfGreenLever: {x: 256, y: 910},
             atGreenLever: {x: 177, y: 910},
