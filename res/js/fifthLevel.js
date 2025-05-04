@@ -76,7 +76,12 @@ export class FifthLevelManager {
     }
 
     markFireboyCheckpoints(){
-        
+        if (nearLocation(this.fireboy.position, this.coordinates.fireboyDropped) && !this.fireCheckpoints.dropped){
+            this.fireCheckpoints.dropped = true;
+        }
+        if (nearLocation(this.fireboy.position, this.coordinates.fireboyToBalls) && !this.fireCheckpoints.toBalls){
+            this.fireCheckpoints.toBalls = true;
+        }
     }
 
     markWatergirlCheckpointsAndStops(){
