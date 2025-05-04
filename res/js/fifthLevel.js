@@ -28,7 +28,7 @@ export class FifthLevelManager {
         };
         
         this.waterCheckpoints = {
-            startDrop: false,
+            diamondTurnAround: false,
             dropToDoors: false,
             lowerLevelsDrop: false,
             greenLeverDrop: false,
@@ -45,11 +45,11 @@ export class FifthLevelManager {
         
         this.coordinates = {
             waterStart: {x: 116, y: 118},
-            startDrop: {x: 234, y: 106},
             fireboyDropped: {x: 218, y: 266},
             fireboyToBalls: {x: 587, y: 85},
             leftOfFirepool: {x: 506, y: 118},
             rightOfFirepool: {x: 651, y: 118},
+            secondDiamondInWater: {x: 783, y: 136},
             rightOfWaterpool: {x: 871, y: 118},
             upperBall: {x: 1228, y: 118},
             beforeSpike: {x: 1171, y: 118},
@@ -67,8 +67,8 @@ export class FifthLevelManager {
             avoidLowerLavaJumpToRight: {x: 738, y: 694},
             greenLeverDrop: {x: 60, y: 729},
             afterGreenLeverDrop: {x: 77, y: 965},
-            rightOfGreenLever: {x: 256, y: 910},
-            atGreenLever: {x: 170, y: 910},
+            rightOfGreenLever: {x: 256, y: 965},
+            atGreenLever: {x: 170, y: 965},
             exitingGreenLeverJump: {x: 5, y: 838},
             twoStepsJump: {x: 940, y: 658},
             lowerLevelExitJump: {x: 1084, y: 586},
@@ -87,10 +87,10 @@ export class FifthLevelManager {
     }
 
     markWatergirlCheckpointsAndStops(){
-        if (nearLocation(this.watergirl.position, this.coordinates.startDrop) && !this.waterCheckpoints.startDrop &&
+        if (nearLocation(this.watergirl.position, this.coordinates.secondDiamondInWater) && !this.waterCheckpoints.diamondTurnAround &&
            this.fireCheckpoints.toBalls){
             stopMoving(this.watergirl);
-            this.waterCheckpoints.startDrop = true;
+            this.waterCheckpoints.diamondTurnAround = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.dropToDoors) && !this.waterCheckpoints.dropToDoors){
             stopMoving(this.watergirl);
@@ -149,6 +149,10 @@ export class FifthLevelManager {
             moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.leftOfFirepool) && !this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
+            makeJump(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.secondDiamondInWater) && this.watergirl.isOnBlock && this.fireCheckpoints.toBalls){
+            moveLeft(this.watergirl);
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.rightOfWaterpool) && !this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
