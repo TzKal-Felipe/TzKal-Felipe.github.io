@@ -245,8 +245,8 @@ let menuButtons = {
         }),
         noAudio: new MenuButton({
             position: {
-                x: canvas.width - 1100,
-                y: canvas.height * 0.30,
+                x: canvas.width - 1200,
+                y: canvas.height * 0.20,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -263,8 +263,8 @@ let menuButtons = {
         }),
         hummed: new MenuButton({
             position: {
-                x: canvas.width - 1130,
-                y: canvas.height * 0.40,
+                x: canvas.width - 1230,
+                y: canvas.height * 0.30,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -281,8 +281,8 @@ let menuButtons = {
         }),
         monotoneSynthesizer: new MenuButton({
             position: {
-                x: canvas.width - 1130,
-                y: canvas.height * 0.50,
+                x: canvas.width - 1230,
+                y: canvas.height * 0.40,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -299,8 +299,8 @@ let menuButtons = {
         }),
         vocoded: new MenuButton({
             position: {
-                x: canvas.width - 1100,
-                y: canvas.height * 0.60,
+                x: canvas.width - 1200,
+                y: canvas.height * 0.50,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -317,8 +317,8 @@ let menuButtons = {
         }),
         nonContingentHuman: new MenuButton({
             position: {
-                x: canvas.width - 430,
-                y: canvas.height * 0.30,
+                x: canvas.width - 330,
+                y: canvas.height * 0.20,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -335,8 +335,8 @@ let menuButtons = {
         }),
         lowPassFiltered: new MenuButton({
             position: {
-                x: canvas.width - 430,
-                y: canvas.height * 0.40,
+                x: canvas.width - 330,
+                y: canvas.height * 0.30,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -353,8 +353,8 @@ let menuButtons = {
         }),
         humanReadSpeech: new MenuButton({
             position: {
-                x: canvas.width - 460,
-                y: canvas.height * 0.50,
+                x: canvas.width - 330,
+                y: canvas.height * 0.40,
             },
             width: 430,
             height: canvas.height * 0.065,
@@ -371,8 +371,8 @@ let menuButtons = {
         }),
         original: new MenuButton({
             position: {
-                x: canvas.width - 430,
-                y: canvas.height * 0.60,
+                x: canvas.width - 330,
+                y: canvas.height * 0.50,
             },
             width: 430,
             height: canvas.height * 0.065,
