@@ -126,7 +126,8 @@ export class FifthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.upperBall = true;
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.lowerBallDrop) && !this.waterCheckpoints.lowerBallDrop){
+        if (nearLocation(this.watergirl.position, this.coordinates.lowerBallDrop) && !this.waterCheckpoints.lowerBallDrop &&
+           this.waterCheckpoints.upperBall){
             stopMoving(this.watergirl);
             this.waterCheckpoints.lowerBallDrop = true;
         }
