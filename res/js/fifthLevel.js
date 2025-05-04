@@ -39,6 +39,7 @@ export class FifthLevelManager {
             waterDoor: false,
             upperBall: false,
             lowerBallDrop: false,
+            lowerBallWait: false,
             lowerBall: false,
         };
         
@@ -52,7 +53,7 @@ export class FifthLevelManager {
             rightOfWaterpool: {x: 871, y: 118},
             upperBall: {x: 1228, y: 118},
             beforeSpike: {x: 1171, y: 118},
-            lowerBallDrop: {x: 1000, y: 78},
+            lowerBallDrop: {x: 980, y: 78},
             afterLowerBallDrop: {x: 979, y: 334},
             lowerBall: {x: 1104, y: 334},
             underWaterpool: {x: 905, y: 226},
@@ -157,8 +158,10 @@ export class FifthLevelManager {
             moveLeft(this.watergirl);
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.afterLowerBallDrop) && !this.waterCheckpoints.lowerBall){
-            moveRight(this.watergirl);
+        if (nearLocation(this.watergirl.position, this.coordinates.afterLowerBallDrop) && !this.waterCheckpoints.lowerBall &&
+           !this.waterCheckpoints.lowerBallWait){
+            setTimeout(() => moveRight(this.watergirl);, 2000);
+            this.waterCheckpoints.lowerBallWait = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.lowerBall)){
             moveLeft(this.watergirl);
