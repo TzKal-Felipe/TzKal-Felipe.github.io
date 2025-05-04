@@ -73,7 +73,9 @@ export class FourthLevelManager {
     }
 
     markFireboyCheckpoints(){
-        
+        if (nearLocation(this.fireboy.position, this.coordinates.fireDoor) && !this.fireCheckpoints.fireDoor){
+            this.fireCheckpoints.fireDoor = true;
+        }
     }
 
     markWatergirlCheckpointsAndStops(){
