@@ -131,14 +131,32 @@ function drawMenu() {
     ctx.fillStyle = "yellow";
     ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.65);
 
-    fullText = "AI player added by Fernando Alvarado, UTEP";
+    fullText = "game reimplemented by";
     ctx.font = "35px Cinzel";
     ctx.lineWidth = 7;
     ctx.strokeStyle = "black";
-    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.75);
+    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.70);
 
     ctx.fillStyle = "yellow";
-    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.75);
+    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.70);
+
+    fullText = "AI player added by";
+    ctx.font = "35px Cinzel";
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = "black";
+    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.80);
+
+    ctx.fillStyle = "yellow";
+    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.80);
+
+    fullText = "Fernando Alvarado, UTEP";
+    ctx.font = "35px Cinzel";
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = "black";
+    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.85);
+
+    ctx.fillStyle = "yellow";
+    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.85);
 
     //buttons
     for (const btnName in menuButtons.mainMenu) {
