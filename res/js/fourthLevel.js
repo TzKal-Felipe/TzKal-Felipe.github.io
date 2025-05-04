@@ -163,7 +163,7 @@ export class FourthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.afterThirdWaterDrop) && this.redLever.pressed){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.gapRightOfBluePlatform) && this.redLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.gapRightOfBluePlatform) && this.redLever.pressed && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
             moveRight(this.watergirl);
         }
@@ -171,7 +171,7 @@ export class FourthLevelManager {
             makeJump(this.watergirl);
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.beforeHugeDropJump)){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeHugeDropJump) && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterBluePlatformDrop)){
