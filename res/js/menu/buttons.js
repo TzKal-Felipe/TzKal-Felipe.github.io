@@ -390,7 +390,7 @@ let menuButtons = {
         author: new MenuButton({
             position: {
                 x: canvas.width * 0.01,
-                y: canvas.height * 0.75,
+                y: canvas.height * 0.72,
             },
             width: 340,
             height: canvas.height * 0.06,
