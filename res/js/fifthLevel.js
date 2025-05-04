@@ -141,12 +141,9 @@ export class FifthLevelManager {
     }
     
     controlWatergirlMovement(){
-        if (nearLocation(this.watergirl.position, this.coordinates.waterStart) && this.fireCheckpoints.dropped){
+        if (nearLocation(this.watergirl.position, this.coordinates.waterStart) && (this.fireCheckpoints.dropped || this.fireCheckpoints.toBalls)){
             moveRight(this.watergirl);
             makeJump(this.watergirl);
-        }
-        if (nearLocation(this.watergirl.position, this.coordinates.waterStart) && this.fireCheckpoints.toBalls){
-            moveRight(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.leftOfFirepool) && !this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
