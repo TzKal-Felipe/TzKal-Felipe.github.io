@@ -135,21 +135,12 @@ function drawMenu() {
     ctx.font = "35px Cinzel";
     ctx.lineWidth = 7;
     ctx.strokeStyle = "black";
-    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.70);
+    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.75);
 
     ctx.fillStyle = "yellow";
-    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.70);
+    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.75);
 
     fullText = "AI player added by";
-    ctx.font = "35px Cinzel";
-    ctx.lineWidth = 7;
-    ctx.strokeStyle = "black";
-    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.85);
-
-    ctx.fillStyle = "yellow";
-    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.85);
-
-    fullText = "Fernando Alvarado, UTEP";
     ctx.font = "35px Cinzel";
     ctx.lineWidth = 7;
     ctx.strokeStyle = "black";
@@ -157,6 +148,15 @@ function drawMenu() {
 
     ctx.fillStyle = "yellow";
     ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.90);
+
+    fullText = "Fernando Alvarado, UTEP";
+    ctx.font = "35px Cinzel";
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = "black";
+    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.95);
+
+    ctx.fillStyle = "yellow";
+    ctx.fillText(fullText, canvas.width * 0.01, canvas.height * 0.95);
 
     //buttons
     for (const btnName in menuButtons.mainMenu) {
