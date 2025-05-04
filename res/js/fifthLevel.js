@@ -15,13 +15,32 @@ export class FifthLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.whiteButton = allButtons[0][0];
+        this.blueButton = allButtons[1][0];
+        this.greenLever = allLevers[0];
+        this.redLever = allLevers[1];
+        this.lowerBall = allBalls[0];
+        this.upperBall = allBalls[1];
         
         this.fireCheckpoints = {
-        
+            toBalls: false,
+            dropped: false,
         };
         
         this.waterCheckpoints = {
-        
+            startDrop: false,
+            dropToDoors: false,
+            lowerLevelsDrop: false,
+            greenLeverDrop: false,
+            rightOfGreenLever: false,
+            exitingGreenLeverJump: false,
+            lowerLevelExitJump: false,
+            betweenDoors: false,
+            waterDoor: false,
+            upperBall: false,
+            lowerBallDrop: false,
+            lowerBall: false,
+            dropToDoors: false,
         };
         
         this.coordinates = {
