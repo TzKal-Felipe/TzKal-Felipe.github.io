@@ -26,6 +26,9 @@ export class FifthLevelManager {
         
         this.coordinates = {
             waterStart: {x: 116, y: 118},
+            startDrop: {x: 234, y: 106},
+            fireboyDropped: {x: 218, y: 266},
+            fireboyToBalls: {x: 587, y: 85},
             leftOfFirepool: {x: 506, y: 118},
             rightOfFirepool: {x: 651, y: 118},
             rightOfWaterpool: {x: 871, y: 118},
