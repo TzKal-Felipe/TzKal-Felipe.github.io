@@ -126,7 +126,7 @@ function drawMenu() {
     ctx.font = "35px Cinzel";
     ctx.lineWidth = 7;
     ctx.strokeStyle = "black";
-    ctx.strokeText(fullText, canvas.width * 0.01, canvas.height * 0.65);
+    ctx.strokeText(fullText, canvas.width * 0.02, canvas.height * 0.65);
 
     ctx.fillStyle = "yellow";
     ctx.fillText(fullText, canvas.width * 0.02, canvas.height * 0.65);
