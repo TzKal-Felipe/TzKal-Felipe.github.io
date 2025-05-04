@@ -171,7 +171,7 @@ export class FifthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.rightOfFirepool) && this.waterCheckpoints.lowerBall){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.rightOfFireDoor)){
+        if (nearLocation(this.watergirl.position, this.coordinates.leftOfFireDoor)){
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropToDoors)){
