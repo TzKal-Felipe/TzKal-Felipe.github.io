@@ -192,7 +192,6 @@ export class FifthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && !this.greenLever.pressed){
             moveRight(this.watergirl);
-            makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.rightOfGreenLever)){
             moveLeft(this.watergirl);
