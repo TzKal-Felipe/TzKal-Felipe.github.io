@@ -353,7 +353,7 @@ let menuButtons = {
         }),
         humanReadSpeech: new MenuButton({
             position: {
-                x: canvas.width - 330,
+                x: canvas.width - 360,
                 y: canvas.height * 0.40,
             },
             width: 430,
@@ -389,17 +389,17 @@ let menuButtons = {
         }),
         author: new MenuButton({
             position: {
-                x: canvas.width * 0.06,
-                y: canvas.height * 0.93,
+                x: canvas.width * 0.01,
+                y: canvas.height * 0.70,
             },
             width: 340,
             height: canvas.height * 0.06,
             yOffset: canvas.height * 0.43,
-            text: "Pavel Skála",
+            text: "game reimplemented by Pavel Skála",
             mainColor: "#5c4614",
             borderColor: "#5c4614",
             outerColor: "#5c4614",
-            fontSize: 50,
+            fontSize: 35,
             runCode: () => {
                 window.open("https://github.com/pavel-skala", "_blank");
             },
