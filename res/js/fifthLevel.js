@@ -52,7 +52,7 @@ export class FifthLevelManager {
             rightOfWaterpool: {x: 871, y: 118},
             upperBall: {x: 1228, y: 118},
             beforeSpike: {x: 1171, y: 118},
-            lowerBallDrop: {x: 979, y: 10},
+            lowerBallDrop: {x: 1000, y: 78},
             afterLowerBallDrop: {x: 979, y: 334},
             lowerBall: {x: 1100, y: 334},
             underWaterpool: {x: 905, y: 226},
