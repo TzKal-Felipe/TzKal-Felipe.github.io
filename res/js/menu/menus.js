@@ -131,7 +131,7 @@ function drawMenu() {
     ctx.fillStyle = "yellow";
     ctx.fillText(fullText, canvas.width * 0.02, canvas.height * 0.65);
 
-    fullText = "game reimplemented by";
+    fullText = "Game reimplemented by";
     ctx.font = "35px Cinzel";
     ctx.lineWidth = 7;
     ctx.strokeStyle = "black";
