@@ -68,7 +68,7 @@ export class FifthLevelManager {
             greenLeverDrop: {x: 60, y: 729},
             afterGreenLeverDrop: {x: 77, y: 965},
             rightOfGreenLever: {x: 256, y: 910},
-            atGreenLever: {x: 177, y: 910},
+            atGreenLever: {x: 170, y: 910},
             exitingGreenLeverJump: {x: 5, y: 838},
             twoStepsJump: {x: 940, y: 658},
             lowerLevelExitJump: {x: 1084, y: 586},
@@ -148,13 +148,13 @@ export class FifthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.waterStart) && this.fireCheckpoints.toBalls){
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.leftOfFirepool) && !this.waterCheckpoints.lowerBall){
+        if (nearLocation(this.watergirl.position, this.coordinates.leftOfFirepool) && !this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.rightOfWaterpool) && !this.waterCheckpoints.lowerBall){
+        if (nearLocation(this.watergirl.position, this.coordinates.rightOfWaterpool) && !this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.upperBall)){
+        if (nearLocation(this.watergirl.position, this.coordinates.upperBall) && this.watergirl.isOnBlock){
             moveLeft(this.watergirl);
             makeJump(this.watergirl);
         }
@@ -166,13 +166,13 @@ export class FifthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.lowerBall)){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.afterLowerBallDrop) && this.waterCheckpoints.lowerBall){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterLowerBallDrop) && this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.underWaterpool) && this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.rightOfFirepool) && this.waterCheckpoints.lowerBall){
+        if (nearLocation(this.watergirl.position, this.coordinates.rightOfFirepool) && this.waterCheckpoints.lowerBall && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.leftOfFireDoor)){
@@ -181,13 +181,13 @@ export class FifthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropToDoors)){
             moveRight(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.underFireDoor)){
+        if (nearLocation(this.watergirl.position, this.coordinates.underFireDoor) && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterLowerLevelsDrop) && !this.greenLever.pressed){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.avoidLowerLavaJumpToLeft) && !this.greenLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.avoidLowerLavaJumpToLeft) && !this.greenLever.pressed && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && !this.greenLever.pressed){
@@ -196,20 +196,20 @@ export class FifthLevelManager {
         if (nearLocation(this.watergirl.position, this.coordinates.rightOfGreenLever)){
             moveLeft(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.atGreenLever)){
+        if (nearLocation(this.watergirl.position, this.coordinates.atGreenLever) && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && this.greenLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && this.greenLever.pressed && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.exitingGreenLeverJump)){
+        if (nearLocation(this.watergirl.position, this.coordinates.exitingGreenLeverJump) && this.watergirl.isOnBlock){
             moveRight(this.watergirl);
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.avoidLowerLavaJumpToRight) && this.greenLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.avoidLowerLavaJumpToRight) && this.greenLever.pressed && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.twoStepsJump) && this.greenLever.pressed){
+        if (nearLocation(this.watergirl.position, this.coordinates.twoStepsJump) && this.greenLever.pressed && this.watergirl.isOnBlock){
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.lowerLevelExitJump) && this.greenLever.pressed && this.watergirl.isOnBlock){
