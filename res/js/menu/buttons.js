@@ -390,12 +390,12 @@ let menuButtons = {
         author: new MenuButton({
             position: {
                 x: canvas.width * 0.01,
-                y: canvas.height * 0.70,
+                y: canvas.height * 0.75,
             },
             width: 340,
             height: canvas.height * 0.06,
             yOffset: canvas.height * 0.43,
-            text: "game reimplemented by Pavel Skála",
+            text: "Pavel Skála",
             mainColor: "#5c4614",
             borderColor: "#5c4614",
             outerColor: "#5c4614",
