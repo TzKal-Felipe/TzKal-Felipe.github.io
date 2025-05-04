@@ -56,6 +56,7 @@ export class FifthLevelManager {
             afterLowerBallDrop: {x: 979, y: 334},
             lowerBall: {x: 1100, y: 334},
             underWaterpool: {x: 905, y: 226},
+            leftOfFireDoor: {x: 220, y: 360},
             dropToDoors: {x: 77, y: 396},
             afterDropToDoors: {x: 79, y: 514},
             underFireDoor: {x: 400, y: 550},
@@ -169,6 +170,9 @@ export class FifthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.rightOfFirepool) && this.waterCheckpoints.lowerBall){
             makeJump(this.watergirl);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.rightOfFireDoor)){
+            moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterDropToDoors)){
             moveRight(this.watergirl);
