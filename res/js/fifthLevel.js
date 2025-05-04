@@ -115,7 +115,8 @@ export class FifthLevelManager {
             stopMoving(this.watergirl);
             this.waterCheckpoints.lowerLevelExitJump = true;
         }
-        if (nearLocation(this.watergirl.position, this.coordinates.betweenDoors) && !this.waterCheckpoints.betweenDoors){
+        if (nearLocation(this.watergirl.position, this.coordinates.betweenDoors) && !this.waterCheckpoints.betweenDoors &&
+           this.greenLever.pressed){
             stopMoving(this.watergirl);
             this.waterCheckpoints.betweenDoors = true;
         }
