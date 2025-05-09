@@ -7,7 +7,23 @@ import {
 } from "./helperFunctions.js";
 
 let audioFiles = {
-    
+    few_paths: "few_paths.wav",
+    levers_at_end: "levers_at_end.wav",
+    middle_blocked: "middle_blocked.wav",
+    try_lava_path: "try_lava_path.wav",
+    dont_go_middle: "dont_go_middle.wav",
+    careful_waterpool: "careful_waterpool.wav",
+    same_red_lever: "same_red_lever.wav",
+    wish_fire: "wish_fire.wav",
+    red_lever_pushed: "red_lever_pushed.wav",
+    middle_unlocked: "middle_unlocked.wav",
+    jump_home: "jump_home.wav",
+    slip_slope: "slip_slope.wav",
+    careful_acid: "careful_acid.wav",
+    push_button: "push_button.wav",
+    lift_platform: "lift_platform.wav",
+    world_record: "world_record.wav",
+    wait_for_me: "wait_for_me.wav"
 };
 
 export class FourthLevelManager {
