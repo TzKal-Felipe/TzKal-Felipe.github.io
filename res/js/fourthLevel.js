@@ -238,7 +238,7 @@ export class FourthLevelManager {
             this.fireCheckpoints.carefulWater = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.beforeWhiteBarrier) && !this.waterCheckpoints.pushButton &&
-           !nearLocation(this.whiteButtonLeft.ramp.position, this.whiteButtonLeft.ramp.finalPosition){
+           !nearLocation(this.whiteButtonLeft.ramp.position, this.whiteButtonLeft.ramp.finalPosition)){
             this.audioManager.playAudio(audioFiles.push_button);
             this.waterCheckpoints.pushButton = true;
         }
