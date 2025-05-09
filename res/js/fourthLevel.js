@@ -229,7 +229,8 @@ export class FourthLevelManager {
     }
 
     checkForLevelStateActions(){
-        if (nearLocation(this.fireboy.position, this.coordinates.downMiddlePath) && !this.fireCheckpoints.downMiddlePath){
+        if (nearLocation(this.fireboy.position, this.coordinates.downMiddlePath) && !this.fireCheckpoints.downMiddlePath &&
+           !this.redLever.pressed){
             this.audioManager.playAudio(audioFiles.dont_go_middle);
             this.fireCheckpoints.downMiddlePath = true;
         }
