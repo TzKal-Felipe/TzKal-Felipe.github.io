@@ -7,7 +7,21 @@ import {
 } from "./helperFunctions.js";
 
 let audioFiles = {
-    
+    together: "together.wav",
+    down_or_right: "down_or_right.wav",
+    pick_path: "pick_path.wav",
+    take_other: "take_other.wav",
+    get_diamonds: "get_diamonds.wav",
+    come_down: "come_down.wav",
+    push_balls: "push_balls.wav",
+    restart: "restart.wav",
+    go_right: "go_right.wav",
+    lift_platform: "lift_platform.wav",
+    go_down: "go_down.wav",
+    long_way: "long_way.wav",
+    unlocked_door: "unlocked_door.wav",
+    thanks_door: "thanks_door.wav",
+    excellent: "excellent.wav",
 };
 
 export class FifthLevelManager {
@@ -15,6 +29,7 @@ export class FifthLevelManager {
         this.fireboy = fireboy;
         this.watergirl = watergirl;
         this.audioManager = audioManager;
+        this.audioManager.nextAudioForTimer([audioFiles.together, audioFiles.down_or_right, audioFiles.pick_path, audioFiles.take_other]);
         this.whiteButton = allButtons[0][0];
         this.blueButton = allButtons[1][0];
         this.greenLever = allLevers[0];
@@ -25,6 +40,7 @@ export class FifthLevelManager {
         this.fireCheckpoints = {
             toBalls: false,
             dropped: false,
+            unlockedRed: false,
         };
         
         this.waterCheckpoints = {
@@ -41,6 +57,11 @@ export class FifthLevelManager {
             lowerBallDrop: false,
             lowerBallWait: false,
             lowerBall: false,
+            pushBalls: false,
+            pathUnlocked: false,
+            restart: false,
+            unlockedGreen: false,
+            end: false,
         };
         
         this.coordinates = {
@@ -61,6 +82,7 @@ export class FifthLevelManager {
             dropToDoors: {x: 77, y: 396},
             afterDropToDoors: {x: 79, y: 514},
             underFireDoor: {x: 400, y: 550},
+            beforeWhitePlatform: {x: 622, y: 423},
             lowerLevelsDrop: {x: 985, y: 508},
             afterLowerLevelsDrop: {x: 985, y: 622},
             avoidLowerLavaJumpToLeft: {x: 859, y: 658},
@@ -74,15 +96,22 @@ export class FifthLevelManager {
             lowerLevelExitJump: {x: 1084, y: 586},
             betweenDoors: {x: 568, y: 406},
             waterDoor: {x: 780, y: 300},
+            fireDoor: {x: 395, y: 300},
         };
     }
 
     markFireboyCheckpoints(){
-        if (nearLocation(this.fireboy.position, this.coordinates.fireboyDropped) && !this.fireCheckpoints.dropped){
+        if (nearLocation(this.fireboy.position, this.coordinates.fireboyDropped) && !this.fireCheckpoints.dropped && !this.fireCheckpoints.toBalls){
+            this.audioManager.playAudio(audioFiles.go_right);
             this.fireCheckpoints.dropped = true;
         }
-        if (nearLocation(this.fireboy.position, this.coordinates.fireboyToBalls) && !this.fireCheckpoints.toBalls){
+        if (nearLocation(this.fireboy.position, this.coordinates.fireboyToBalls) && !this.fireCheckpoints.toBalls && !this.fireCheckpoints.dropped){
+            this.audioManager.playAudio(audioFiles.get_diamonds);
             this.fireCheckpoints.toBalls = true;
+        }
+        if (this.redLever.pressed && !this.fireCheckpoints.unlockedRed){
+            this.audioManager.playAudio(audioFiles.thanks_door);
+            this.fireCheckpoints.unlockedRed = true;
         }
     }
 
@@ -127,6 +156,7 @@ export class FifthLevelManager {
         }
         if (nearLocation(this.watergirl.position, this.coordinates.upperBall) && !this.waterCheckpoints.upperBall){
             stopMoving(this.watergirl);
+            this.audioManager.playAudio(audioFiles.lift_platform);
             this.waterCheckpoints.upperBall = true;
         }
         if (nearLocation(this.watergirl.position, this.coordinates.lowerBallDrop) && !this.waterCheckpoints.lowerBallDrop &&
@@ -198,6 +228,7 @@ export class FifthLevelManager {
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atGreenLever) && this.watergirl.isOnBlock){
+            this.audioManager.playAudio(audioFiles.unlocked_door);
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && this.greenLever.pressed && this.watergirl.isOnBlock){
@@ -225,6 +256,30 @@ export class FifthLevelManager {
     }
 
     checkForLevelStateActions(){
-        
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeWhitePlatform) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pushBalls){
+            this.audioManager.nextAudioForTimer(audioFiles.push_balls);
+            this.waterCheckpoints.pushBalls = true;
+        }
+        if (nearLocation(this.whiteButton.ramp.position, this.whiteButton.ramp.finalPosition) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pathUnlocked){
+            this.audioManager.playAudio(audioFiles.come_down);
+            this.waterCheckpoints.pathUnlocked = true;
+        }
+        if (nearLocation(this.whiteButton.ramp.position, this.whiteButton.ramp.finalPosition) && this.fireCheckpoints.dropped && !this.waterCheckpoints.pathUnlocked){
+            this.audioManager.playAudio(audioFiles.go_down);
+            this.waterCheckpoints.pathUnlocked = true;
+        }
+        if (nearLocation(this.lowerBall.position, this.blueButton.position) && 
+            nearLocation(this.upperBall.position, this.blueButton.position) && !this.waterCheckpoints.restart){
+            this.audioManager.playAudio(audioFiles.restart);
+            this.waterCheckpoints.restart = true;
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.dropToDoors) && this.fireCheckpoints.dropped){
+            this.audioManager.playAudio(audioFiles.long_way);
+        }
+        if (nearLocation(this.watergirl.position, this.coordinates.waterDoor) &&
+           nearLocation(this.fireboy.position, this.coordinates.fireDoor) && !this.waterCheckpoints.end){
+            this.audioManager.playAudio(audioFiles.excellent);
+            this.waterCheckpoints.end = true;
+        }
     }
 }
