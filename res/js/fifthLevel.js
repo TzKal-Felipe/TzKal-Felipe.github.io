@@ -30,8 +30,8 @@ export class FifthLevelManager {
         this.watergirl = watergirl;
         this.audioManager = audioManager;
         this.audioManager.nextAudioForTimer([audioFiles.together, audioFiles.down_or_right, audioFiles.pick_path, audioFiles.take_other]);
-        this.whiteButton = allButtons[0][0];
-        this.blueButton = allButtons[1][0];
+        this.blueButton = allButtons[0][0];
+        this.whiteButton = allButtons[1][0];
         this.greenLever = allLevers[0];
         this.redLever = allLevers[1];
         this.lowerBall = allBalls[0];
