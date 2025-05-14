@@ -25,7 +25,7 @@ class AudioManager {
         this.currentSrc = null;
         this.nextAudio = null;
         this.audioInterval = null;
-        this.timedAudioDelay = 8;
+        this.timedAudioDelay = 7;
         this.timer = 0
     }
 
