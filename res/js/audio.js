@@ -98,6 +98,8 @@ class AudioManager {
     }
 
     nextAudioForTimer(audioSrc){
+        this.resetAudioTimer();
+        
         if (typeof audioSrc === "string"){
             this.nextAudio = audioSrc;
         }
