@@ -257,10 +257,10 @@ export class FifthLevelManager {
 
     checkForLevelStateActions(){
         if (nearLocation(this.watergirl.position, this.coordinates.beforeWhitePlatform) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pushBalls){
-            this.audioManager.nextAudioForTimer(audioFiles.push_balls);
+            this.audioManager.playAudio(audioFiles.push_balls);
             this.waterCheckpoints.pushBalls = true;
         }
-        if (nearLocation(this.whiteButton.ramp.position, this.whiteButton.ramp.finalPosition) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pathUnlocked){
+        if (this.whiteButton.pressed && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pathUnlocked){
             this.audioManager.playAudio(audioFiles.come_down);
             this.waterCheckpoints.pathUnlocked = true;
         }
