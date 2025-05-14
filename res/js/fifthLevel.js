@@ -256,7 +256,8 @@ export class FifthLevelManager {
     }
 
     checkForLevelStateActions(){
-        if (nearLocation(this.watergirl.position, this.coordinates.beforeWhitePlatform) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pushBalls){
+        if (nearLocation(this.watergirl.position, this.coordinates.beforeWhitePlatform) && this.fireCheckpoints.toBalls && !this.waterCheckpoints.pushBalls &&
+           !this.whiteButton.pressed){
             this.audioManager.playAudio(audioFiles.push_balls);
             this.waterCheckpoints.pushBalls = true;
         }
