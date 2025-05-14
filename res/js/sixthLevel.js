@@ -27,7 +27,6 @@ let audioFiles = {
     let_me_out: "let_me_out.wav",
     no_fall_damage: "no_fall_damage.wav",
     almost_done: "almost_done.wav",
-    what_took_long: "what_took_long.wav",
     sorry_you_stay: "sorry_you_stay.wav",
     dont_fit: "dont_fit.wav",
     dont_come_down_yet: "dont_come_down_yet.wav"
@@ -148,7 +147,6 @@ export class SixthLevelManager {
            !this.fireCheckpoints.whatTookLong){
 
             this.fireCheckpoints.whatTookLong = true;
-            this.audioManager.playAudio(audioFiles.what_took_long);
         }
     }
 
