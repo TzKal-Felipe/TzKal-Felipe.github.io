@@ -228,10 +228,10 @@ export class FifthLevelManager {
             moveLeft(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.atGreenLever) && this.watergirl.isOnBlock){
-            this.audioManager.playAudio(audioFiles.unlocked_door);
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.afterGreenLeverDrop) && this.greenLever.pressed && this.watergirl.isOnBlock){
+            this.audioManager.playAudio(audioFiles.unlocked_door);
             makeJump(this.watergirl);
         }
         if (nearLocation(this.watergirl.position, this.coordinates.exitingGreenLeverJump) && this.watergirl.isOnBlock){
