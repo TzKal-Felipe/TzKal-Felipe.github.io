@@ -94,7 +94,7 @@ function startGame() {
     const values = createObjectsFromArray(levels[currentLevel]);
     collisionBlocks = values.objects;
     ponds = values.ponds;
-    console.log(ponds);
+    console.log(collisionBlocks);
 
     bgBlocks = new Sprite({
         position: {
