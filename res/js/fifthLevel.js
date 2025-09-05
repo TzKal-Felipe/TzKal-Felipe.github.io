@@ -16,7 +16,7 @@ let audioFiles = {
     push_balls: "push_balls.wav",
     restart: "restart.wav",
     go_right: "go_right.wav",
-    lift_platform: "lift_platform.wav",
+    platform_up: "platform_up.wav",
     go_down: "go_down.wav",
     long_way: "long_way.wav",
     unlocked_door: "unlocked_door.wav",
