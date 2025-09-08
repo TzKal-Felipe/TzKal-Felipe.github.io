@@ -31,4 +31,56 @@ function buildAudioPath(audiofile, voice_type){
     return `res/js/audio/${voice_type}/${audiofile}`
 }
 
-export { nearLocation, moveRight, moveLeft, stopMoving, makeJump, buildAudioPath };
+function isNearGameObject(player, objects, thresholdX = 100, thresholdY = 70){
+    objects.forEach((object) => {
+        const withinX = Math.abs(player.position.x - object.position.x) <= thresholdX;
+        const withinY = player.position.y - object.position.y <= thresholdY; // but not too far
+
+        if (withinX && withinY) {
+            return true; // Found at least one object below within range
+        }
+    })
+
+    return false
+}
+
+function isNearOppositeElementPond(player, collisionBlocks, thresholdX = 140, thresholdY = 100){
+    collisionBlocks.forEach((block) => {
+        if (block.shape === "pondTriangle" && block.element !== player.element) {
+            // Midpoint of the top edge (between northwest and northeast corners)
+            const topMid = {
+                x: block.hitbox.position.x + block.hitbox.width / 2,
+                y: block.hitbox.position.y,
+            };
+
+            // Player center
+            const playerCenter = {
+                x: player.hitbox.position.x + player.hitbox.width / 2,
+                y: player.hitbox.position.y + player.hitbox.height / 2,
+            };
+
+            // Check horizontal distance (within 140px to either side)
+            const withinX = Math.abs(playerCenter.x - topMid.x) <= thresholdX;
+
+            // Check vertical distance (within 100px, but only above the pond)
+            const withinY = topMid.y - playerCenter.y <= thresholdY;
+
+            if (withinX && withinY) {
+                return true;
+            }
+        }
+    })
+
+    return false;
+}
+
+export { 
+    nearLocation,
+    moveRight,
+    moveLeft,
+    stopMoving,
+    makeJump,
+    buildAudioPath,
+    isNearGameObject,
+    isNearOppositeElementPond
+};
