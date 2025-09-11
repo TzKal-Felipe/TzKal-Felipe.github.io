@@ -245,7 +245,7 @@ let menuButtons = {
         }),
         noAudio: new MenuButton({
             position: {
-                x: canvas.width - 1200,
+                x: canvas.width - 1180,
                 y: canvas.height * 0.20,
             },
             width: 430,
@@ -317,7 +317,7 @@ let menuButtons = {
         }),
         nonContingentHuman: new MenuButton({
             position: {
-                x: canvas.width - 500,
+                x: canvas.width - 520,
                 y: canvas.height * 0.20,
             },
             width: 430,
@@ -371,7 +371,7 @@ let menuButtons = {
         }),
         original: new MenuButton({
             position: {
-                x: canvas.width - 500,
+                x: canvas.width - 490,
                 y: canvas.height * 0.50,
             },
             width: 430,
