@@ -20,6 +20,7 @@ function* audioIterator(audioFiles) {
 class AudioManager {
     constructor(){
         this.audio = new Audio();
+        this.environmentContext = null;
         this.isPlaying = false;
         this.queue = null;
         this.currentSrc = null;
@@ -27,6 +28,10 @@ class AudioManager {
         this.audioInterval = null;
         this.timedAudioDelay = 7;
         this.timer = 0
+    }
+
+    setEnvironmentContext(environmentContext){
+        this.environmentContext = environmentContext;
     }
 
     resetAudioTimer(){
@@ -49,6 +54,7 @@ class AudioManager {
         if (this.isPlaying){
             this.queue = audioSrc;
         } else {
+            console.log(this.environmentContext.state);
             this.audio.src = audioSrc;
             this.audio.load();
             this.audio.play();

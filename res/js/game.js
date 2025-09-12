@@ -40,6 +40,7 @@ import { ThirdLevelManager } from "./thirdLevel.js";
 import { FourthLevelManager } from "./fourthLevel.js";
 import { FifthLevelManager } from "./fifthLevel.js";
 import { SixthLevelManager } from "./sixthLevel.js";
+import { EnvironmentContext } from "./environmentContext.js";
 
 let bgBlocks, died, menuButtonPressed, pauseGame, collisionBlocks, ponds;
 
@@ -70,6 +71,7 @@ const oneSecond = 1000;
 let audioManager = new AudioManager();
 let deltatime = new Deltatime();
 let levelManager;
+let environmentContext;
 
 function startGame() {
     died = false;
@@ -305,6 +307,7 @@ function startGame() {
     
     switch (currentLevel){
         case "1":
+            environmentContext = new EnvironmentContext(allPlayers[fireboy], [...allLevers, ...allButtons], collisionBlocks);
             levelManager = new FirstLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allLevers, allButtons);
             break;
 
@@ -317,18 +320,23 @@ function startGame() {
             break;
 
         case "4":
+            environmentContext = new EnvironmentContext(allPlayers[fireboy], [...allLevers, ...allButtons], collisionBlocks);
             levelManager = new FourthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allButtons, allLevers);
             break;
 
         case "5":
+            environmentContext = new EnvironmentContext(allPlayers[fireboy], [...allLevers, ...allButtons, ...allBalls], collisionBlocks);
             levelManager = new FifthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allButtons, allLevers, allBalls);
             break;
 
         case "6":
+            environmentContext = new EnvironmentContext(allPlayers[fireboy], [...allLevers, ...allButtons, ...allBalls], collisionBlocks);
             levelManager = new SixthLevelManager(allPlayers[fireboy], allPlayers[watergirl], audioManager, allButtons, allLevers, allBalls);
             break;
     }
 
+    environmentContext.start();
+    audioManager.setEnvironmentContext(environmentContext)
     audioManager.startAudioTimer();
     deltatime.start();
 
@@ -336,6 +344,7 @@ function startGame() {
         if ((allDoors[0].opened && allDoors[1].opened) || menuActive == "mainMenu"){
             audioManager.stopAudioTimer();
             deltatime.stop();
+            environmentContext.stop()
             clearInterval(checkForGameEnded);
         }
     }, oneSecond);
